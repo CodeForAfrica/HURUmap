@@ -17,7 +17,7 @@ changes, and helping you finalize your pull requests.
 ## Types of Contributions
 
 You can contribute in many ways. For example, you might:
-* Add documentation and "how-to" articles in the [README](README.md) or the wiki
+* Add documentation and "how-to" articles in the [README](README.rst) or the wiki
 * Suggest Enhancements
 * Fix issues
 * Submit Bug reports
