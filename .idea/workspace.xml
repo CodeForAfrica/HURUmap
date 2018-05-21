@@ -2,109 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ceab5fb5-2e7c-40f2-9b44-cecaa21271a1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/arrow-down-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/arrow-down.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/banners/global.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/banners/ke-mobile.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/banners/ke-web.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/banners/ke.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/banners/tz-mobile.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/banners/tz-web.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/banners/tz.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/banners/ug-mobile.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/banners/ug-web.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/banners/ug.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/banners/za-mobile.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/banners/za-web.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/banners/zm-mobile.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/banners/zm-web.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/banners/zm.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/examples/hover_over_graph.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/examples/map_search.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/examples/section_overview.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/examples/text_search.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/android-chrome-192x192.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/android-chrome-512x512.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/apple-touch-icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/blurbs/context.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/blurbs/facts.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/blurbs/visualise.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/favicon-16x16.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/favicon-32x32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/mstile-150x150.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/topics/census.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/topics/census_over.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/topics/development.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/topics/development_over.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/topics/education.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/topics/education_over.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/topics/health.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/topics/health_over.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logo-hi-res-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logo-hi-res.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logo-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logos/ap-logo.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logos/bmgf-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logos/bmgf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logos/cfafrica-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logos/cfafrica.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logos/datazetu.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logos/icfj-long-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logos/icfj-long.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logos/icfj-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logos/icfj.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logos/ihub-kenya.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logos/pesacheck.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logos/pesacheckwhite.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logos/twaweza-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/logos/twaweza.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/pesayetu-header-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/pesayetu-logo-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/showcase/africa_hdi.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/showcase/crime.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/showcase/donkeys.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/showcase/early-pregnancy.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/showcase/malawi_hdi.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/showcase/southafrica_analysis.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/wazi-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/HURUmap.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CHECKS" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CONTRIBUTING.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Procfile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/context_processors.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/geo.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/management/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/management/commands/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/management/commands/dumppsql.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/management/commands/importcsv.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/management/commands/importsimplecsv.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/settings.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/css/hurumap.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/browserconfig.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/manifest.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/static/img/icons/safari-pinned-tab.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/templates/_base.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/templates/_footer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/templates/about.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/templates/blocks/about/manifesto.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/templates/blocks/partners.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/templates/blocks/showcase.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/templates/homepage.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/templates/homepage_country.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hurumap/wsgi.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/manage.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/requirements.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/runtime.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/wajibisha.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/wajibisha.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/setup.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -115,12 +14,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/hurumap/settings.py">
+      <file leaf-file-name="setup.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="79" column="74" lean-forward="false" selection-start-line="79" selection-start-column="74" selection-end-line="79" selection-end-column="74" />
-              <folding />
+            <state relative-caret-position="-293">
+              <caret line="33" column="41" lean-forward="false" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -137,6 +38,7 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/.github/PULL_REQUEST_TEMPLATE.md" />
         <option value="$PROJECT_DIR$/hurumap/settings.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
       </list>
     </option>
   </component>
@@ -171,6 +73,11 @@
             <path>
               <item name="HURUmap" type="b2602c69:ProjectViewProjectNode" />
               <item name="HURUmap" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HURUmap" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HURUmap" type="462c0819:PsiDirectoryNode" />
+              <item name="hurumap" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -212,6 +119,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Key Promoter X" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -220,7 +128,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296593" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -308,9 +216,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hurumap/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="79" column="74" lean-forward="false" selection-start-line="79" selection-start-column="74" selection-end-line="79" selection-end-column="74" />
-          <folding />
+        <state relative-caret-position="48">
+          <caret line="3" column="30" lean-forward="true" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="53" />
+          <folding>
+            <marker date="1526924795753" expanded="true" signature="255:528" ph="..." />
+            <marker date="1526924795753" expanded="true" signature="695:820" ph="..." />
+            <marker date="1526924795753" expanded="true" signature="866:1007" ph="..." />
+            <marker date="1526924795753" expanded="true" signature="1306:1568" ph="'...'" />
+            <marker date="1526924795753" expanded="true" signature="1661:3148" ph="..." />
+            <marker date="1526924795753" expanded="true" signature="1667:2165" ph="..." />
+            <marker date="1526924795753" expanded="true" signature="2173:2629" ph="..." />
+            <marker date="1526924795753" expanded="true" signature="2637:3146" ph="..." />
+            <marker date="1526924795753" expanded="true" signature="3478:3507" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-293">
+          <caret line="33" column="41" lean-forward="false" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
