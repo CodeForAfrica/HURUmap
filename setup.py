@@ -14,7 +14,8 @@ with open(path.join(here, 'VERSION')) as f:
 install_requires = [
     'django==1.9.13',
     'wagtail==1.13.1',
-    'wazimap>=1.1.1'
+    'wazimap>=1.1.1',
+    'libsass==0.13.3'
 ]
 
 setup(
