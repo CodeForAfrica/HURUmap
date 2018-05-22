@@ -16,7 +16,8 @@ install_requires = [
     'django==1.9.13',
     'wagtail==1.13.1',
     'wazimap>=1.1.1',
-    'libsass==0.13.3'
+    'libsass==0.13.3',  # https://github.com/CodeForAfrica/HURUmap-apps/issues/66
+    'whitenoise==3.3.1'  # https://github.com/CodeForAfrica/HURUmap-apps/issues/66
 ]
 
 setup(

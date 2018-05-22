@@ -1,6 +1,10 @@
 from wazimap.settings import *  # noqa
 
-ADMINS = (('David Lemayian', 'david@codeforafrica.org'),)
+ADMINS = (
+    ('David Lemayian', 'david@codeforafrica.org'),
+    ('Phillip Ahereza', 'ahereza@codeforafrica.org'),
+    ('Support CfAfrica', 'support@codeforafrica.org')
+)
 MANAGERS = ADMINS
 
 INSTALLED_APPS = ['hurumap'] + INSTALLED_APPS
