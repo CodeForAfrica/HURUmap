@@ -1,4 +1,5 @@
 from wazimap.settings import *  # noqa
+
 from admin import CMS_ADMIN_APPS, CMS_ADMIN_MIDDLEWARE
 
 ADMINS = (('David Lemayian', 'david@codeforafrica.org'),)
