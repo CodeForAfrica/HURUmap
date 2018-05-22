@@ -5,7 +5,12 @@ from hurumap.admin import CMS_ADMIN_APPS, CMS_ADMIN_MIDDLEWARE
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-ADMINS = (('David Lemayian', 'david@codeforafrica.org'),)
+ADMINS = (
+    ('David Lemayian', 'david@codeforafrica.org'),
+    ('Phillip Ahereza', 'ahereza@codeforafrica.org'),
+    ('Support CfAfrica', 'support@codeforafrica.org')
+)
+
 MANAGERS = ADMINS
 
 MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + CMS_ADMIN_MIDDLEWARE
