@@ -1,13 +1,19 @@
 from wazimap.settings import *  # noqa
 
+from hurumap.admin import CMS_ADMIN_APPS, CMS_ADMIN_MIDDLEWARE
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 ADMINS = (
     ('David Lemayian', 'david@codeforafrica.org'),
     ('Phillip Ahereza', 'ahereza@codeforafrica.org'),
     ('Support CfAfrica', 'support@codeforafrica.org')
 )
+
 MANAGERS = ADMINS
 
-INSTALLED_APPS = ['hurumap'] + INSTALLED_APPS
+MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + CMS_ADMIN_MIDDLEWARE
 
 TIME_ZONE = 'Africa/Nairobi'
 LANGUAGE_CODE = 'en-ke'
@@ -21,9 +27,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'hurumap.context_processors.hurumap_settings',
 )
 
-
 HURUMAP = WAZIMAP
 
+INSTALLED_APPS = CMS_ADMIN_APPS + ['hurumap', 'hurumap.admin'] + INSTALLED_APPS
+
+ROOT_URLCONF = 'hurumap.urls'
 
 HURUMAP['name'] = 'HURUmap'
 HURUMAP['url'] = 'https://hurumap.org'
@@ -76,11 +84,18 @@ HURUMAP['showcase_stories'] = [
     }
 ]
 
+WAGTAIL_SITE_NAME = 'Takwimu'
+
 WAZIMAP = HURUMAP
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+MEDIA_URL = '/media/'
 
 LOGGING['loggers']['hurumap'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
-DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://hurumap:hurumap@localhost/hurumap')
+DATABASE_URL = os.environ.get('DATABASE_URL',
+                              'postgresql://hurumap:hurumap@localhost/hurumap')
 
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True

@@ -1,0 +1,14 @@
+{% extends "_base.html" %}
+
+{% load wagtailcore_tags sass_tags staticfiles %}
+
+{% block content %}
+  <div class="container">
+    <h1>Blogs</h1>
+    <hr>
+
+    {% for post in page.get_children %}
+      {% include 'blocks/post_card.html' with post=post %}
+    {% endfor %}
+  </div>
+{% endblock %}
