@@ -1,25 +1,26 @@
-CMS_ADMIN_APPS = (
+CMS_ADMIN_APPS = [
+    'django.contrib.auth',
+    'django.contrib.sessions',
     # Wagtail apps
-    'wagtail.core',
-    'wagtail.admin',
-    'wagtail.documents',
-    'wagtail.snippets',
-    'wagtail.users',
-    'wagtail.images',
-    'wagtail.embeds',
-    'wagtail.search',
-    'wagtail.sites',
-    'wagtail.contrib.redirects',
-    'wagtail.contrib.forms',
-    'wagtail.contrib.sitemaps',
-    'wagtail.contrib.routable_page',
+    'wagtail.wagtailforms',
+    'wagtail.wagtailredirects',
+    'wagtail.wagtailembeds',
+    'wagtail.wagtailsites',
+    'wagtail.wagtailusers',
+    'wagtail.wagtailsnippets',
+    'wagtail.wagtaildocs',
+    'wagtail.wagtailimages',
+    'wagtail.wagtailsearch',
+    'wagtail.wagtailadmin',
+    'wagtail.wagtailcore',
 
-    # Third-party apps
+    'modelcluster',
     'taggit',
-    'modelcluster'
-)
-
-CMS_ADMIN_MIDDLEWARE = [
-    'wagtail.core.middleware.SiteMiddleware',
-    'wagtail.contrib.redirects.middleware.RedirectMiddleware'
 ]
+
+CMS_ADMIN_MIDDLEWARE = (
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'wagtail.wagtailcore.middleware.SiteMiddleware',
+    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+)

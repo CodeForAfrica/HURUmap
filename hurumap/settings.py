@@ -1,9 +1,10 @@
 from wazimap.settings import *  # noqa
+from admin import CMS_ADMIN_APPS, CMS_ADMIN_MIDDLEWARE
 
 ADMINS = (('David Lemayian', 'david@codeforafrica.org'),)
 MANAGERS = ADMINS
 
-INSTALLED_APPS = ['hurumap'] + INSTALLED_APPS
+MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + CMS_ADMIN_MIDDLEWARE
 
 TIME_ZONE = 'Africa/Nairobi'
 LANGUAGE_CODE = 'en-ke'
@@ -19,6 +20,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 
 HURUMAP = WAZIMAP
+
+INSTALLED_APPS =CMS_ADMIN_APPS + ['hurumap', 'admin'] + INSTALLED_APPS
+
+ROOT_URLCONF = 'hurumap.urls'
 
 
 HURUMAP['name'] = 'HURUmap'
