@@ -1,0 +1,19 @@
+{% extends "_base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}bo{% endblock %}
+
+{% block content_container %}
+  <div class="container">
+    <h1>{{ page.title }}</h1>
+    <p class="meta">{{ page.date }}</p>
+
+    <div class="intro">{{ page.intro }}</div>
+
+    {{ page.body|safe }}
+
+    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+  </div>
+
+{% endblock %}

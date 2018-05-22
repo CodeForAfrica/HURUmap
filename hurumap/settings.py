@@ -18,13 +18,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'hurumap.context_processors.hurumap_settings',
 )
 
-
 HURUMAP = WAZIMAP
 
-INSTALLED_APPS =CMS_ADMIN_APPS + ['hurumap', 'admin'] + INSTALLED_APPS
+INSTALLED_APPS = CMS_ADMIN_APPS + ['hurumap', 'admin'] + INSTALLED_APPS
 
 ROOT_URLCONF = 'hurumap.urls'
-
 
 HURUMAP['name'] = 'HURUmap'
 HURUMAP['url'] = 'https://hurumap.org'
@@ -77,11 +75,14 @@ HURUMAP['showcase_stories'] = [
     }
 ]
 
+WAGTAIL_SITE_NAME = 'Takwimu'
+
 WAZIMAP = HURUMAP
 
 LOGGING['loggers']['hurumap'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 
-DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://hurumap:hurumap@localhost/hurumap')
+DATABASE_URL = os.environ.get('DATABASE_URL',
+                              'postgresql://hurumap:hurumap@localhost/hurumap')
 
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
