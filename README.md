@@ -8,7 +8,8 @@ HURUmap is a fork of the excellent Wazimap/Censusreporter project which was fund
 1. Install the package
 
     ```
-    pip install git+https://github.com/CodeForAfricaLabs/HURUmap/tree/develop
+    pip install -e git+https://github.com/CodeForAfricaLabs/HURUmap.git@develop#egg=HURUmap
+
 
     ```
 
@@ -29,8 +30,13 @@ HURUmap is a fork of the excellent Wazimap/Censusreporter project which was fund
     ```
         python manage.py migrate
     ```
+5. Create an admin user to access the CMS
+    ```python
+       python manage.py createsuperuser
+    ```
+ 
 
-5. Read the [full Wazimap](http://wazimap.readthedocs.org/en/latest/) documentation to get started.
+6. Read the [full Wazimap](http://wazimap.readthedocs.org/en/latest/) documentation to get started.
 
 ---
 
