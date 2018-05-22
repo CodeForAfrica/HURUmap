@@ -8,7 +8,7 @@ HURUmap is a fork of the excellent Wazimap/Censusreporter project which was fund
 1. Install the package
 
     ```
-    pip install
+    pip install git+https://github.com/CodeForAfricaLabs/HURUmap/tree/develop
 
     ```
 

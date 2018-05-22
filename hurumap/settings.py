@@ -2,6 +2,9 @@ from wazimap.settings import *  # noqa
 
 from hurumap.admin import CMS_ADMIN_APPS, CMS_ADMIN_MIDDLEWARE
 
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 ADMINS = (('David Lemayian', 'david@codeforafrica.org'),)
 MANAGERS = ADMINS
 
@@ -79,6 +82,10 @@ HURUMAP['showcase_stories'] = [
 WAGTAIL_SITE_NAME = 'Takwimu'
 
 WAZIMAP = HURUMAP
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+MEDIA_URL = '/media/'
 
 LOGGING['loggers']['hurumap'] = {'level': 'DEBUG' if DEBUG else 'INFO'}
 

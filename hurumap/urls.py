@@ -1,10 +1,8 @@
 from django.conf.urls import include, url
+from django.conf.urls.static import static
 from wazimap.urls import urlpatterns as wazimap_urlpatterns
 
-from hurumap.admin.urls import blogs_urls, wagtailadmin_urls, wagtaildocs_urls
+from hurumap import settings
+from hurumap.admin.urls import urlpatterns as cms_urlpatterns
 
-urlpatterns = [
-    url(r'^admin/', include(wagtailadmin_urls)),
-    url(r'^documents/', include(wagtaildocs_urls)),
-    url(r'^blog/', include(blogs_urls)),
-] + wazimap_urlpatterns
+urlpatterns = cms_urlpatterns + wazimap_urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -9,13 +9,19 @@ from wagtail.wagtailsearch import index
 
 
 class BlogIndexPage(Page):
+    """
+    Blog Home Page
+    """
     intro = models.CharField(max_length=250)
     content_panels = Page.content_panels + [
         FieldPanel('intro')
     ]
 
 
-class BlogPage(Page):
+class BlogPostPage(Page):
+    """
+    Actual blog Post
+    """
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
     featured_image = models.ForeignKey(
