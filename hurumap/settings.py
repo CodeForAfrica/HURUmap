@@ -1,6 +1,6 @@
 from wazimap.settings import *  # noqa
 
-from admin import CMS_ADMIN_APPS, CMS_ADMIN_MIDDLEWARE
+from hurumap.admin import CMS_ADMIN_APPS, CMS_ADMIN_MIDDLEWARE
 
 ADMINS = (('David Lemayian', 'david@codeforafrica.org'),)
 MANAGERS = ADMINS
@@ -21,7 +21,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 HURUMAP = WAZIMAP
 
-INSTALLED_APPS = CMS_ADMIN_APPS + ['hurumap', 'admin'] + INSTALLED_APPS
+INSTALLED_APPS = CMS_ADMIN_APPS + ['hurumap', 'hurumap.admin'] + INSTALLED_APPS
 
 ROOT_URLCONF = 'hurumap.urls'
 

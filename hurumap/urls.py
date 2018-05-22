@@ -1,7 +1,7 @@
 from django.conf.urls import include, url
 from wazimap.urls import urlpatterns as wazimap_urlpatterns
 
-from admin.urls import blogs_urls, wagtailadmin_urls, wagtaildocs_urls
+from hurumap.admin.urls import blogs_urls, wagtailadmin_urls, wagtaildocs_urls
 
 urlpatterns = [
     url(r'^admin/', include(wagtailadmin_urls)),
