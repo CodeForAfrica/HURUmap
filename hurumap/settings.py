@@ -1,6 +1,5 @@
 from wazimap.settings import *  # noqa
 
-
 ADMINS = (('David Lemayian', 'david@codeforafrica.org'),)
 MANAGERS = ADMINS
 

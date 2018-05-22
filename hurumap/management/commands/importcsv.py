@@ -1,8 +1,8 @@
 import csv
 import logging
 
-from django.core.management.base import BaseCommand, CommandError
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.management.base import BaseCommand, CommandError
 from wazimap.data.tables import get_datatable, get_table_id
 from wazimap.data.utils import get_session
 from wazimap.models import Geography
