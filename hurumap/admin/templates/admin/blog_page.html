@@ -4,10 +4,12 @@
 
 {% block body_class %}bo{% endblock %}
 
-{% block content_container %}
+{% block content %}
   <div class="container">
     <h1>{{ page.title }}</h1>
+    {% include 'blocks/share_buttons.html' with post=page %}
     <p class="meta">{{ page.date }}</p>
+
 
     <div class="intro">{{ page.intro }}</div>
 

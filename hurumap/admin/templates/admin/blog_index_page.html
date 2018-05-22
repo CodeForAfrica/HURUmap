@@ -1,16 +1,15 @@
 {% extends "_base.html" %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags sass_tags staticfiles %}
 
-{% block content_container %}
-  <h1>Blogs</h1>
-  <hr>
+{% block content %}
+  <div class="container">
+    <h1>Blogs</h1>
+    <hr>
 
-  <div class="intro">{{ page.intro|richtext }}</div>
-
-  {% for post in page.get_children %}
-    <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
-    {{ post.specific.intro }}
-  {% endfor %}
-
+    {% for post in page.get_children %}
+      <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+      {{ post.specific.intro }}
+    {% endfor %}
+  </div>
 {% endblock %}
