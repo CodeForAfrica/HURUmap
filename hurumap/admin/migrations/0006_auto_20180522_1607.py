@@ -8,7 +8,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('admin', '0005_blogpage_featured_image'),
+        ('hurumapadmin', '0005_blogpage_featured_image'),
     ]
 
     operations = [

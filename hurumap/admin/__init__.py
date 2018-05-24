@@ -1,6 +1,8 @@
 CMS_ADMIN_APPS = [
     'django.contrib.auth',
     'django.contrib.sessions',
+    'django.contrib.admin',
+
     # Wagtail apps
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
@@ -25,3 +27,5 @@ CMS_ADMIN_MIDDLEWARE = (
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 )
+
+default_app_config = 'hurumap.admin.apps.HURUmapAdminConfig'

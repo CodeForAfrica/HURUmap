@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('wagtailcore', '0040_page_draft_title'),
-        ('admin', '0001_initial'),
+        ('hurumapadmin', '0001_initial'),
     ]
 
     operations = [

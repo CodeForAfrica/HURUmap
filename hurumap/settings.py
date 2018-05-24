@@ -29,7 +29,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 HURUMAP = WAZIMAP
 
-INSTALLED_APPS = CMS_ADMIN_APPS + ['hurumap', 'hurumap.admin'] + INSTALLED_APPS
+INSTALLED_APPS = ['hurumap', 'hurumap.admin'] + CMS_ADMIN_APPS + INSTALLED_APPS
 
 ROOT_URLCONF = 'hurumap.urls'
 

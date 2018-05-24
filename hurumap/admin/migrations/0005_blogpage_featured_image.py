@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('wagtailimages', '0019_delete_filter'),
-        ('admin', '0004_blogindexpage'),
+        ('hurumapadmin', '0004_blogindexpage'),
     ]
 
     operations = [

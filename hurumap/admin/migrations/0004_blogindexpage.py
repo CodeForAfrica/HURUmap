@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('wagtailcore', '0040_page_draft_title'),
-        ('admin', '0003_auto_20180522_1145'),
+        ('hurumapadmin', '0003_auto_20180522_1145'),
     ]
 
     operations = [

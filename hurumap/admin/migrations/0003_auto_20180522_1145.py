@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
         ('wagtailforms', '0003_capitalizeverbose'),
         ('wagtailcore', '0040_page_draft_title'),
         ('wagtailredirects', '0005_capitalizeverbose'),
-        ('admin', '0002_auto_20180522_1115'),
+        ('hurumapadmin', '0002_auto_20180522_1115'),
     ]
 
     operations = [
