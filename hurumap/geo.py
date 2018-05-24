@@ -1,8 +1,8 @@
 from django.conf import settings
-from wazimap.geo import GeoData as GeoDataBase
+from wazimap.geo import GeoData as WazimapGeoData
 
 
-class GeoData (GeoDataBase):
+class GeoData (WazimapGeoData):
 
     def _setup_versions(self):
         """ Find all the geography versions.
@@ -19,4 +19,4 @@ class GeoData (GeoDataBase):
 
         # _default_version = None means fall back to whatever is latest for
         # geography
-        self._default_version = settings.WAZIMAP['default_geo_version']
+        self._default_version = settings.HURUMAP['default_geo_version']
