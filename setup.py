@@ -15,6 +15,7 @@ with open(path.join(here, 'VERSION')) as f:
 install_requires = [
     'django==1.9.13',
     'wagtail==1.13.1',
+    'wazimap',
     'libsass==0.13.3',
     # https://github.com/CodeForAfrica/HURUmap-apps/issues/66
     'whitenoise==3.3.1'
@@ -22,7 +23,7 @@ install_requires = [
 ]
 
 dependency_links = [
-    'https://codeload.github.com/CodeForAfricaLabs/wazimap/legacy.tar.gz/master#egg=package-1.1.2']
+    'https://github.com/CodeForAfricaLabs/wazimap/tarball/master#egg=wazimap']
 
 setup(
     name='hurumap',
