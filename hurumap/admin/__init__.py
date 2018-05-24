@@ -1,6 +1,5 @@
 CMS_ADMIN_APPS = [
     'django.contrib.auth',
-    'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.admin',
