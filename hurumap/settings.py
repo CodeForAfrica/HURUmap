@@ -35,10 +35,10 @@ INSTALLED_APPS = ['hurumap', 'hurumap.admin'] + CMS_ADMIN_APPS + INSTALLED_APPS
 
 ROOT_URLCONF = 'hurumap.urls'
 
-HURUMAP['name'] = 'HURUmap'
-HURUMAP['url'] = 'https://hurumap.org'
+HURUMAP['name'] = os.environ.get('HURUMAP_NAME','HURUmap')
+HURUMAP['url'] = os.environ.get('HURUMAP_URL','https://hurumap.org/')
 
-WAZIMAP['geodata'] = 'hurumap.geo.GeoData'
+HURUMAP['geodata'] = 'hurumap.geo.GeoData'
 HURUMAP['geometry_data'] = {}
 
 # Default tracker. Blank means no default tracking will be set (see
@@ -86,7 +86,7 @@ HURUMAP['showcase_stories'] = [
     }
 ]
 
-WAGTAIL_SITE_NAME = 'Takwimu'
+WAGTAIL_SITE_NAME = HURUMAP['name']
 
 WAZIMAP = HURUMAP
 
