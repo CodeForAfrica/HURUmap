@@ -1,5 +1,7 @@
 CMS_ADMIN_APPS = [
     'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.admin',
 
@@ -22,6 +24,8 @@ CMS_ADMIN_APPS = [
 
 CMS_ADMIN_MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'wagtail.wagtailcore.middleware.SiteMiddleware',

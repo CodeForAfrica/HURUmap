@@ -22,6 +22,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     'django.core.context_processors.request',
     'django.core.context_processors.static',
+    'django.contrib.auth.context_processors.auth',
+    'django.contrib.messages.context_processors.messages',
     'census.context_processors.api_url',
     'wazimap.context_processors.wazimap_settings',
     'hurumap.context_processors.hurumap_settings',
