@@ -31,7 +31,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 HURUMAP = WAZIMAP
 
-INSTALLED_APPS = ['hurumap', 'hurumap.admin'] + CMS_ADMIN_APPS + INSTALLED_APPS
+INSTALLED_APPS = ['hurumap', 'hurumap.admin', 'allauth',
+                  'allauth.account',
+                  'allauth.socialaccount',
+                  'allauth.socialaccount.providers.google'] + CMS_ADMIN_APPS + INSTALLED_APPS
 
 ROOT_URLCONF = 'hurumap.urls'
 
@@ -104,3 +107,17 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 DATABASES['default']['TEST'] = {
     'NAME': 'test_hurumap',
 }
+
+AUTHENTICATION_BACKENDS = (
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME':
+            'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 9,
+        }
+    }
+]
