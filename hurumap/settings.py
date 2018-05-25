@@ -121,3 +121,5 @@ AUTH_PASSWORD_VALIDATORS = [
         }
     }
 ]
+
+SITE_ID = 1
