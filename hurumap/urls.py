@@ -8,9 +8,6 @@ from hurumap.admin.urls import urlpatterns as hurumap_admin_urlpatterns
 from hurumap.views import UserProfileView
 
 urlpatterns = [
-      url(r'^accounts/', include('allauth.urls')),
-      url(r'^accounts/profile/$',
-          UserProfileView.as_view(), name='user_profile'),
-      url(r'^django_admin/', include(admin.site.urls)), ] \
+                url(r'^django_admin/', include(admin.site.urls)), ] \
               + hurumap_admin_urlpatterns + wazimap_urlpatterns + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
