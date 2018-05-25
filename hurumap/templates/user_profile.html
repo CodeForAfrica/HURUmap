@@ -1,0 +1,9 @@
+{% extends 'homepage.html' %}
+{% load account %}
+
+{% block body_id %}page{% endblock %}
+
+{% block content_container %}
+<h2>User Profile: {% user_display user %}</h2>
+{% endblock %}
+
