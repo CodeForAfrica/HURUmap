@@ -64,9 +64,13 @@
               {#                            <a href="mailto:{{ HURUMAP.contact_email }}"><i class="fa fa-envelope-o fa-lg"></i></a>#}
             </li>
             {% if user.is_authenticated %}
-              <li><a href="{% url 'user_profile' %}"><i
+              <li><a href="{% url 'account_login' %}"><i
                   class="fa fa-user fa-lg fa-fw"></i></a>
-              </li>{% endif %}
+              </li>
+              {% else %}
+              <li><a href="{% url 'account_login' %}">Sign In</a>
+              </li>
+            {% endif %}
 
 
           {% endblock header_menu %}
