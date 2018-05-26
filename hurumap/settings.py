@@ -38,7 +38,7 @@ ROOT_URLCONF = 'hurumap.urls'
 HURUMAP['name'] = 'HURUmap'
 HURUMAP['url'] = 'https://hurumap.org'
 
-WAZIMAP['geodata'] = 'hurumap.geo.GeoData'
+HURUMAP['geodata'] = 'hurumap.geo.GeoData'
 HURUMAP['geometry_data'] = {}
 
 # Default tracker. Blank means no default tracking will be set (see
@@ -52,7 +52,7 @@ HURUMAP['ga_tracking_ids'] = []
 
 HURUMAP['facebook'] = 'CodeForAfrica'
 HURUMAP['twitter'] = '@Code4Africa'
-HURUMAP['contact_email'] = 'hello@hurumap.org'
+HURUMAP['email'] = 'hello@hurumap.org'
 
 HURUMAP['github_url'] = 'https://github.com/CodeForAfrica/HURUmap'
 HURUMAP['openafrica_url'] = 'https://open.africa/'
@@ -86,7 +86,7 @@ HURUMAP['showcase_stories'] = [
     }
 ]
 
-WAGTAIL_SITE_NAME = 'Takwimu'
+WAGTAIL_SITE_NAME = 'TAKWIMU'
 
 WAZIMAP = HURUMAP
 
