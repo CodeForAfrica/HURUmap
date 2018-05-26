@@ -19,6 +19,12 @@ CMS_ADMIN_APPS = [
 
     'modelcluster',
     'taggit',
+
+    # allauth apps
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google'
 ]
 
 CMS_ADMIN_MIDDLEWARE = (

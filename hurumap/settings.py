@@ -104,3 +104,28 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 DATABASES['default']['TEST'] = {
     'NAME': 'test_hurumap',
 }
+
+AUTHENTICATION_BACKENDS = (
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME':
+            'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 9,
+        }
+    }
+]
+
+SITE_ID = 1
+
+# ALL AUTH CONFIG
+
+LOGIN_REDIRECT_URL = '/'
+# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = LOGIN_REDIRECT_URL
+ACCOUNT_EMAIL_REQUIRED = True
+
