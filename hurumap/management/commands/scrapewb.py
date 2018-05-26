@@ -37,10 +37,7 @@ class Command(BaseCommand):
             # takwimu_countries = 
             wb_indicator_values = wbdata.get_data(
                 wb_indicator.get('id'),
-                country=[
-                    "KE", "NG", "SN", "TZ", "BF",
-                    "ZM", "ZA", "UG", "ET", "CD"
-                ]
+                country=["KE","NG","SN","TZ","BF","ZM","ZA","UG","ET","CD"]
             )
             for wb_indicator_val in wb_indicator_values:
                 indicator_val, created = DataIndicatorValue.objects.get_or_create(
