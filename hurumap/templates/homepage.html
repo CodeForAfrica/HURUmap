@@ -1,15 +1,13 @@
-{% extends '_base.html' %}
+{% extends '_base.html' %}{% load staticfiles %}
 
 {% block body_id %}homepage{% endblock %}
 
 {% block head_css_extra %}
-<link rel="stylesheet" href="{{ STATIC_URL }}css/vendor/select2/select2.css">
-{% endblock %}
-
-{% block header %}
-    {% with True as hide_nav_tools %}
-        {{ block.super }}
-    {% endwith %}
+<link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.css' %}" />
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="{% static 'css/vendor/leaflet-0.6.4.ie.css' %}" />
+<![endif]-->
+<link href="{% static 'css/vendor/leaflet.label.css' %}" rel="stylesheet" />
 {% endblock %}
 
 {% block header_content %}
@@ -21,120 +19,80 @@
 </div>
 {% endblock header_content %}
 
+
 {% block content_container %}
-    <div class="hero text-center">
-        <div class="wrapper">
-            <p>
-                <select class="country" name="country" data-placeholder="Select a Country">
-                    <option value=""></option>
-                    <option value="kenya.hurumap.org">Kenya</option>
-                    <option value="wazimap.co.za">South Africa</option>
-                    <option value="tanzania.hurumap.org">Tanzania</option>
-                    <option value="uganda.hurumap.org">Uganda</option>
-                    <option value="zambia.hurumap.org">Zambia</option>
-                </select>
-            </p>
-            <p>
-                <a id="locate-me">Use Your Current Location <i class="fa fa-location-arrow fa-flip-horizontal"></i></a>
-            </p>
-        </div>
-    </div> <!-- /.hero -->
+
+    <div class="clearfix">
+        <div id="slippy-map"></div>
+    </div>
+
+    {#  TODO: Add topics here  #}
+
+{#    <div class="content-container clearfix">#}
+{#        <article id="explore" class="clearfix wrapper">#}
+{#            {% include "data/_blocks/_data_query_builder.html" %}#}
+{#        </article>#}
+{#    </div>#}
+
+    <div class="showcase how-it-works bg-tan text-center">
+        {% block how_it_works %}
+            <div class="wrapper clearfix">
+                <h1>How It Works</h1>
+                <br/>
+                <div class="column-third">
+                    <p><img src="{% static 'img/icons/blurbs/facts.png' %}" alt=""></p>
+                    <h3>Find Facts</h3>
+                    <p>Population and financial figures are broken down by category: Elections, Demographics, Service Delivery, Economics, and Education.</p>
+                </div>
+                <div class="column-third">
+                    <p><img src="{% static 'img/icons/blurbs/visualise.png' %}" alt=""></p>
+                    <h3>Visualize</h3>
+                    <p>Our library of charts gives you insight into data from places you research. Look for them on profile pages. You can embed the charts on your own site.</p>
+                </div>
+                <div class="column-third">
+                    <p><img src="{% static 'img/icons/blurbs/context.png' %}" alt=""></p>
+                    <h3>Get Context</h3>
+                    <p>Pre-computed statistics are presented alongside each data point so you can see how each place fits into a large context.</p>
+                </div>
+            </div>
+            <div class="wrapper">
+                <br/><br/>
+                <p><a href="/help" class="btn btn-lg bg-bottle-green">Learn more</a></p>
+            </div>
+        {% endblock %}
+    </div>
 
     {% include 'blocks/showcase.html' %}
 
-    <div class="showcase bg-tan">
-        <div class="container-narrow">
-            <h1 class="text-center">About {{ HURUMAP.name }}</h1>
-            <br/>
-            <p class="text-lg">What’s the data behind the story? HURUmap gives infomediaries like journalists and civic activists an easy ‘plug & play’ toolkit for finding and embedding interactive data visualisations into their storytelling.</p>
-            <p class="text-lg">HURUmap’s underlying data is quality-checked, from reputable official sources including the government Census, PEPFAR and Uwezo.</p>
-            <p class="text-lg">The project is built on <a href="http://wazimap.readthedocs.org/">Wazimap</a>, an open source platform by <a href="https://openup.org.za/">OpenUp</a> and <a href="http://www.mediamonitoringafrica.org/">Media Monitoring Africa</a> for making census data more understandable.</p>
-            <br/>
-            <p class="text-center"><a href="/about" class="btn btn-lg bg-ocean-green">Read more</a></p>
-        </div>
-    </div>
-
-    {% include 'blocks/partners.html' %}
-
+    {% include 'blocks/partners.html' with extra_css_class='bg-tan' %}
 {% endblock %}
+
 
 {% block body_javascript_extra %}
-    <script src="{{ STATIC_URL }}js/vendor/select2.min.js"></script>
-    <script src="{{ STATIC_URL }}js/vendor/chroma.min.js"></script>
+    {{ block.super }}
+
+    {% block homepage_javascripb_libs %}
+    <script src="{% static 'js/vendor/leaflet-0.6.4.js' %}"></script>
+    <script src="{% static 'js/vendor/topojson.v1.min.js' %}"></script>
+    <script src="{% static 'js/vendor/leaflet.label.js' %}"></script>
+    <script src="{% static 'js/maps_static.js' %}"></script>
+    <script src="{% static 'js/profile_map.js' %}"></script>
+    {% endblock %}
+
     <script>
-
-    // SELECT FOR COUNTRIES
-
-    $('.country').select2();
-    $('.country').on('change', function (e) {
-        window.open('http://' + e.val, '_blank');
-    });
-
-    // LOCATE ME
-    if (Modernizr.geolocation) {
-        $('#locate-me').show();
-    }
-
-    $('#locate-me').click(function () {
-
-        $('#locate-me').html('Locating... <i class="fa fa-location-arrow fa-pulse"></i>');
-
-        navigator.geolocation.getCurrentPosition(function(position) {
-            var url = 'https://maps.googleapis.com/maps/api/geocode/json?sensor=false&language=en&latlng=' + position.coords.latitude + ',' + position.coords.longitude;
-            $.ajax({
-                url: url
-            }).done(function (response) {
-                locate_me(response);
-            });
-        });
-
-    });
-
-    function locate_me(response) {
-        var found = false;
-        var countries = [
-            {
-                name: 'Kenya',
-                url: 'https://kenya.hurumap.org'
-            },{
-                name: 'South Africa',
-                url: 'http://wazimap.co.za'
-            },{
-                name: 'Tanzania',
-                url: 'https://tanzania.hurumap.org'
-            },{
-                name: 'Uganda',
-                url: 'http://uganda.hurumap.org'
-            },{
-                name: 'Zambia',
-                url: 'http://zambia.hurumap.org'
-            }
-        ];
-
-        // If not really there
-        if (typeof response.results[0] === 'undefined'){
-            $('#locate-me').html('Oops.. Could not locate you. <i class="fa fa-exclamation-triangle"></i>');
-            $('#body-spinner').hide();
-            return false;
+        // show 'use my current location' button
+        if (Modernizr.geolocation) {
+            $('.geolocate-only').show();
         }
+        // geoSelect already defined by widget.geo.select.js
+        geoSelect.focus();
 
-        // Find country
-        $.each(response.results[0].address_components, function (index, address) {
-            $.each(countries, function (i, country) {
-                if (address.long_name == country.name){
-                    found = country;
-                }
-            });
-        });
-        if (found) {
-            window.open(found.url, '_blank');
-            $('#locate-me').html('Use Your Current Location <i class="fa fa-location-arrow fa-flip-horizontal"></i>');
-        } else {
-            $('#locate-me').html('Oops.. Could not locate you. <i class="fa fa-exclamation-triangle"></i>');
-        }
-        $('#body-spinner').hide();
-    }
+        var maps = new ProfileMaps();
+        var centre = {% if HURUMAP.map_centre %}{{ HURUMAP.map_centre }}{% else %}null{% endif %};
+        var zoom = {% if HURUMAP.map_zoom %}{{ HURUMAP.map_zoom }}{% else %}null{% endif %};
 
+        maps.drawMapForHomepage('{{ geo_data.first_child_level }}', '{{ HURUMAP.default_geo_version }}', centre, zoom);
     </script>
+    <script src="{% static 'js/data.query.builder.js' %}"></script>
 {% endblock %}
-
+å

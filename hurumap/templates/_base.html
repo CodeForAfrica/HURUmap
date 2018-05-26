@@ -56,13 +56,6 @@
             <li><a href="/#showcase">Showcase</a></li>
             <li><a href="https://facebook.com/HacksHackersAfrica"
                    target="_blank" rel="noopener">Community</a></li>
-            <li class="social-icons">
-              <a href="https://twitter.com/{{ HURUMAP.twitter }}"><i
-                  class="fa fa-twitter fa-lg fa-fw"></i></a>
-              <a href="https://facebook.com/{{ HURUMAP.facebook }}"><i
-                  class="fa fa-facebook fa-lg fa-fw"></i></a>
-              {#                            <a href="mailto:{{ HURUMAP.contact_email }}"><i class="fa fa-envelope-o fa-lg"></i></a>#}
-            </li>
             {% if user.is_authenticated %}
               <li><a href="{% url 'account_logout' %}"> Logout</a>
               </li>
@@ -71,7 +64,12 @@
               </li>
             {% endif %}
 
-
+            <li class="social-icons">
+              <a href="https://twitter.com/{{ HURUMAP.twitter }}"><i
+                  class="fa fa-twitter fa-lg fa-fw"></i></a>
+              <a href="https://facebook.com/{{ HURUMAP.facebook }}"><i
+                  class="fa fa-facebook fa-lg fa-fw"></i></a>
+            </li>
           {% endblock header_menu %}
         </ul>
 
@@ -141,8 +139,7 @@
               $('.floating-nav').removeClass('affix-top').addClass('affix');
           } else {
               // Scroll Up
-              {#                if(st + $(window).height() < $(document).height()) {#}
-              if (st == 0) {
+              if(st + $(window).height() < $(document).height()) {
                   $('#page-header').removeClass('nav-up').addClass('nav-down');
                   $('.floating-nav').removeClass('affix').addClass('affix-top');
               }

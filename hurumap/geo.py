@@ -3,20 +3,4 @@ from wazimap.geo import GeoData as WazimapGeoData
 
 
 class GeoData (WazimapGeoData):
-
-    def _setup_versions(self):
-        """ Find all the geography versions.
-        """
-
-        # Geo Versions not needed for HURUmap Global (yet)
-        if settings.HURUMAP['url'] == 'https://hurumap.org':
-            self._versions = ['']
-        else:
-            self._versions = [
-                x['version'] for x in self.geo_model.objects.values('version').distinct().all()]
-
-        self._global_latest_version = sorted(self.versions)[-1]
-
-        # _default_version = None means fall back to whatever is latest for
-        # geography
-        self._default_version = settings.HURUMAP['default_geo_version']
+    pass
