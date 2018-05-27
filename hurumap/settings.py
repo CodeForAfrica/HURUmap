@@ -1,7 +1,7 @@
 from collections import OrderedDict
 from wazimap.settings import *  # noqa
 
-from hurumap.admin import CMS_ADMIN_APPS, CMS_ADMIN_MIDDLEWARE
+from hurumap.dashboard.settings import *  #noqa
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -14,7 +14,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + CMS_ADMIN_MIDDLEWARE
+MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + HURUMAP_DASHBOARD_MIDDLEWARE
 
 TIME_ZONE = 'Africa/Nairobi'
 LANGUAGE_CODE = 'en-ke'
@@ -30,7 +30,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'hurumap.context_processors.hurumap_settings',
 )
 
-INSTALLED_APPS = ['hurumap', 'hurumap.admin'] + CMS_ADMIN_APPS + INSTALLED_APPS
+INSTALLED_APPS = ['hurumap', 'hurumap.dashboard'] + HURUMAP_DASHBOARD_APPS + INSTALLED_APPS
 
 ROOT_URLCONF = 'hurumap.urls'
 
@@ -229,31 +229,6 @@ SITE_ID = 1
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
-
-
-# -------------------------------------------------------------------------------------
-# Authentication Configs
-# -------------------------------------------------------------------------------------
-
-AUTHENTICATION_BACKENDS = (
-    "allauth.account.auth_backends.AuthenticationBackend",
-)
-
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME':
-            'django.contrib.auth.password_validation.MinimumLengthValidator',
-        'OPTIONS': {
-            'min_length': 9,
-        }
-    }
-]
-
-LOGIN_REDIRECT_URL = '/'
-# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = LOGIN_REDIRECT_URL
-ACCOUNT_EMAIL_REQUIRED = True
-
 
 
 

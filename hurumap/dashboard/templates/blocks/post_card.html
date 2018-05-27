@@ -1,0 +1,17 @@
+{% load wagtailcore_tags sass_tags staticfiles %}
+
+<div class="column-third">
+  <div class="card-body">
+    <a href="{% pageurl post %}">
+      <div class="card-image">
+        <img src="http://via.placeholder.com/350x200">
+      </div>
+      <div class="card-title"><h2>{{ post.title }}</h2></div>
+      <div class="card-subtext">
+        {{ post.specific.intro }}
+        <br>
+        <small>{{ post.last_published_at | date:"M d" }}</small>
+      </div>
+    </a>
+  </div>
+</div>
