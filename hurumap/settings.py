@@ -56,6 +56,7 @@ HURUMAP['email'] = 'hello@hurumap.org'
 HURUMAP['github_url'] = 'https://github.com/CodeForAfrica/HURUmap'
 HURUMAP['openafrica_url'] = 'https://open.africa/'
 
+# -------------------------------------------------------------------------------------
 # HURUmap Google Analytics
 
 # Default tracker. Blank means no default tracking will be set (see
@@ -229,7 +230,6 @@ SITE_ID = 1
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
-
 
 
 # -------------------------------------------------------------------------------------
