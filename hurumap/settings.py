@@ -34,11 +34,15 @@ INSTALLED_APPS = ['hurumap', 'hurumap.dashboard'] + HURUMAP_DASHBOARD_APPS + INS
 
 ROOT_URLCONF = 'hurumap.urls'
 
+
+# -------------------------------------------------------------------------------------
+# HURUmap Config
+# -------------------------------------------------------------------------------------
+
 HURUMAP = WAZIMAP
 
 # -------------------------------------------------------------------------------------
-# HURUmap Website Details
-# -------------------------------------------------------------------------------------
+# Website Details
 
 HURUMAP['name'] = 'HURUmap'
 HURUMAP['url'] = 'https://hurumap.org'
@@ -57,7 +61,7 @@ HURUMAP['github_url'] = 'https://github.com/CodeForAfrica/HURUmap'
 HURUMAP['openafrica_url'] = 'https://open.africa/'
 
 # -------------------------------------------------------------------------------------
-# HURUmap Google Analytics
+# Google Analytics
 
 # Default tracker. Blank means no default tracking will be set (see
 # `ga_tracking_ids` for multiple, named trackers support.
@@ -70,7 +74,7 @@ HURUMAP['ga_tracking_ids'] = []
 
 
 # -------------------------------------------------------------------------------------
-# HURUmap Geography Details
+# Geography Details
 
 HURUMAP['country_code'] = 'KE'
 HURUMAP['country_name'] = 'Kenya'
@@ -79,7 +83,7 @@ HURUMAP['country_profile'] = 'country-KE-Kenya'
 # Define the profile to load
 
 hurumap_profile = os.environ.get('HURUMAP_PROFILE', 'census')
-HURUMAP['default_profile'] = hurumap_profile
+HURUMAP['default_profile'] = 'census'
 HURUMAP['profile_builder'] = 'hurumap.profiles.{}.get_profile'.format(
     hurumap_profile)
 
@@ -110,7 +114,7 @@ HURUMAP['map_zoom'] = 6
 
 
 # -------------------------------------------------------------------------------------
-# HURUmap Showcase Stories
+# Showcase Stories
 
 HURUMAP['showcase_stories'] = [
     {
@@ -137,7 +141,7 @@ HURUMAP['showcase_stories'] = [
 ]
 
 # -------------------------------------------------------------------------------------
-# HURUmap Topics
+# Topics
 
 HURUMAP['topics'] = OrderedDict()
 
