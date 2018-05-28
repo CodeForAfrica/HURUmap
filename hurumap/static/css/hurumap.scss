@@ -43,7 +43,7 @@ img {
 
 a {
   &:hover {
-    color: $ocean_green;
+    color: $brand-secondary-color;
   }
 }
 
@@ -68,6 +68,15 @@ input {
 }
 
 // Colour helpers
+
+.bg-color-primary {
+  background-color: $brand-primary-color;
+  color: #fff;
+}
+.bg-color-secondary {
+  background-color: $brand-secondary-color;
+  color: #fff;
+}
 
 .bg-ocean-green {
   background-color: $ocean_green;
@@ -136,7 +145,7 @@ body {
         li {
           a {
             &:hover {
-              color: $ocean_green;
+              color: $brand-secondary-color;
               text-decoration: none;
             }
             .fa {
@@ -190,7 +199,7 @@ body {
   a {
     color: #fff;
     &:hover {
-      color: $ocean_green;
+      color: $brand-secondary-color;
     }
   }
   ul a {
@@ -228,7 +237,7 @@ body {
     height: auto;
     display: inline-block;
     padding: 13px 20px 12px;
-    background-color: $ocean_green;
+    background-color: $brand-secondary-color;
     text-transform: uppercase;
     text-align: left;
     color: #fff;
@@ -291,6 +300,14 @@ body {
     background-color: $ocean_green;
     color: #fff;
   }
+  &.bg-color-primary:hover {
+    background-color: $brand-secondary-color;
+    color: #fff;
+  }
+  &.bg-color-secondary:hover {
+    background-color: $brand-primary-color;
+    color: #fff;
+  }
 }
 
 
@@ -299,7 +316,7 @@ body {
 .select2-container {
   .select2-choice {
     div {
-      background-color: $ocean_green !important;
+      background-color: $brand-secondary-color !important;
       border: none !important;
       background-image: url('/static/img/arrow-down-white.png') !important;
       background-size: 24px !important;
@@ -311,7 +328,7 @@ body {
       }
     }
     &:hover, &:focus, &:hover div, &:focus div {
-      background-color: $bottle_green !important;
+      background-color: $brand-primary-color !important;
     }
   }
   .select2-default {
@@ -327,7 +344,7 @@ body {
       padding: 5px 8px 6px;
     }
     .select2-highlighted {
-      background-color: $bottle_green;
+      background-color: $brand-primary-color;
     }
   }
 }
@@ -347,8 +364,8 @@ body {
 
 .leaflet-label {
   color: #fff !important;
-  background-color: $ocean_green !important;
-  border-color: $ocean_green !important;
+  background-color: $brand-secondary-color !important;
+  border-color: $brand-secondary-color !important;
   border-radius: 0 !important;
   font-weight: 200 !important;
   font-family: $font-poppins !important;
