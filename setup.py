@@ -20,7 +20,8 @@ install_requires = [
     # https://github.com/CodeForAfrica/HURUmap-apps/issues/66
     'whitenoise==3.3.1',
     # https://github.com/CodeForAfrica/HURUmap-apps/issues/66
-    'django-allauth==0.34.0'
+    'django-allauth==0.34.0',
+    'wbdata'
 ]
 
 dependency_links = [
