@@ -16,6 +16,7 @@ HURUMAP_DASHBOARD_APPS = [
     'wagtail.wagtailsearch',
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
+    'wagtail.contrib.wagtailstyleguide',
 
     'modelcluster',
     'taggit',
