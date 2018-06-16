@@ -31,6 +31,9 @@ class DataIndicator(models.Model):
     source_note = models.TextField(blank=True)
     topics = JSONField(blank=True,default=[])
 
+    class Meta:
+        ordering = ['publisher_code']
+
     def __str__(self):
         return self.name.encode('ascii', 'ignore')
 
