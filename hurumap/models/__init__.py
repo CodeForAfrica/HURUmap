@@ -1,1 +1,1 @@
-from .data import DataIndicatorAuthor, DataIndicator, DataIndicatorValue, DataTopic
+from .data import DataIndicatorPublisher, DataIndicator, DataIndicatorValue, DataTopic

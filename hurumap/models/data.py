@@ -4,9 +4,9 @@ from django.contrib.postgres.fields import ArrayField, JSONField
 from wazimap.models import Geography
 
 
-class DataIndicatorAuthor(models.Model):
+class DataIndicatorPublisher(models.Model):
     '''
-    Data Indicator Author
+    Data Indicator Publisher
     '''
     name = models.CharField(max_length=255)
     slug = models.CharField(max_length=255)
@@ -19,9 +19,9 @@ class DataIndicator(models.Model):
     Data Indicator as referenced:
     https://datahelpdesk.worldbank.org/knowledgebase/articles/898599-api-indicator-queries
     '''
-    author = models.ForeignKey(DataIndicatorAuthor,null=True,blank=True)
-    author_code = models.CharField(max_length=255)
-    author_data = JSONField()
+    publisher = models.ForeignKey(DataIndicatorPublisher,null=True,blank=True)
+    publisher_code = models.CharField(max_length=255)
+    publisher_data = JSONField()
 
     title = models.CharField(max_length=255, blank=True)
     
@@ -43,8 +43,8 @@ class DataIndicatorValue(models.Model):
     indicator = models.ForeignKey(DataIndicator, on_delete=models.CASCADE)
     geo = models.ForeignKey(Geography, on_delete=models.SET_NULL,blank=True,null=True)
 
-    # What the author provides
-    author_data = JSONField(blank=True)
+    # What the publisher provides
+    publisher_data = JSONField(blank=True)
 
     country = JSONField()
     date = models.CharField(max_length=255)
