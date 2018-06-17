@@ -43,7 +43,7 @@ setup(
 
     # Author details
     author='Code for Africa',
-    author_email='david@codeforafrica.org',
+    author_email='hello@codeforafrica.org',
 
     # Choose your license
     license='MIT',
