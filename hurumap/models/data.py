@@ -31,7 +31,6 @@ class DataIndicator(models.Model):
     source_note = models.TextField(blank=True)
     topics = JSONField(blank=True,default=[])
 
-    indicator = models.ForeignKey(DataIndicator, on_delete=models.CASCADE)
     geo = models.ForeignKey(Geography, on_delete=models.SET_NULL, blank=True,
                             null=True)
 
@@ -39,6 +38,7 @@ class DataIndicator(models.Model):
     decimal = models.IntegerField(blank=True, null=True)
     value = models.DecimalField(max_digits=36, decimal_places=15, blank=True,
                                 null=True)
+    country = JSONField()
 
     class Meta:
         ordering = ['publisher_code']
@@ -47,7 +47,9 @@ class DataIndicator(models.Model):
         return self.name.encode('ascii', 'ignore')
 
 
-# class DataIndicatorValue(models.Model):
+class DataIndicatorValue(models.Model):
+    pass
+
 #     """
 #     Data Indicator value
 #     """
