@@ -5,9 +5,9 @@ from wazimap.models import Geography
 
 
 class DataIndicatorPublisher(models.Model):
-    '''
+    """
     Data Indicator Publisher
-    '''
+    """
     name = models.CharField(max_length=255)
     slug = models.CharField(max_length=255)
     url = models.CharField(max_length=255)
@@ -15,10 +15,10 @@ class DataIndicatorPublisher(models.Model):
 
 
 class DataIndicator(models.Model):
-    '''
+    """
     Data Indicator as referenced:
     https://datahelpdesk.worldbank.org/knowledgebase/articles/898599-api-indicator-queries
-    '''
+    """
     publisher = models.ForeignKey(DataIndicatorPublisher,null=True,blank=True)
     publisher_code = models.CharField(max_length=255)
     publisher_data = JSONField()
@@ -31,6 +31,15 @@ class DataIndicator(models.Model):
     source_note = models.TextField(blank=True)
     topics = JSONField(blank=True,default=[])
 
+    indicator = models.ForeignKey(DataIndicator, on_delete=models.CASCADE)
+    geo = models.ForeignKey(Geography, on_delete=models.SET_NULL, blank=True,
+                            null=True)
+
+    date = models.CharField(max_length=255)
+    decimal = models.IntegerField(blank=True, null=True)
+    value = models.DecimalField(max_digits=36, decimal_places=15, blank=True,
+                                null=True)
+
     class Meta:
         ordering = ['publisher_code']
 
@@ -38,27 +47,27 @@ class DataIndicator(models.Model):
         return self.name.encode('ascii', 'ignore')
 
 
-class DataIndicatorValue(models.Model):
-    '''
-    Data Indicator value
-    '''
-
-    indicator = models.ForeignKey(DataIndicator, on_delete=models.CASCADE)
-    geo = models.ForeignKey(Geography, on_delete=models.SET_NULL,blank=True,null=True)
-
-    # What the publisher provides
-    publisher_data = JSONField(blank=True)
-
-    country = JSONField()
-    date = models.CharField(max_length=255)
-    decimal = models.IntegerField(blank=True,null=True)
-    value = models.DecimalField(max_digits=36,decimal_places=15,blank=True,null=True)
+# class DataIndicatorValue(models.Model):
+#     """
+#     Data Indicator value
+#     """
+#
+#     indicator = models.ForeignKey(DataIndicator, on_delete=models.CASCADE)
+#     geo = models.ForeignKey(Geography, on_delete=models.SET_NULL,blank=True,null=True)
+#
+#     # # What the publisher provides
+#     # publisher_data = JSONField(blank=True)
+#     #
+#     # country = JSONField()
+#     date = models.CharField(max_length=255)
+#     decimal = models.IntegerField(blank=True,null=True)
+#     value = models.DecimalField(max_digits=36,decimal_places=15,blank=True,null=True)
 
 
 class DataTopic(models.Model):
-    '''
+    """
     A topic from which data indicators can be organised around
-    '''
+    """
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     indicators = models.ManyToManyField(DataIndicator)
