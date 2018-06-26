@@ -47,25 +47,6 @@ class DataIndicator(models.Model):
         return self.name.encode('ascii', 'ignore')
 
 
-class DataIndicatorValue(models.Model):
-    pass
-
-#     """
-#     Data Indicator value
-#     """
-#
-#     indicator = models.ForeignKey(DataIndicator, on_delete=models.CASCADE)
-#     geo = models.ForeignKey(Geography, on_delete=models.SET_NULL,blank=True,null=True)
-#
-#     # # What the publisher provides
-#     # publisher_data = JSONField(blank=True)
-#     #
-#     # country = JSONField()
-#     date = models.CharField(max_length=255)
-#     decimal = models.IntegerField(blank=True,null=True)
-#     value = models.DecimalField(max_digits=36,decimal_places=15,blank=True,null=True)
-
-
 class DataTopic(models.Model):
     """
     A topic from which data indicators can be organised around
