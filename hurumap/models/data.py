@@ -16,35 +16,78 @@ class DataIndicatorPublisher(models.Model):
 
 class DataIndicator(models.Model):
     """
-    Data Indicator as referenced:
-    https://datahelpdesk.worldbank.org/knowledgebase/articles/898599-api-indicator-queries
+    Data Indicator
+    https://github.com/TakwimuAfrica/TAKWIMU/blob/develop/DATA.md#data-indicator-schema
     """
-    publisher = models.ForeignKey(DataIndicatorPublisher,null=True,blank=True)
-    publisher_code = models.CharField(max_length=255)
-    publisher_data = JSONField()
 
-    title = models.CharField(max_length=255, blank=True)
-    
-    name = models.CharField(max_length=255, blank=True)
+    title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
-    source = JSONField(blank=True)
-    source_note = models.TextField(blank=True)
-    topics = JSONField(blank=True,default=[])
 
-    geo = models.ForeignKey(Geography, on_delete=models.SET_NULL, blank=True,
-                            null=True)
+    # Data Values
+    # -----------
 
-    date = models.CharField(max_length=255)
-    decimal = models.IntegerField(blank=True, null=True)
-    value = models.DecimalField(max_digits=36, decimal_places=15, blank=True,
-                                null=True)
-    country = JSONField(default='')
+    # Publisher of the data values, the code they use the data Indicator, and the data as they've published it
+    publisher = models.ForeignKey(DataIndicatorPublisher,null=True,blank=True)
+    publisher_code = models.CharField(max_length=255, blank=True)
+    publisher_data = JSONField(blank=True, null=True)
+    '''
+    publisher_data: JSON Structure (WIP):
+
+    {
+        'type': 'csv',
+        'url_original': 'https://data.worldbank.org/...'        # (Optional) Url to the original source of the data values.
+        'url_local': '/data/{data_indicator.id}/some-name.csv'  # Location of where we've stored this locally.
+    }
+    '''
+
+    # TODO: Attributes to be used to process the publisher_data into data_values
+    process_prefs = JSONField(blank=True, null=True)
+    '''
+    process_prefs: JSON Structure (WIP)
+
+    {}
+    '''
+
+    # Actual data values formatted for our purposes
+    # NOTE: This is uploaded on CMS for now in CSV and transformed into a JSON
+    # Question: Do we need any of the SQL functionality on these?
+    # Question: If we already know from process_prefs how to manipulate the data, do we need to store the processed data?
+    # TODO: Update the documentation with default structure needed.
+    data_values = JSONField(blank=True, null=True)
+    '''
+    data_values: JSON Structure (WIP):
+
+    [{
+        'geo': ''
+    }]
+    '''
+
+    # Visualisation / Views
+    # ---------------------
+
+    view = JSONField(blank=True, null=True)
+    '''
+    view JSON Structure (WIP):
+
+    {
+        'type': 'chart.pie',  # Visualisation type
+        'prefs': {            # Settings / preference to be used to visualise the data
+            'data': [         # Data points to include in the chart
+                'female',
+                'male'
+            ],
+            'columns': {      # Mapping the columns from data_values
+                'total': 'total'
+            }
+        }
+    }
+    '''
 
     class Meta:
         ordering = ['publisher_code']
 
     def __str__(self):
-        return self.name.encode('ascii', 'ignore')
+        return self.title.encode('ascii', 'ignore')
 
 
 class DataTopic(models.Model):
