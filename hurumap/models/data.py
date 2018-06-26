@@ -38,7 +38,7 @@ class DataIndicator(models.Model):
     decimal = models.IntegerField(blank=True, null=True)
     value = models.DecimalField(max_digits=36, decimal_places=15, blank=True,
                                 null=True)
-    country = JSONField()
+    country = JSONField(default='')
 
     class Meta:
         ordering = ['publisher_code']
