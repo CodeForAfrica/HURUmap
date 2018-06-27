@@ -57,9 +57,12 @@ class DataIndicator(models.Model):
     '''
     data_values: JSON Structure (WIP):
 
-    [{
-        'geo': ''
-    }]
+    {
+        '<geo_code>': {
+            'male': 50,
+            'female': 50
+        }
+    }
     '''
 
     # Visualisation / Views
