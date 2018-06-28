@@ -13,6 +13,9 @@ class DataIndicatorPublisher(models.Model):
     url = models.CharField(max_length=255)
     description = models.TextField(blank=True)
 
+    def __str__(self):
+        return self.name.encode('ascii', 'ignore')
+
 
 class DataIndicator(models.Model):
     """
