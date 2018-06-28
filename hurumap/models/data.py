@@ -33,6 +33,7 @@ class DataIndicator(models.Model):
     publisher = models.ForeignKey(DataIndicatorPublisher,null=True,blank=True)
     publisher_code = models.CharField(max_length=255, blank=True)
     publisher_data = JSONField(blank=True, null=True)
+    raw_data_file = models.FileField(blank=True, null=True)
     '''
     publisher_data: JSON Structure (WIP):
 
