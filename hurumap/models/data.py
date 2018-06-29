@@ -33,7 +33,6 @@ class DataIndicator(models.Model):
     publisher = models.ForeignKey(DataIndicatorPublisher,null=True,blank=True)
     publisher_code = models.CharField(max_length=255, blank=True)
     publisher_data = JSONField(blank=True, null=True)
-    raw_data_file = models.FileField(blank=True, null=True, upload_to='uploads')
     '''
     publisher_data: JSON Structure (WIP):
 
@@ -43,6 +42,9 @@ class DataIndicator(models.Model):
         'url_local': '/data/{data_indicator.id}/some-name.csv'  # Location of where we've stored this locally.
     }
     '''
+
+    # CSV Upload
+    raw_data_file = models.FileField(blank=True, null=True, upload_to='uploads')
 
     # TODO: Attributes to be used to process the publisher_data into data_values
     process_prefs = JSONField(blank=True, null=True)
