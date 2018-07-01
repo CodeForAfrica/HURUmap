@@ -52,7 +52,7 @@ class DataIndicator(models.Model):
     '''
 
     # CSV Upload
-    raw_data_file = models.FileField(blank=True, null=True, upload_to='uploads')
+    raw_data_file = models.FileField(upload_to='uploads', blank=True, default='')
 
     # TODO: Attributes to be used to process the publisher_data into data_values
     process_prefs = JSONField(blank=True, null=True)
