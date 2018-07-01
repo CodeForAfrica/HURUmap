@@ -23,15 +23,22 @@ class DataIndicator(models.Model):
     https://github.com/TakwimuAfrica/TAKWIMU/blob/develop/DATA.md#data-indicator-schema
     """
 
+    code = models.CharField(max_length=255, blank=True)  # Custom indicator code
+
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
+
+    # If connected to a scraper.
+    # TODO: Make this into it's own model for more info/control
+    scraper = models.CharField(max_length=255, default='manual')
 
     # Data Values
     # -----------
 
-    # Publisher of the data values, the code they use the data Indicator, and the data as they've published it
+    # Publisher of the data values, the codes they use, and the data as they publish
+    # TODO: Move this to be linked to data values instead
     publisher = models.ForeignKey(DataIndicatorPublisher,null=True,blank=True)
-    publisher_code = models.CharField(max_length=255, blank=True)
+    publisher_codes = models.CharField(max_length=255, blank=True)
     publisher_data = JSONField(blank=True, null=True)
     '''
     publisher_data: JSON Structure (WIP):
@@ -39,7 +46,8 @@ class DataIndicator(models.Model):
     {
         'type': 'csv',
         'url_original': 'https://data.worldbank.org/...'        # (Optional) Url to the original source of the data values.
-        'url_local': '/data/{data_indicator.id}/some-name.csv'  # Location of where we've stored this locally.
+        'url_local': '/data/{data_indicator.id}/some-name.csv'  # (Optional) Location of where we've stored this locally.
+        'values': {}                                            # (Optional) The data
     }
     '''
 
@@ -58,15 +66,41 @@ class DataIndicator(models.Model):
     # NOTE: This is uploaded on CMS for now in CSV and transformed into a JSON
     # Question: Do we need any of the SQL functionality on these?
     # Question: If we already know from process_prefs how to manipulate the data, do we need to store the processed data?
-    # TODO: Update the documentation with default structure needed.
+    # TODO: Create a separate model for this?
     data_values = JSONField(blank=True, null=True)
     '''
     data_values: JSON Structure (WIP):
 
     {
         '<geo_code>': {
-            'male': 50,
-            'female': 50
+            '<indicator_code>': {
+                '_name': '',
+
+                '_default': 50,
+                'values': {
+                    '2009': 50
+                }
+            },
+            '<indicator_code>': {
+                '_name': '',
+
+                '_default': 50,
+                'values': {
+                    '2009': 50
+                }
+            },
+            '_total': {
+                '_default': 100,
+                'values': {
+                    '2009': 100
+                }
+            },
+            '_average': {
+                '_default': 50,
+                'values': {
+                    '2009': 50
+                }
+            }
         }
     }
     '''
@@ -93,7 +127,7 @@ class DataIndicator(models.Model):
     '''
 
     class Meta:
-        ordering = ['publisher_code']
+        ordering = ['publisher_codes']
 
     def __str__(self):
         return self.title.encode('ascii', 'ignore')
