@@ -1,3 +1,5 @@
+import os
+
 HURUMAP_DASHBOARD_APPS = [
     'django.contrib.auth',
     'django.contrib.messages',
@@ -38,6 +40,16 @@ HURUMAP_DASHBOARD_MIDDLEWARE = (
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 )
 
+# -------------------------------------------------------------------------------------
+# E-mail config
+# -------------------------------------------------------------------------------------
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.environ.get('HURUMAP_EMAIL_HOST', 'smtp.sendgrid.net')
+EMAIL_PORT = os.environ.get('HURUMAP_EMAIL_PORT', 2525)
+EMAIL_HOST_USER = os.environ.get('HURUMAP_EMAIL_HOST_USER', 'apikey')
+EMAIL_HOST_PASSWORD = os.environ.get('HURUMAP_EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = os.environ.get('HURUMAP_EMAIL_USE_TLS', True)
 
 # -------------------------------------------------------------------------------------
 # Wagtail config
@@ -45,6 +57,10 @@ HURUMAP_DASHBOARD_MIDDLEWARE = (
 
 WAGTAIL_SITE_NAME = 'HURUmap'  # TODO: Fix
 WAGTAIL_FRONTEND_LOGIN_URL = '/accounts/login/'
+
+WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = os.environ.get('HURUMAP_EMAIL_FROM', 'no-reply@hurumap.org')
+WAGTAILADMIN_NOTIFICATION_USE_HTML = True
+
 
 WAGTAIL_ENABLE_UPDATE_CHECK = False  # Because Wazimap doesn't work with Python3 yet.
 
