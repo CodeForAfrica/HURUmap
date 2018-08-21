@@ -875,8 +875,8 @@
   </div>
 
   {% block profile_javascript_libs %}
+    <script src="{% static 'js/vendor/dom-to-image.min.js' %}"></script>
+
     {{ block.super }}
-    <script src="{% static 'js/affix.js' %}"></script>
-    <script src="{% static 'js/profiles.js' %}"></script>
   {% endblock %}
 {% endblock %}
