@@ -24,7 +24,7 @@ install_requires = [
 ]
 
 dependency_links = [
-    'https://github.com/CodeForAfricaLabs/wazimap/tarball/master#egg=wazimap']
+    'https://github.com/OpenUpSA/wazimap/tarball/2cdc95447c95f20d1ba9bb2e272eef25075e14ff#egg=wazimap']
 
 setup(
     name='hurumap',
