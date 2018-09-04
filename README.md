@@ -8,7 +8,7 @@ HURUmap relies on the excellent Wazimap and Census Reporter projects.
 1. Install the package
 
     ```
-    pip install -e git+https://github.com/CodeForAfricaLabs/HURUmap.git@develop#egg=hurumap
+    pip install -e git+https://github.com/CodeForAfrica/HURUmap.git@master#egg=hurumap
 
     ```
 
