@@ -19,16 +19,26 @@ MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + HURUMAP_DASHBOARD_MIDDLEWARE
 TIME_ZONE = 'Africa/Nairobi'
 LANGUAGE_CODE = 'en-ke'
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.media',
-    'django.core.context_processors.request',
-    'django.core.context_processors.static',
-    'django.contrib.auth.context_processors.auth',
-    'django.contrib.messages.context_processors.messages',
-    'census.context_processors.api_url',
-    'wazimap.context_processors.wazimap_settings',
-    'hurumap.context_processors.hurumap_settings',
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+                'census.context_processors.api_url',
+                'wazimap.context_processors.wazimap_settings',
+                'hurumap.context_processors.hurumap_settings',
+            ],
+        },
+    },
+]
 
 INSTALLED_APPS = ['hurumap', 'hurumap.dashboard'] + HURUMAP_DASHBOARD_APPS + INSTALLED_APPS
 
