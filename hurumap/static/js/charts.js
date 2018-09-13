@@ -26,6 +26,7 @@ function Chart(options) {
         chart.chartDataKey = options.chartDataKey;
         chart.chartChartTitle = options.chartChartTitle || null;
         chart.chartQualifier = options.chartQualifier || null;
+        chart.chartSource = options.chartSource || null;
         chart.chartInitialSort = options.chartInitialSort || null;
         chart.chartStatType = options.chartStatType || 'number';
         chart.chartNullLabel = options.chartNullLabel || "N/A";
@@ -288,6 +289,9 @@ function Chart(options) {
         if (!!chart.chartQualifier) {
             chart.addChartQualifier(chart.chartContainer);
         }
+        if (!!chart.chartSource) {
+            chart.addChartSource(chart.chartContainer);
+        }
         chart.addActionLinks();
 
         return chart;
@@ -516,6 +520,9 @@ function Chart(options) {
         if (!!chart.chartQualifier) {
             chart.addChartQualifier(chart.chartContainer);
         }
+        if (!!chart.chartSource) {
+            chart.addChartSource(chart.chartContainer);
+        }
         chart.addActionLinks();
 
         return chart;
@@ -723,6 +730,9 @@ function Chart(options) {
         if (!!chart.chartQualifier) {
             chart.addChartQualifier(chart.chartContainer);
         }
+        if (!!chart.chartSource) {
+            chart.addChartSource(chart.chartContainer);
+        }
         chart.addActionLinks();
 
         return chart;
@@ -805,6 +815,7 @@ function Chart(options) {
                 chartType: chart.chartType,
                 chartHeight: 200,
                 chartQualifier: (chart.chartQualifier || ''),
+                chartSource: (chart.chartSource || ''),
                 chartTitle: (chart.chartChartTitle || ''),
                 initialSort: (chart.chartInitialSort || ''),
                 statType: (chart.chartStatType || '')
@@ -1156,6 +1167,28 @@ function Chart(options) {
         }
     }
 
+    chart.addChartSource = function(container) {
+        if (!!chart.chartSource) {
+            var link = chart.chartSource
+            var title = chart.chartSource
+            if (typeof chart.chartSource == 'object') {
+                link = chart.chartSource.link
+                title = chart.chartSource.title || link
+            }
+            if (link) {
+                container.append("span")
+                    .classed("chart-qualifier", true)
+                    .append("a")
+                    .attr("href", link)
+                    .text("Source: " + title);
+
+                chart.updateSettings({
+                    height: parseInt(chart.settings.height) + 20
+                });
+            }
+        }
+    }
+
     // format percentages and/or dollar signs
     chart.valFmt = function(value, decimals) {
         if (value === null) {
@@ -1315,7 +1348,7 @@ function Chart(options) {
         if (chart.tableID) {
             var geoIDs = chart.geoIDs;
 
-            chart.tableURL =        '/data/table/?table='+chart.tableID+'&primary_geo_id='+chart.primaryGeoID+'&geo_ids='+geoIDs.join(',');
+            chart.tableURL = '/data/table/?table='+chart.tableID+'&primary_geo_id='+chart.primaryGeoID+'&geo_ids='+geoIDs.join(',');
 
             // when showing distribution and maps, try to show relevant geos right from
             // the start.
