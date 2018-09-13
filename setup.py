@@ -13,18 +13,14 @@ with open(path.join(here, 'VERSION')) as f:
     version = f.read().strip()
 
 install_requires = [
-    'django==1.9.13',
-    'wagtail==1.13.1',
-    'wazimap',
+    'wazimap>=1.2,<1.3',
+    'wagtail>=1.13.1,<1.14',
     'libsass==0.13.3',
     # https://github.com/CodeForAfrica/HURUmap-apps/issues/66
     'whitenoise==3.3.1',
     # https://github.com/CodeForAfrica/HURUmap-apps/issues/66
     'django-allauth==0.34.0'
 ]
-
-dependency_links = [
-    'https://github.com/OpenUpSA/wazimap/tarball/2cdc95447c95f20d1ba9bb2e272eef25075e14ff#egg=wazimap']
 
 setup(
     name='hurumap',
@@ -80,8 +76,6 @@ setup(
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=install_requires,
 
-    dependency_links=dependency_links,
-
     setup_requires=[
         "setuptools_git >= 1.0",
     ],
@@ -91,7 +85,7 @@ setup(
     # for example:
     # $ pip install -e .[dev,test]
     extras_require={
-        'dev': ['nose', 'flake8'],
+        'dev': ['nose', 'flake8', 'pylint', 'autopep8'],
         'test': ['nose', 'flake8'],
         'gdal': ['GDAL', 'Shapely>=1.5.13'],
     },
