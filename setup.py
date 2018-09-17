@@ -41,7 +41,7 @@ setup(
     author_email='hello@codeforafrica.org',
 
     # Choose your license
-    license='MIT',
+    license='GPLv3',
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
@@ -55,7 +55,7 @@ setup(
         'Intended Audience :: Developers',
 
         # Pick your license as you wish (should match "license" above)
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
@@ -86,7 +86,7 @@ setup(
     # $ pip install -e .[dev,test]
     extras_require={
         'dev': ['nose', 'flake8', 'pylint', 'autopep8'],
-        'test': ['nose', 'flake8'],
+        'test': ['nose', 'flake8', 'pylint', 'autopep8'],
         'gdal': ['GDAL', 'Shapely>=1.5.13'],
     },
 )
