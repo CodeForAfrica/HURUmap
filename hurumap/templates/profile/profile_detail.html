@@ -44,7 +44,9 @@
   <div class="column-full">
     <p class="caption"><strong>Census data:</strong> 2009</p>
   </div>
-{% endblock %} {% block profile_detail %}
+{% endblock %}
+
+{% block profile_detail %}
 
 
   <article id="demographics"
@@ -878,11 +880,12 @@
 {% comment %} Override chart creation from wazimap/profile_detail.html {% endcomment %}
 {% block body_javascript_extra %}
 
-  {% block profile_javascript_libs %}
-  <script src="{% static 'js/vendor/dom-to-image.min.js' %}"></script>
+{% block profile_javascript_libs %}
+<script src="{% static 'js/vendor/dom-to-image.min.js' %}"></script>
 
-  {{ block.super }}
-  {% endblock %}
+{{ block.super }}
+{% endblock profile_javascript_libs %}
+
 <script type="text/javascript">
 
 // Create all the charts
@@ -1016,6 +1019,5 @@ if (!!parentLinkContainer) {
             $('body').trigger('glossaryUpdate', parentLinkContainer);
         });
 }
-
 </script>
-{% endblock %}
+{% endblock body_javascript_extra %}
