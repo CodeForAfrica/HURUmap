@@ -18,8 +18,7 @@ install_requires = [
     'libsass==0.13.3',
     # https://github.com/CodeForAfrica/HURUmap-apps/issues/66
     'whitenoise==3.3.1',
-    # https://github.com/CodeForAfrica/HURUmap-apps/issues/66
-    'django-allauth==0.34.0'
+    'django-allauth==0.37.1'
 ]
 
 setup(
@@ -38,7 +37,7 @@ setup(
 
     # Author details
     author='Code for Africa',
-    author_email='hello@codeforafrica.org',
+    author_email='tech@codeforafrica.org',
 
     # Choose your license
     license='GPLv3',
