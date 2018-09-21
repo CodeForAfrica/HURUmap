@@ -25,8 +25,10 @@ function Chart(options) {
         chart.chartType = options.chartType;
         chart.chartDataKey = options.chartDataKey;
         chart.chartChartTitle = options.chartChartTitle || null;
+        chart.chartChartSubtitle = options.chartChartSubtitle || null;
         chart.chartQualifier = options.chartQualifier || null;
-        chart.chartSource = options.chartSource || null;
+        chart.chartSourceLink = options.chartSourceLink || null;
+        chart.chartSourceTitle = options.chartSourceTitle || chart.chartSourceLink;
         chart.chartInitialSort = options.chartInitialSort || null;
         chart.chartStatType = options.chartStatType || 'number';
         chart.chartNullLabel = options.chartNullLabel || "N/A";
@@ -160,6 +162,9 @@ function Chart(options) {
         if (!!chart.chartChartTitle) {
             chart.addChartTitle(chart.chartContainer);
         }
+        if (!!chart.chartChartSubtitle) {
+            chart.addChartSubtitle(chart.chartContainer);
+        }
 
         chart.updateSettings({
             displayWidth: chart.settings.width - chart.settings.margin.left - chart.settings.margin.right,
@@ -289,7 +294,7 @@ function Chart(options) {
         if (!!chart.chartQualifier) {
             chart.addChartQualifier(chart.chartContainer);
         }
-        if (!!chart.chartSource) {
+        if (!!chart.chartSourceLink) {
             chart.addChartSource(chart.chartContainer);
         }
         chart.addActionLinks();
@@ -327,6 +332,9 @@ function Chart(options) {
         // add optional title, adjust height available height for columns if necessary
         if (!!chart.chartChartTitle) {
             chart.addChartTitle(chart.chartContainer);
+        }
+        if (!!chart.chartChartSubtitle) {
+            chart.addChartSubtitle(chart.chartContainer);
         }
 
         // create the base for upcoming html elements
@@ -520,7 +528,7 @@ function Chart(options) {
         if (!!chart.chartQualifier) {
             chart.addChartQualifier(chart.chartContainer);
         }
-        if (!!chart.chartSource) {
+        if (!!chart.chartSourceLink) {
             chart.addChartSource(chart.chartContainer);
         }
         chart.addActionLinks();
@@ -544,6 +552,9 @@ function Chart(options) {
         if (!!chart.chartChartTitle) {
             chart.addChartTitle(chart.chartContainer);
             chart.settings.displayHeight -= 20;
+        }
+        if (!!chart.chartChartSubtitle) {
+            chart.addChartSubtitle(chart.chartContainer);
         }
 
         // if width is narrow enough that legend won't have room
@@ -730,7 +741,7 @@ function Chart(options) {
         if (!!chart.chartQualifier) {
             chart.addChartQualifier(chart.chartContainer);
         }
-        if (!!chart.chartSource) {
+        if (!!chart.chartSourceLink) {
             chart.addChartSource(chart.chartContainer);
         }
         chart.addActionLinks();
@@ -815,8 +826,10 @@ function Chart(options) {
                 chartType: chart.chartType,
                 chartHeight: 200,
                 chartQualifier: (chart.chartQualifier || ''),
-                chartSource: (chart.chartSource || ''),
+                chartSourceTitle: (chart.chartSourceTitle || ''),
+                chartSourceLink: (chart.chartSourceLink || ''),
                 chartTitle: (chart.chartChartTitle || ''),
+                chartSubtitle: (chart.chartChartSubtitle || ''),
                 initialSort: (chart.chartInitialSort || ''),
                 statType: (chart.chartStatType || '')
             };
@@ -1150,8 +1163,16 @@ function Chart(options) {
     chart.addChartTitle = function(container) {
         if (!!chart.chartChartTitle) {
             container.append("h3")
-                .attr("class", "chart-title")
+                .attr("class", "chart-header")
                 .text(chart.chartChartTitle);
+        }
+    }
+
+    chart.addChartSubtitle = function(container) {
+        if (!!chart.chartChartSubtitle) {
+            container.append("h3")
+                .attr("class", "chart-title")
+                .text(chart.chartChartSubtitle);
         }
     }
 
@@ -1168,24 +1189,18 @@ function Chart(options) {
     }
 
     chart.addChartSource = function(container) {
-        if (!!chart.chartSource) {
-            var link = chart.chartSource
-            var title = chart.chartSource
-            if (typeof chart.chartSource == 'object') {
-                link = chart.chartSource.link
-                title = chart.chartSource.title || link
-            }
-            if (link) {
-                container.append("span")
+        if (!!chart.chartSourceLink) {
+            container
+                .append("span")
                     .classed("chart-qualifier", true)
+                    .text("Source: ")
                     .append("a")
-                    .attr("href", link)
-                    .text("Source: " + title);
+                        .attr("href", chart.chartSourceLink)
+                        .text(chart.chartSourceTitle);
 
-                chart.updateSettings({
-                    height: parseInt(chart.settings.height) + 20
-                });
-            }
+            chart.updateSettings({
+                height: parseInt(chart.settings.height) + 20
+            });
         }
     }
 
