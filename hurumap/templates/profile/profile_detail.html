@@ -913,24 +913,29 @@ var makeCharts = function() {
             chartType = gracefulType(chartDataID[0]),
             chartData = profileData[chartDataID[1]],
             chartChartTitle = $(this).data('chart-title'),
+            chartChartSubtitle = $(this).data('chart-subtitle'),
             chartChartShowYAxis = $(this).data('chart-show-y-axis'),
             chartInitialSort = $(this).data('initial-sort'),
             chartStatType = $(this).data('stat-type'),
             chartDecimalPlaces = $(this).data('decimal-places'),
             chartQualifier = $(this).data('qualifier') || null,
-            thisSource = $(this).data('source') || null,
+            thisSourceLink = $(this).data('source-link') || null,
+            thisSourceTitle = $(this).data('source-title') || null,
             geographyData = profileData['geography'],
             comparisonLevels = {{ WAZIMAP.comparative_levels|safe }};
         // allow arbitrary nesting in API data structure
         var drilldown = chartDataID.length - 1;
         if (drilldown >= 2) {
             for (var n = 2; n <= drilldown; n++) {
-                chartData = chartData[chartDataID[n]]
+                chartData = chartData[chartDataID[n]];
             }
         }
 
-        // Display the source specified in data-source, else display the metadata source
-        var chartSource = thisSource ? thisSource : chartData['metadata']['source'];
+        // Display the source specified in data-source-link (and data-source-title),
+        // else display the metadata source
+        var chartSource = chartData['metadata']['source'] || {};
+        var chartSourceLink = thisSourceLink || chartSource.link;
+        var chartSourceTitle = thisSourceTitle || chartSource.title;
 
         // determine whether data point is from anything other
         // than the primary ACS release for this page
@@ -948,8 +953,10 @@ var makeCharts = function() {
             chartHeight: 160,
             chartData: chartData,
             chartQualifier: chartQualifier,
-            chartSource: chartSource,
+            chartSourceLink: chartSourceLink,
+            chartSourceTitle: chartSourceTitle,
             chartChartTitle: chartChartTitle,
+            chartChartSubtitle: chartChartSubtitle,
             chartInitialSort: chartInitialSort,
             chartStatType: chartStatType,
             chartDecimalPlaces: chartDecimalPlaces,
