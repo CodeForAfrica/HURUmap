@@ -16,36 +16,8 @@ install_requires = [
     'wazimap>=1.2,<1.3',
     'wagtail>=1.13.1,<1.14',
     'libsass==0.13.3',
-    # https://github.com/CodeForAfrica/HURUmap-apps/issues/66
     'whitenoise==3.3.1',
     'django-allauth==0.37.1'
-]
-
-'''
-Customized Dependencies
------------------------
-Open source is great to get moving quickly but sometimes we need access to improvements more immediately
-than PRs can be reviewed and merged, we therefore keep a list of dependency links to reference our implementations
-of the same packages.
-
-When our PR is accepted, we then comment out the particular dependency link (keeping in code) for future
-improvements we would want to make to the package.
-
-If you're using HURUmap and would want to use these improvements as well before merge, you can run:
-
-    pip install hurumap --process-dependency-links
-
-or if `hurumap` included in `setup.py`
-
-    pip install . --process-dependency-links
-
-or if in `requirements.txt`
-
-    pip install -r requirements.txt --process-dependency-links
-
-'''
-dependency_links = [
-    'https://github.com/CodeForAfricaLabs/wazimap/tarball/master#egg=wazimap'
 ]
 
 setup(
