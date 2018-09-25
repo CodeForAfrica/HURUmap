@@ -757,15 +757,6 @@
     </div>
   </article>
 
-  <style>
-    .label {
-      word-break: break-word;
-    }
-
-    #chart-histogram-crimereport-crimes_dist .action-links {
-      margin-top: 40px;
-    }
-  </style>
   <article id="crime_report"
            class="clearfix {% if 'crime_report' not in selected_sections %}hide{% endif %}">
     <header class="section-contents">
@@ -790,11 +781,7 @@
       </section>
     </div>
   </article>
-  <style>
-    .label {
-      word-break: break-word;
-    }
-  </style>
+
   <div id="agriculture">
     <article id="crop_production" class="clearfix">
       <header class="section-contents">
@@ -875,7 +862,17 @@
       </div>
     </article>
   </div>
-{% endblock %}
+
+  <style>
+    .label {
+      word-break: break-word;
+    }
+
+    #chart-histogram-crimereport-crimes_dist .action-links {
+      margin-top: 40px;
+    }
+  </style>
++{% endblock profile_detail %}
 
 {% comment %} Override chart creation from wazimap/profile_detail.html {% endcomment %}
 {% block body_javascript_extra %}
