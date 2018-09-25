@@ -915,7 +915,7 @@ var makeCharts = function() {
             chartInitialSort = $(this).data('initial-sort'),
             chartStatType = $(this).data('stat-type'),
             chartDecimalPlaces = $(this).data('decimal-places'),
-            chartQualifier = $(this).data('qualifier') || null,
+            thisQualifier = $(this).data('qualifier') || null,
             thisSourceLink = $(this).data('source-link') || null,
             thisSourceTitle = $(this).data('source-title') || null,
             geographyData = profileData['geography'],
@@ -928,11 +928,15 @@ var makeCharts = function() {
             }
         }
 
+        // Display the source specified in data-qualifier attribute,
+        // else display the metadata qualifier
+        var chartQualifier = thisQualifier || chartData['metadata']['qualifier'] || null;
+
         // Display the source specified in data-source-link (and data-source-title),
         // else display the metadata source
-        var chartSource = chartData['metadata']['source'] || {};
-        var chartSourceLink = thisSourceLink || chartSource.link;
-        var chartSourceTitle = thisSourceTitle || chartSource.title;
+        var metadataSource = chartData['metadata']['source'] || {};
+        var chartSourceLink = thisSourceLink || metadataSource.link;
+        var chartSourceTitle = thisSourceTitle || metadataSource.title;
 
         // determine whether data point is from anything other
         // than the primary ACS release for this page
