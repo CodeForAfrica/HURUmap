@@ -1177,14 +1177,21 @@ function Chart(options) {
     }
 
     chart.addChartQualifier = function(container) {
-        if (!!chart.chartQualifier) {
+        var appendChartQualifier = function appendChartQualifier(chartQualifier, container, chart) {
             container.append("span")
                 .classed("chart-qualifier", true)
-                .text("* " + chart.chartQualifier);
+                .text("* " + chartQualifier);
 
             chart.updateSettings({
                 height: parseInt(chart.settings.height) + 20
             });
+        }
+
+        if (!!chart.chartQualifier) {
+            var chartQualifier = chart.chartQualifier.trim().split('\n');
+            for (i = 0; i < chartQualifier.length; i++) {
+                appendChartQualifier(chartQualifier[i], container, chart);
+            }
         }
     }
 
