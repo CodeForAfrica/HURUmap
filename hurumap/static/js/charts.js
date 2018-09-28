@@ -1203,6 +1203,8 @@ function Chart(options) {
                     .text("Source: ")
                     .append("a")
                         .attr("href", chart.chartSourceLink)
+                        .attr("target", "_blank")
+                        .attr("rel", "noopener")
                         .text(chart.chartSourceTitle);
 
             chart.updateSettings({
