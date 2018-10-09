@@ -109,3 +109,4 @@ venv.bak/
 media/*
 
 *.DS_Store
+hurumap/static/css/hurumap.css
