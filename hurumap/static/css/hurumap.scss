@@ -467,4 +467,9 @@ body {
   display: none;
 }
 
+// Add padding to chart-qualifiers
+// https://github.com/CodeForAfricaLabs/wazimap/commit/0a209facb87ed4313da45aeb8a1e23f56c6c6c82
 
+.chart-qualifier {
+  padding-top: 1em;
+}
