@@ -32,11 +32,11 @@ setup(
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/CodeForAfricaLabs/HURUmap',
+    url='https://github.com/CodeForAfrica/HURUmap',
 
     # Author details
     author='Code for Africa',
-    author_email='tech@codeforafrica.org',
+    author_email='hello@codeforafrica.org',
 
     # Choose your license
     license='GPLv3',
