@@ -67,6 +67,7 @@ HURUMAP['title_tagline'] = 'Making Census Data Easy to Use'
 HURUMAP['facebook'] = 'CodeForAfrica'
 HURUMAP['twitter'] = '@Code4Africa'
 HURUMAP['email'] = 'hello@hurumap.org'
+HURUMAP['blog_url'] = 'https://medium.com/code-for-africa'
 
 HURUMAP['github_url'] = 'https://github.com/CodeForAfrica/HURUmap'
 HURUMAP['openafrica_url'] = 'https://open.africa/'
