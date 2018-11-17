@@ -1,8 +1,6 @@
 from collections import OrderedDict
 from wazimap.settings import *  # noqa
 
-from hurumap.dashboard.settings import *  #noqa
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -14,8 +12,6 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + HURUMAP_DASHBOARD_MIDDLEWARE
-
 TIME_ZONE = 'Africa/Nairobi'
 LANGUAGE_CODE = 'en-ke'
 
@@ -25,10 +21,8 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.contrib.auth.context_processors.auth',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.i18n',
-                'django.template.context_processors.media',
                 'django.template.context_processors.request',
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
@@ -41,7 +35,7 @@ TEMPLATES = [
     },
 ]
 
-INSTALLED_APPS = ['hurumap', 'hurumap.dashboard'] + HURUMAP_DASHBOARD_APPS + INSTALLED_APPS
+INSTALLED_APPS = ['hurumap'] + INSTALLED_APPS
 
 ROOT_URLCONF = 'hurumap.urls'
 
@@ -55,8 +49,8 @@ HURUMAP = WAZIMAP
 # -------------------------------------------------------------------------------------
 # Website Details
 
-HURUMAP['name'] = 'HURUmap'
-HURUMAP['url'] = 'https://hurumap.org'
+HURUMAP['name'] = os.environ.get('HURUMAP_NAME', 'HURUmap')
+HURUMAP['url'] = os.environ.get('HURUMAP_URL', 'https://hurumap.org/')
 
 HURUMAP['description'] = 'gives infomediaries like journalists and Civic ' \
                          'activists an easy \'plug & play\' toolkit for ' \
@@ -69,8 +63,8 @@ HURUMAP['twitter'] = '@Code4Africa'
 HURUMAP['email'] = 'hello@hurumap.org'
 HURUMAP['blog_url'] = 'https://medium.com/code-for-africa'
 
-HURUMAP['github_url'] = 'https://github.com/CodeForAfrica/HURUmap'
-HURUMAP['openafrica_url'] = 'https://open.africa/'
+HURUMAP['github_url'] = os.environ.get('HURUMAP_GITHUB_URL', 'https://github.com/CodeForAfrica/HURUmap') 
+HURUMAP['openafrica_url'] = os.environ.get('HURUMAP_OPENAFRICA_URL', 'https://openafrica.net/') 
 
 # -------------------------------------------------------------------------------------
 # Google Analytics
@@ -236,16 +230,6 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 DATABASES['default']['TEST'] = {
     'NAME': 'hurumap_test',
 }
-
-
-# -------------------------------------------------------------------------------------
-# Wagtail + CMS Configs
-# -------------------------------------------------------------------------------------
-WAGTAIL_SITE_NAME = HURUMAP['name']
-SITE_ID = 1
-
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-MEDIA_URL = '/media/'
 
 
 # -------------------------------------------------------------------------------------

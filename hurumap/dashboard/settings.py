@@ -1,36 +1,38 @@
 import os
 
-HURUMAP_DASHBOARD_APPS = [
-    'django.contrib.auth',
-    'django.contrib.messages',
-    'django.contrib.sessions',
-    'django.contrib.admin',
+from hurumap.settings import *  #noqa
 
-    # Wagtail apps
-    'wagtail.wagtailforms',
-    'wagtail.wagtailredirects',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailsites',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtailcore',
-    'wagtail.contrib.wagtailstyleguide',
+INSTALLED_APPS =  INSTALLED_APPS + [
+        'django.contrib.auth',
+        'django.contrib.messages',
+        'django.contrib.sessions',
+        'django.contrib.admin',
 
-    'modelcluster',
-    'taggit',
+        # Wagtail apps
+        'wagtail.wagtailforms',
+        'wagtail.wagtailredirects',
+        'wagtail.wagtailembeds',
+        'wagtail.wagtailsites',
+        'wagtail.wagtailusers',
+        'wagtail.wagtailsnippets',
+        'wagtail.wagtaildocs',
+        'wagtail.wagtailimages',
+        'wagtail.wagtailsearch',
+        'wagtail.wagtailadmin',
+        'wagtail.wagtailcore',
+        'wagtail.contrib.wagtailstyleguide',
 
-    # allauth apps
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google'
-]
+        'modelcluster',
+        'taggit',
 
-HURUMAP_DASHBOARD_MIDDLEWARE = (
+        # allauth apps
+        'allauth',
+        'allauth.account',
+        'allauth.socialaccount',
+        'allauth.socialaccount.providers.google'
+    ]
+
+MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -39,6 +41,33 @@ HURUMAP_DASHBOARD_MIDDLEWARE = (
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 )
+
+ROOT_URLCONF = 'hurumap.dashboard.urls'
+
+SITE_ID = 1
+
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.request',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+                'census.context_processors.api_url',
+                'wazimap.context_processors.wazimap_settings',
+                'hurumap.context_processors.hurumap_settings',
+            ],
+        },
+    },
+]
 
 # -------------------------------------------------------------------------------------
 # E-mail config
@@ -51,18 +80,27 @@ EMAIL_HOST_USER = os.environ.get('HURUMAP_EMAIL_HOST_USER', 'apikey')
 EMAIL_HOST_PASSWORD = os.environ.get('HURUMAP_EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = os.environ.get('HURUMAP_EMAIL_USE_TLS', True)
 
+
 # -------------------------------------------------------------------------------------
 # Wagtail config
 # -------------------------------------------------------------------------------------
 
-WAGTAIL_SITE_NAME = 'HURUmap'  # TODO: Fix
+WAGTAIL_SITE_NAME = HURUMAP['name']
 WAGTAIL_FRONTEND_LOGIN_URL = '/accounts/login/'
 
 WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = os.environ.get('HURUMAP_EMAIL_FROM', 'no-reply@hurumap.org')
 WAGTAILADMIN_NOTIFICATION_USE_HTML = True
 
-
 WAGTAIL_ENABLE_UPDATE_CHECK = False  # Because Wazimap doesn't work with Python3 yet.
+
+
+# -------------------------------------------------------------------------------------
+# Media Folder Setting
+# -------------------------------------------------------------------------------------
+
+MEDIA_ROOT = os.environ.get('DJANGO_MEDIA_ROOT', os.path.join(BASE_DIR, "media"))
+MEDIA_URL = '/media/'
+
 
 # -------------------------------------------------------------------------------------
 # Authentication Configs

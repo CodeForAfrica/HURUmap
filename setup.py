@@ -14,10 +14,8 @@ with open(path.join(here, 'VERSION')) as f:
 
 install_requires = [
     'wazimap>=1.2,<1.3',
-    'wagtail>=1.13.1,<1.14',
     'libsass==0.13.3',
     'whitenoise==3.3.1',
-    'django-allauth==0.37.1'
 ]
 
 setup(
@@ -86,5 +84,6 @@ setup(
         'dev': ['nose', 'flake8', 'pylint', 'autopep8'],
         'test': ['nose', 'flake8', 'pylint', 'autopep8'],
         'gdal': ['GDAL', 'Shapely>=1.5.13'],
+        'dashboard': ['wagtail>=1.13.1,<1.14', 'django-allauth==0.37.1'],
     },
 )

@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+{% load sass_tags staticfiles account %}
+
+{% block header_menu %}
+  <li><a href="/about">About</a></li>
+  <li><a href="{{ HURUMAP.blog_url }}" target="_blank"
+    rel="noopener noreferrer">Blog</a></li>
+  <li><a href="/#showcase">Showcase</a></li>
+  <li><a href="https://facebook.com/HacksHackersAfrica"
+          target="_blank" rel="noopener">Community</a></li>
+  {% if user.is_authenticated %}
+    <li><a href="{% url 'account_logout' %}"> Logout</a>
+    </li>
+  {% else %}
+    <li><a href="{% url 'account_login' %}">Sign In</a>
+    </li>
+  {% endif %}
+
+  <li class="social-icons">
+    <a href="https://twitter.com/{{ HURUMAP.twitter }}" target="_blank" rel="noopener noreferrer"><i
+        class="fa fa-twitter fa-lg fa-fw"></i></a>
+    <a href="https://facebook.com/{{ HURUMAP.facebook }}" target="_blank" rel="noopener noreferrer"><i
+        class="fa fa-facebook fa-lg fa-fw"></i></a>
+  </li>
+{% endblock header_menu %}
