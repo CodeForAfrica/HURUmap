@@ -46,6 +46,16 @@ Instead of re-inventing the wheel, HURUmap relies on the excellent [Wazimap](htt
 
 ---
 
+## Development
+
+Using Docker Compose, you can quickly get started with HURUmap by running:
+
+```shell
+make web
+```
+
+---
+
 ## License
 
 GNU GPLv3
