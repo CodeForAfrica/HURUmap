@@ -167,13 +167,13 @@ HURUMAP['topics']['census'] = {
     'profiles': [
         'Demographics',
         'Households',
-        'Protests',
-        'School fires',
-        'Crime report',
-        'Employment',
-        'Voter registration 2015',
-        'Voter registration 2017',
-        'Religion'
+        # 'Protests',
+        # 'School fires',
+        # 'Crime report',
+        # 'Employment',
+        # 'Voter registration 2015',
+        # 'Voter registration 2017',
+        # 'Religion'
     ]
 }
 
@@ -195,15 +195,15 @@ HURUMAP['topics']['health'] = {
     'desc': 'Health data collected in 2014 by the Kenya National Bureau of \
                 Statistics ',
     'profiles': [
-        'Contraceptive use',
-        'Maternal care indicators',
-        'Knowledge of HIV prevention methods',
-        'ITN',
-        'Fertility',
-        'Vaccinations',
-        'Type treatment',
-        'Nutrition',
-        'Health ratios'
+        # 'Contraceptive use',
+        # 'Maternal care indicators',
+        # 'Knowledge of HIV prevention methods',
+        # 'ITN',
+        # 'Fertility',
+        # 'Vaccinations',
+        # 'Type treatment',
+        # 'Nutrition',
+        # 'Health ratios'
     ]
 }
 
@@ -215,8 +215,8 @@ HURUMAP['topics']['development'] = {
     'desc': 'Crop production and Livestock population for the year 2014 \
             provided by the Ministry of Agriculture, Livestock and Fisheries.',
     'profiles': [
-        'Crop production',
-        'Livestock'
+        # 'Crop production',
+        # 'Livestock'
     ],
 }
 
@@ -246,6 +246,18 @@ SITE_ID = 1
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
+
+HURUMAP['primary_release_year'] = {
+    'county': 2009,
+}
+HURUMAP['latest_release_year'] = '2009'
+HURUMAP['primary_dataset_name'] = 'Census 2011'
+HURUMAP['available_release_years'] = {
+    # Release years with data for geo_levels.
+    # Only specify geo_levels with limited releases.
+    # Other geo_levels have data for all releases.
+    'county': [2009, 2014, 2015, 2016, 2017]
+}
 
 
 # -------------------------------------------------------------------------------------

@@ -3,10 +3,9 @@ import re
 from collections import OrderedDict
 
 from django.conf import settings
-from wazimap.data.tables import get_model_from_fields
-from wazimap.data.utils import (calculate_median, get_objects_by_geo,
+from wazimap.data.utils import (calculate_median,
                                 get_session, get_stat_data, group_remainder,
-                                merge_dicts, LocationNotFound)
+                                merge_dicts, get_datatable, current_context)
 from wazimap.geo import geo_data
 
 # ensure tables are loaded
@@ -44,6 +43,7 @@ def get_profile(geo, profile_name, request):
     try:
         comparative_geos = geo_data.get_comparative_geos(geo)
         data = {}
+        data['primary_release_year'] = current_context().get('year')
         sections = []
 
         for cat in SECTIONS:
@@ -130,10 +130,8 @@ def get_demographics_profile(geo, session):
             total_urbanised += data['numerators']['this']
 
     # median age
-    db_model_age = get_model_from_fields(
-        ['age in completed years', 'sex', 'rural or urban'], geo.geo_level)
-    objects = get_objects_by_geo(db_model_age, geo, session, [
-                                 'age in completed years'])
+    db_model_age = get_datatable('ageincompletedyears_ruralorurban_sex')
+    objects = db_model_age.get_rows_for_geo(geo, session)
     objects = sorted((o for o in objects if getattr(o, 'age in completed years') != 'unspecified'),
                      key=lambda x: int(getattr(x, 'age in completed years').replace('+', '')))
     median = calculate_median(objects, 'age in completed years')
