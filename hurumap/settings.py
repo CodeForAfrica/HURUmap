@@ -58,10 +58,10 @@ HURUMAP['description'] = 'gives infomediaries like journalists and Civic ' \
                          'visualizations into their storytelling'
 HURUMAP['title_tagline'] = 'Making Census Data Easy to Use'
 
-HURUMAP['facebook'] = 'CodeForAfrica'
-HURUMAP['twitter'] = '@Code4Africa'
-HURUMAP['email'] = 'hello@hurumap.org'
-HURUMAP['blog_url'] = 'https://medium.com/code-for-africa'
+HURUMAP['facebook'] = os.environ.get('HURUMAP_FACEBOOK', 'CodeForAfrica')
+HURUMAP['twitter'] = os.environ.get('HURUMAP_TWITTER', '@Code4Africa')
+HURUMAP['email'] = os.environ.get('HURUMAP_EMAIL', 'hello@hurumap.org')
+HURUMAP['blog_url'] = os.environ.get('HURUMAP_BLOG_URL', 'https://medium.com/code-for-africa')
 
 HURUMAP['github_url'] = os.environ.get('HURUMAP_GITHUB_URL', 'https://github.com/CodeForAfrica/HURUmap') 
 HURUMAP['openafrica_url'] = os.environ.get('HURUMAP_OPENAFRICA_URL', 'https://openafrica.net/') 
@@ -71,7 +71,7 @@ HURUMAP['openafrica_url'] = os.environ.get('HURUMAP_OPENAFRICA_URL', 'https://op
 
 # Default tracker. Blank means no default tracking will be set (see
 # `ga_tracking_ids` for multiple, named trackers support.
-HURUMAP['ga_tracking_id'] = 'UA-44795600-8'
+HURUMAP['ga_tracking_id'] = os.environ.get('HURUMAP_GA_TRACKING_ID', 'UA-44795600-8') 
 
 # Multiple trackers.
 # Supports sending data to multiple properties from a single page. All these
@@ -93,7 +93,7 @@ HURUMAP['default_profile'] = 'census'
 HURUMAP['profile_builder'] = 'hurumap.profiles.{}.get_profile'.format(
     hurumap_profile)
 
-HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2009')
+HURUMAP['default_geo_version'] = os.environ.get('HURUMAP_DEFAULT_GEO_VERSION', '2009')
 HURUMAP['legacy_embed_geo_version'] = '2009'
 
 HURUMAP['geodata'] = 'hurumap.geo.GeoData'
