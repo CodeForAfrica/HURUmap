@@ -104,7 +104,7 @@ class Command(BaseCommand):
         except KeyError:
             raise CommandError(
                 "Couldn't establish which table to use for these fields. "
-                "Have you added a FieldTable entry in wazimap_za/tables.py?\nFields: %s" %
+                "Have you added a FieldTable entry in wazimap_za/kenya.py?\nFields: %s" %
                 self.fields)
 
     def store_values(self):
