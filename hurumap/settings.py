@@ -70,7 +70,7 @@ HURUMAP['email'] = 'hello@hurumap.org'
 HURUMAP['blog_url'] = 'https://medium.com/code-for-africa'
 
 HURUMAP['github_url'] = 'https://github.com/CodeForAfrica/HURUmap'
-HURUMAP['openafrica_url'] = 'https://open.africa/'
+HURUMAP['openafrica_url'] = 'https://africaopendata.org'
 
 # -------------------------------------------------------------------------------------
 # Google Analytics
