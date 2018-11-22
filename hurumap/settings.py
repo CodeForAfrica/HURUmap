@@ -247,18 +247,18 @@ SITE_ID = 1
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
 
-HURUMAP['primary_release_year'] = {
-    'county': 2009,
-}
+# HURUMAP['primary_release_year'] = {
+#     'county': 2009,
+# }
 HURUMAP['latest_release_year'] = '2009'
 HURUMAP['primary_dataset_name'] = 'Census 2011'
 HURUMAP['available_release_years'] = {
     # Release years with data for geo_levels.
     # Only specify geo_levels with limited releases.
     # Other geo_levels have data for all releases.
-    'county': [2009, 2014, 2015, 2016, 2017]
+    'county': [2009]
 }
-
+#
 
 # -------------------------------------------------------------------------------------
 # Logging Configs
