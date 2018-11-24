@@ -10,11 +10,8 @@ compilescss:
 	$(COMPOSE) exec web python manage.py compilescss
 	$(COMPOSE) exec web python manage.py collectstatic --clear --noinput
 
-release:
-	./contrib/docker/release.sh
-
-release-build:
-	./contrib/docker/release-build.sh
+enter:
+	$(COMPOSE) exec web bash
 
 loaddata:
 	# Load the DB with data
@@ -27,3 +24,9 @@ createsuperuser:
 clean:
 	@find . -name "*.pyc" -exec rm -rf {} \;
 	@find . -name "__pycache__" -delete
+
+release:
+	./contrib/docker/release.sh
+
+release-build:
+	./contrib/docker/release-build.sh
