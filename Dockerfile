@@ -37,8 +37,11 @@ VOLUME ["$APP_SRVHOME/media/", "$APP_SRVHOME/logs/"]
 ADD $APP_SRC $APP_SRVPROJ
 WORKDIR $APP_SRVPROJ
 
-# Install hurumap
+# Install hurumap + wazimap
 RUN pip install -q -e .
+# Workaround for dependency links
+# Comment out when changes / updates / PR accepted
+RUN pip install -q git+https://github.com/CodeForAfricaLabs/wazimap.git@master#egg=wazimap
 
 
 # Expose port server

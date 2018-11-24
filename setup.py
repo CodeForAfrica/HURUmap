@@ -13,7 +13,7 @@ with open(path.join(here, 'VERSION')) as f:
     version = f.read().strip()
 
 install_requires = [
-    'wazimap>=1.2,<1.3',
+    'wazimap>=1.2,<2.0',
     'libsass==0.13.3',
     'whitenoise==3.3.1',
 ]
