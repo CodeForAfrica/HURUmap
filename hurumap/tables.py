@@ -1,4 +1,4 @@
-from hurumap.data.tables import FieldTable
+from wazimap.data.tables import FieldTable
 
 # Define our tables so the data API can discover them.
 # TODO: Add comments so that we can quickly see categories/topics
