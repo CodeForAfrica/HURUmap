@@ -1,8 +1,8 @@
 #!/bin/bash
 
-python manage.py migrate --noinput        # Apply database migrations
-python manage.py compilescss              # Compile SCSS (offline)
-python manage.py collectstatic --noinput  # Collect static files
+python manage.py migrate --noinput                # Apply database migrations
+python manage.py compilescss                      # Compile SCSS (offline)
+python manage.py collectstatic --clear --noinput  # Collect static files
 
 # Prepare log files and start outputting logs to stdout
 touch /src/logs/gunicorn.log

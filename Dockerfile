@@ -56,4 +56,4 @@ FROM hurumap as hurumap-dashboard
 ENV DJANGO_SETTINGS_MODULE="hurumap.dashboard.settings"
 
 RUN pip install -q -e .[dashboard]
-CMD [ "--name", "hurumap-dashboard", "--reload", "hurumap.dashboard.wsgi:application" ]
+CMD [ "--name", "hurumap_dashboard", "--reload", "hurumap.dashboard.wsgi:application" ]
