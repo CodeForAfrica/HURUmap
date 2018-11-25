@@ -4,5 +4,5 @@ set -ex
 USERNAME=codeforafrica
 # image name
 IMAGE=hurumap
-docker build --target hurumap -t $USERNAME/$IMAGE:latest .
-docker build -t $USERNAME/$IMAGE-dashboard:latest .
+docker build --target hurumap --no-cache -t $USERNAME/$IMAGE:latest .
+docker build --no-cache -t $USERNAME/$IMAGE-dashboard:latest .
