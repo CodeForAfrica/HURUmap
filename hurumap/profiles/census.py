@@ -754,99 +754,99 @@ def get_health_ratios_profile(geo, session):
 
 def get_voter_registration_profile(geo, session, year):
     field = 'voterregistration_%s' % year
+    with dataset_context(year=year):
+        stats_dist, _ = get_stat_data(
+            field, geo, session)
 
-    stats_dist, _ = get_stat_data(
-        field, geo, session)
+        ids_issued = stats_dist['IDs issued']['numerators']['this']
+        dead_with_ids = stats_dist['Dead with IDs']['numerators']['this']
+        reg_centers = stats_dist['Registration centers']['numerators']['this']
+        reg = stats_dist['Registered voters']['numerators']['this']
+        aft = stats_dist['Additional voters registered']['numerators']['this']
+        total = stats_dist['Total registered']['numerators']['this']
+        not_registered = stats_dist['Potential voting population not registered']['numerators']['this']
 
-    ids_issued = stats_dist['IDs issued']['numerators']['this']
-    dead_with_ids = stats_dist['Dead with IDs']['numerators']['this']
-    reg_centers = stats_dist['Registration centers']['numerators']['this']
-    reg = stats_dist['Registered voters']['numerators']['this']
-    aft = stats_dist['Additional voters registered']['numerators']['this']
-    total = stats_dist['Total registered']['numerators']['this']
-    not_registered = stats_dist['Potential voting population not registered']['numerators']['this']
+        ids_issued_year = "2015" if year == "2015" else "2016"
+        report_period = "Oct 2015" if year == "2015" else "Dec 2016"
 
-    ids_issued_year = "2015" if year == "2015" else "2016"
-    report_period = "Oct 2015" if year == "2015" else "Dec 2016"
-
-    r = {
-        "ids_issued": {
-            'name': 'Number of IDs issued as at Dec %s' % ids_issued_year,
-            'numerators': {'this': ids_issued},
-            'values': {'this': ids_issued},
-        },
-        'dead_with_ids': {
-            'name': 'Projected dead with IDs 10.57%',
-            'numerators': {'this': dead_with_ids},
-            'values': {'this': dead_with_ids},
-        },
-        'reg_centers': {
-            'name': 'Number of registration centers',
-            'numerators': {'this': reg_centers},
-            'values': {'this': reg_centers},
-        },
-        'total': {
-            'name': 'Total population registered to vote',
-            'numerators': {'this': total},
-            'values': {'this': total},
-        },
-        'registration': {
-            'march': {
-                'name': 'As at Mar 2015',
-                'numerators': {'this': reg},
-                'values': {'this': round((reg / total) * 100)},
+        r = {
+            "ids_issued": {
+                'name': 'Number of IDs issued as at Dec %s' % ids_issued_year,
+                'numerators': {'this': ids_issued},
+                'values': {'this': ids_issued},
             },
-            'oct': {
-                'name': 'As at %s' % (report_period),
-                'numerators': {'this': aft},
-                'values': {'this': round((aft / total) * 100)},
-            }
-        },
-        'registration_ratio': {
-            'march': {
-                'name': 'Registered',
+            'dead_with_ids': {
+                'name': 'Projected dead with IDs 10.57%',
+                'numerators': {'this': dead_with_ids},
+                'values': {'this': dead_with_ids},
+            },
+            'reg_centers': {
+                'name': 'Number of registration centers',
+                'numerators': {'this': reg_centers},
+                'values': {'this': reg_centers},
+            },
+            'total': {
+                'name': 'Total population registered to vote',
                 'numerators': {'this': total},
-                'values': {'this': round((total / (total + not_registered)) * 100)},
+                'values': {'this': total},
             },
-            'oct': {
-                'name': 'Not registered',
-                'numerators': {'this': not_registered},
-                'values': {'this': round((not_registered / (total + not_registered)) * 100)},
-            }
-        },
-        'metdata': stats_dist['metadata']
-    }
-
-    if not year == "2015":
-        actual_dead_with_ids = stats_dist["Actual Dead with IDs"]["numerators"]["this"]
-        polling_stations = stats_dist["Polling stations"]["numerators"]["this"]
-        male_voters = stats_dist["Male voters"]["numerators"]["this"]
-        female_voters = stats_dist["Female voters"]["numerators"]["this"]
-
-        r['actual_dead_with_ids'] = {
-            'name': 'Actual dead registered with IDs',
-            'numerators': {'this': actual_dead_with_ids},
-            'values': {'this': actual_dead_with_ids},
-        }
-
-        r['polling_stations'] = {
-            'name': 'Number of polling stations',
-            'numerators': {'this': polling_stations},
-            'values': {'this': polling_stations},
-        }
-
-        r['gender_ratio'] = {
-            'female': {
-                'name': "Number of female voters",
-                'numerators': {'this': female_voters},
-                'values': {'this': round((female_voters / total) * 100)},
+            'registration': {
+                'march': {
+                    'name': 'As at Mar 2015',
+                    'numerators': {'this': reg},
+                    'values': {'this': round((reg / total) * 100)},
+                },
+                'oct': {
+                    'name': 'As at %s' % (report_period),
+                    'numerators': {'this': aft},
+                    'values': {'this': round((aft / total) * 100)},
+                }
             },
-            'male': {
-                'name': 'Number of male voters',
-                'numerators': {'this': male_voters},
-                'values': {'this': round((male_voters / total) * 100)},
-            }
+            'registration_ratio': {
+                'march': {
+                    'name': 'Registered',
+                    'numerators': {'this': total},
+                    'values': {'this': round((total / (total + not_registered)) * 100)},
+                },
+                'oct': {
+                    'name': 'Not registered',
+                    'numerators': {'this': not_registered},
+                    'values': {'this': round((not_registered / (total + not_registered)) * 100)},
+                }
+            },
+            'metdata': stats_dist['metadata']
         }
+
+        if not year == "2015":
+            actual_dead_with_ids = stats_dist["Actual Dead with IDs"]["numerators"]["this"]
+            polling_stations = stats_dist["Polling stations"]["numerators"]["this"]
+            male_voters = stats_dist["Male voters"]["numerators"]["this"]
+            female_voters = stats_dist["Female voters"]["numerators"]["this"]
+
+            r['actual_dead_with_ids'] = {
+                'name': 'Actual dead registered with IDs',
+                'numerators': {'this': actual_dead_with_ids},
+                'values': {'this': actual_dead_with_ids},
+            }
+
+            r['polling_stations'] = {
+                'name': 'Number of polling stations',
+                'numerators': {'this': polling_stations},
+                'values': {'this': polling_stations},
+            }
+
+            r['gender_ratio'] = {
+                'female': {
+                    'name': "Number of female voters",
+                    'numerators': {'this': female_voters},
+                    'values': {'this': round((female_voters / total) * 100)},
+                },
+                'male': {
+                    'name': 'Number of male voters',
+                    'numerators': {'this': male_voters},
+                    'values': {'this': round((male_voters / total) * 100)},
+                }
+            }
     return r
 
 
