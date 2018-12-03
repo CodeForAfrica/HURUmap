@@ -14,9 +14,6 @@ import hurumap.tables  # noqa
 
 log = logging.getLogger(__name__)
 
-LOCATIONNOTFOUND = {'name': 'No Data Found', 'numerators': {'this': 0},
-                    'values': {'this': 0}}
-
 SECTIONS = settings.HURUMAP.get('topics', {})
 
 EMPLOYMENT_RECODES = OrderedDict([
@@ -733,7 +730,7 @@ def get_health_ratios_profile(geo, session):
             'numerators': {'this': nr},
             'values': {'this': nr},
         },
-        'metdata': ratios_dist['metadata']
+        'metadata': ratios_dist['metadata']
     }
 
 
