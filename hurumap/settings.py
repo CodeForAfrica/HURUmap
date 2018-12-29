@@ -215,6 +215,22 @@ HURUMAP['topics']['development'] = {
 }
 
 
+# -------------------------------------------------------------------------------------
+# Releases
+
+HURUMAP['primary_release_year'] = {
+    'county': 2017,
+}
+HURUMAP['latest_release_year'] = '2017'
+HURUMAP['primary_dataset_name'] = 'Voter Registration'
+HURUMAP['available_release_years'] = {
+    # Release years with data for geo_levels.
+    # Only specify geo_levels with limited releases.
+    # Other geo_levels have data for all releases.
+    'county': [2015, 2017]
+}
+
+
 WAZIMAP = HURUMAP
 
 
