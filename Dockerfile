@@ -4,7 +4,6 @@ ENV DEBIAN_FRONTEND noninteractive
 # Upgrade OS Dependencies
 RUN apt-get update && apt-get upgrade -y
 # Install Postgresql Client
-# TODO: Remove once we use fixtures instead
 RUN apt-get install postgresql-client -y
 
 # Upgrade pip + setuptools
