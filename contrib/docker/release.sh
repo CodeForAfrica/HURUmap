@@ -1,4 +1,4 @@
-set -ex
+set -x
 # SET THE FOLLOWING VARIABLES
 # docker hub username
 USERNAME=codeforafrica
