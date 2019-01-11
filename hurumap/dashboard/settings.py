@@ -3,10 +3,7 @@ import os
 from hurumap.settings import *  #noqa
 
 INSTALLED_APPS =  INSTALLED_APPS + [
-        'django.contrib.auth',
-        'django.contrib.messages',
-        'django.contrib.sessions',
-        'django.contrib.admin',
+        'django.contrib.sites',
 
         # Wagtail apps
         'wagtail.wagtailforms',
@@ -33,10 +30,6 @@ INSTALLED_APPS =  INSTALLED_APPS + [
     ]
 
 MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
@@ -46,28 +39,6 @@ ROOT_URLCONF = 'hurumap.dashboard.urls'
 
 SITE_ID = 1
 
-
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.contrib.auth.context_processors.auth',
-                'django.template.context_processors.debug',
-                'django.template.context_processors.i18n',
-                'django.template.context_processors.media',
-                'django.template.context_processors.request',
-                'django.template.context_processors.static',
-                'django.template.context_processors.tz',
-                'django.contrib.messages.context_processors.messages',
-                'census.context_processors.api_url',
-                'wazimap.context_processors.wazimap_settings',
-                'hurumap.context_processors.hurumap_settings',
-            ],
-        },
-    },
-]
 
 # -------------------------------------------------------------------------------------
 # E-mail config
@@ -140,6 +111,3 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
-
-
-

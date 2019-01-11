@@ -15,25 +15,9 @@ MANAGERS = ADMINS
 TIME_ZONE = 'Africa/Nairobi'
 LANGUAGE_CODE = 'en-ke'
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.i18n',
-                'django.template.context_processors.request',
-                'django.template.context_processors.static',
-                'django.template.context_processors.tz',
-                'django.contrib.messages.context_processors.messages',
-                'census.context_processors.api_url',
-                'wazimap.context_processors.wazimap_settings',
-                'hurumap.context_processors.hurumap_settings',
-            ],
-        },
-    },
-]
+TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
+    'hurumap.context_processors.hurumap_settings',
+)
 
 INSTALLED_APPS = ['hurumap'] + INSTALLED_APPS
 

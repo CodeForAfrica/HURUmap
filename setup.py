@@ -13,7 +13,7 @@ with open(path.join(here, 'VERSION')) as f:
     version = f.read().strip()
 
 install_requires = [
-    'wazimap>=1.2',
+    'wazimap>=2.0',
     'libsass==0.13.3',
     'whitenoise==3.3.1',
 ]
@@ -84,6 +84,6 @@ setup(
         'dev': ['nose', 'flake8', 'pylint', 'autopep8'],
         'test': ['nose', 'flake8', 'pylint', 'autopep8'],
         'gdal': ['GDAL', 'Shapely>=1.5.13'],
-        'dashboard': ['wagtail>=1.13.1,<1.14', 'django-allauth==0.37.1'],
+        'dashboard': ['wagtail>=1.13.1,<1.14', 'django-allauth==0.34.0'],
     },
 )

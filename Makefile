@@ -13,6 +13,9 @@ compilescss:
 enter:
 	$(COMPOSE) exec web bash
 
+migrate:
+	$(COMPOSE) exec web python manage.py migrate
+
 loaddata:
 	# Load the DB with data
 	$(COMPOSE) exec -T web ./contrib/loaddata.sh
