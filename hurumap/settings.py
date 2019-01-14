@@ -1,8 +1,6 @@
 from collections import OrderedDict
 from wazimap.settings import *  # noqa
 
-from hurumap.dashboard.settings import *  #noqa
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -14,34 +12,14 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + HURUMAP_DASHBOARD_MIDDLEWARE
-
 TIME_ZONE = 'Africa/Nairobi'
 LANGUAGE_CODE = 'en-ke'
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.contrib.auth.context_processors.auth',
-                'django.template.context_processors.debug',
-                'django.template.context_processors.i18n',
-                'django.template.context_processors.media',
-                'django.template.context_processors.request',
-                'django.template.context_processors.static',
-                'django.template.context_processors.tz',
-                'django.contrib.messages.context_processors.messages',
-                'census.context_processors.api_url',
-                'wazimap.context_processors.wazimap_settings',
-                'hurumap.context_processors.hurumap_settings',
-            ],
-        },
-    },
-]
+TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
+    'hurumap.context_processors.hurumap_settings',
+)
 
-INSTALLED_APPS = ['hurumap', 'hurumap.dashboard'] + HURUMAP_DASHBOARD_APPS + INSTALLED_APPS
+INSTALLED_APPS = ['hurumap'] + INSTALLED_APPS
 
 ROOT_URLCONF = 'hurumap.urls'
 
@@ -55,8 +33,8 @@ HURUMAP = WAZIMAP
 # -------------------------------------------------------------------------------------
 # Website Details
 
-HURUMAP['name'] = 'HURUmap'
-HURUMAP['url'] = 'https://hurumap.org'
+HURUMAP['name'] = os.environ.get('HURUMAP_NAME', 'HURUmap')
+HURUMAP['url'] = os.environ.get('HURUMAP_URL', 'https://hurumap.org/')
 
 HURUMAP['description'] = 'gives infomediaries like journalists and Civic ' \
                          'activists an easy \'plug & play\' toolkit for ' \
@@ -64,20 +42,20 @@ HURUMAP['description'] = 'gives infomediaries like journalists and Civic ' \
                          'visualizations into their storytelling'
 HURUMAP['title_tagline'] = 'Making Census Data Easy to Use'
 
-HURUMAP['facebook'] = 'CodeForAfrica'
-HURUMAP['twitter'] = '@Code4Africa'
-HURUMAP['email'] = 'hello@hurumap.org'
-HURUMAP['blog_url'] = 'https://medium.com/code-for-africa'
+HURUMAP['facebook'] = os.environ.get('HURUMAP_FACEBOOK', 'CodeForAfrica')
+HURUMAP['twitter'] = os.environ.get('HURUMAP_TWITTER', '@Code4Africa')
+HURUMAP['email'] = os.environ.get('HURUMAP_EMAIL', 'hello@hurumap.org')
+HURUMAP['blog_url'] = os.environ.get('HURUMAP_BLOG_URL', 'https://medium.com/code-for-africa')
 
-HURUMAP['github_url'] = 'https://github.com/CodeForAfrica/HURUmap'
-HURUMAP['openafrica_url'] = 'https://africaopendata.org'
+HURUMAP['github_url'] = os.environ.get('HURUMAP_GITHUB_URL', 'https://github.com/CodeForAfrica/HURUmap') 
+HURUMAP['openafrica_url'] = os.environ.get('HURUMAP_OPENAFRICA_URL', 'https://openafrica.net/') 
 
 # -------------------------------------------------------------------------------------
 # Google Analytics
 
 # Default tracker. Blank means no default tracking will be set (see
 # `ga_tracking_ids` for multiple, named trackers support.
-HURUMAP['ga_tracking_id'] = 'UA-44795600-8'
+HURUMAP['ga_tracking_id'] = os.environ.get('HURUMAP_GA_TRACKING_ID', 'UA-44795600-8') 
 
 # Multiple trackers.
 # Supports sending data to multiple properties from a single page. All these
@@ -99,7 +77,7 @@ HURUMAP['default_profile'] = 'census'
 HURUMAP['profile_builder'] = 'hurumap.profiles.{}.get_profile'.format(
     hurumap_profile)
 
-HURUMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2009')
+HURUMAP['default_geo_version'] = os.environ.get('HURUMAP_DEFAULT_GEO_VERSION', '2009')
 HURUMAP['legacy_embed_geo_version'] = '2009'
 
 HURUMAP['geodata'] = 'hurumap.geo.GeoData'
@@ -221,6 +199,22 @@ HURUMAP['topics']['development'] = {
 }
 
 
+# -------------------------------------------------------------------------------------
+# Releases
+
+HURUMAP['primary_release_year'] = {
+    'county': 2017,
+}
+HURUMAP['latest_release_year'] = '2017'
+HURUMAP['primary_dataset_name'] = 'Voter Registration'
+HURUMAP['available_release_years'] = {
+    # Release years with data for geo_levels.
+    # Only specify geo_levels with limited releases.
+    # Other geo_levels have data for all releases.
+    'county': [2015, 2017]
+}
+
+
 WAZIMAP = HURUMAP
 
 
@@ -237,28 +231,6 @@ DATABASES['default']['TEST'] = {
     'NAME': 'hurumap_test',
 }
 
-
-# -------------------------------------------------------------------------------------
-# Wagtail + CMS Configs
-# -------------------------------------------------------------------------------------
-WAGTAIL_SITE_NAME = HURUMAP['name']
-SITE_ID = 1
-
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-MEDIA_URL = '/media/'
-
-HURUMAP['primary_release_year'] = {
-    'county': 2017,
-}
-HURUMAP['latest_release_year'] = '2017'
-HURUMAP['primary_dataset_name'] = 'Voter Registration'
-HURUMAP['available_release_years'] = {
-    # Release years with data for geo_levels.
-    # Only specify geo_levels with limited releases.
-    # Other geo_levels have data for all releases.
-    'county': [2015, 2017]
-}
-#
 
 # -------------------------------------------------------------------------------------
 # Logging Configs

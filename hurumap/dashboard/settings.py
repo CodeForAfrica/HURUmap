@@ -1,44 +1,44 @@
 import os
 
-HURUMAP_DASHBOARD_APPS = [
-    'django.contrib.auth',
-    'django.contrib.messages',
-    'django.contrib.sessions',
-    'django.contrib.admin',
+from hurumap.settings import *  #noqa
 
-    # Wagtail apps
-    'wagtail.wagtailforms',
-    'wagtail.wagtailredirects',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailsites',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtailcore',
-    'wagtail.contrib.wagtailstyleguide',
+INSTALLED_APPS =  INSTALLED_APPS + [
+        'django.contrib.sites',
 
-    'modelcluster',
-    'taggit',
+        # Wagtail apps
+        'wagtail.wagtailforms',
+        'wagtail.wagtailredirects',
+        'wagtail.wagtailembeds',
+        'wagtail.wagtailsites',
+        'wagtail.wagtailusers',
+        'wagtail.wagtailsnippets',
+        'wagtail.wagtaildocs',
+        'wagtail.wagtailimages',
+        'wagtail.wagtailsearch',
+        'wagtail.wagtailadmin',
+        'wagtail.wagtailcore',
+        'wagtail.contrib.wagtailstyleguide',
 
-    # allauth apps
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google'
-]
+        'modelcluster',
+        'taggit',
 
-HURUMAP_DASHBOARD_MIDDLEWARE = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+        # allauth apps
+        'allauth',
+        'allauth.account',
+        'allauth.socialaccount',
+        'allauth.socialaccount.providers.google'
+    ]
+
+MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
     'django.contrib.messages.middleware.MessageMiddleware',
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 )
+
+ROOT_URLCONF = 'hurumap.dashboard.urls'
+
+SITE_ID = 1
+
 
 # -------------------------------------------------------------------------------------
 # E-mail config
@@ -51,18 +51,27 @@ EMAIL_HOST_USER = os.environ.get('HURUMAP_EMAIL_HOST_USER', 'apikey')
 EMAIL_HOST_PASSWORD = os.environ.get('HURUMAP_EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = os.environ.get('HURUMAP_EMAIL_USE_TLS', True)
 
+
 # -------------------------------------------------------------------------------------
 # Wagtail config
 # -------------------------------------------------------------------------------------
 
-WAGTAIL_SITE_NAME = 'HURUmap'  # TODO: Fix
+WAGTAIL_SITE_NAME = HURUMAP['name']
 WAGTAIL_FRONTEND_LOGIN_URL = '/accounts/login/'
 
 WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = os.environ.get('HURUMAP_EMAIL_FROM', 'no-reply@hurumap.org')
 WAGTAILADMIN_NOTIFICATION_USE_HTML = True
 
-
 WAGTAIL_ENABLE_UPDATE_CHECK = False  # Because Wazimap doesn't work with Python3 yet.
+
+
+# -------------------------------------------------------------------------------------
+# Media Folder Setting
+# -------------------------------------------------------------------------------------
+
+MEDIA_ROOT = os.environ.get('DJANGO_MEDIA_ROOT', os.path.join(BASE_DIR, "media"))
+MEDIA_URL = '/media/'
+
 
 # -------------------------------------------------------------------------------------
 # Authentication Configs
@@ -102,6 +111,3 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
-
-
-

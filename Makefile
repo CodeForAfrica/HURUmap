@@ -1,36 +1,35 @@
-# HURUmap Makefile
-# ----------------
-
-# HURUmap base
-
-base:
-	docker build --no-cache -t codeforafrica/hurumap-base:0.1.2 contrib/base
-	docker build -t codeforafrica/hurumap-base:latest contrib/base
-	docker push codeforafrica/hurumap-base:0.1.2
-	docker push codeforafrica/hurumap-base:latest
-
-
-# HURUmap app
+COMPOSE = docker-compose
 
 build:
-	docker-compose build
-
-image-latest:
-	docker build --no-cache -t codeforafrica/hurumap:latest .
-	docker push codeforafrica/hurumap:latest
-
-image-release:
-	docker build --no-cache -t codeforafrica/hurumap:1.0.1
-	docker push codeforafrica/hurumap:1.0.1
-
-
-# Development
+	$(COMPOSE) build
 
 web:
-	rm -fr static/*  # Workaround for whitenoise busyness in dev
-	docker-compose up web
+	$(COMPOSE) up web
 
 compilescss:
-	docker-compose exec web ./manage.py compilescss
-	rm -fr static/*
-	docker-compose exec web ./manage.py collectstatic --noinput
+	$(COMPOSE) exec web python manage.py compilescss
+	$(COMPOSE) exec web python manage.py collectstatic --clear --noinput
+
+enter:
+	$(COMPOSE) exec web bash
+
+migrate:
+	$(COMPOSE) exec web python manage.py migrate
+
+loaddata:
+	# Load the DB with data
+	$(COMPOSE) exec -T web ./contrib/loaddata.sh
+
+createsuperuser:
+	$(COMPOSE) exec web python manage.py createsuperuser
+
+
+clean:
+	@find . -name "*.pyc" -exec rm -rf {} \;
+	@find . -name "__pycache__" -delete
+
+release:
+	./contrib/docker/release.sh
+
+release-build:
+	./contrib/docker/release-build.sh

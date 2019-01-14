@@ -1,4 +1,4 @@
-version: '3.3'
+version: "3.7"
 
 services:
   db:
@@ -13,20 +13,14 @@ services:
       - PGPASSWORD=hurumap
 
   web:
-    build: .
+    build:
+      context: .
+      target: ${DOCKERFILE_TARGET:-hurumap}
     ports:
       - "8000:8000"
     depends_on:
       - db
     volumes:
       - ./:/src/hurumap
-    environment:
-      - DATABASE_URL=postgresql://hurumap:hurumap@db:5432/hurumap
-      - DJANGO_SECRET_KEY=somethingsecret
-      - HURUMAP_URL='http://localhost:8000'
-      - PGHOST=db
-      - PGDATABASE=hurumap
-      - PGUSER=hurumap
-      - PGPASSWORD=hurumap
-      - PYTHONDONTWRITEBYTECODE="True"
-      # - DJANGO_DEBUG=False  # For testing deploys
+    env_file:
+      - .env.example

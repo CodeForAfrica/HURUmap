@@ -12,6 +12,10 @@ Instead of re-inventing the wheel, HURUmap relies on the excellent [Wazimap](htt
 
 ## Usage
 
+TODO: How to build HURUmap-powered apps using opinionated Docker.
+
+### Install HURUmap Django App / package 
+
 1. Install the package
 
     ```
@@ -43,6 +47,83 @@ Instead of re-inventing the wheel, HURUmap relies on the excellent [Wazimap](htt
  
 
 6. Read the [full Wazimap](http://wazimap.readthedocs.org/en/latest/) documentation to get started.
+
+---
+
+## Contributing
+
+To ease contribution, our key principles are borrowed from (contrib)[https://github.com/contrib/contrib] where multiple programming languages and approaches can live together in harmony.
+
+To this end, we've created a [contrib](./contrib) folder that contains the following:
+1. [**Docker**](https://docs.docker.com/) scripts for the Django apps powering majority of the backend
+2. [**Yarn**](https://yarnpkg.com/en/) implementation for the frontend pieces (coming soon?)
+3. [**Makefile**](./Makefile) in the root directory to tie it all together with easy tasks
+
+For more details on contributing, please check out [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+
+## Development
+
+### Django Apps
+
+Quickly get started with HURUmap by running the following:
+
+```shell
+# 1. Build services:
+make build
+
+# 2. Start web server:
+make web
+
+# 3. In a new terminal window, load data:
+make loaddata
+```
+
+Visit http://localhost:8000 to view website.
+
+#### HURUmap Dashboard
+
+HURUmap comes packaged with built-in CMS using Wagtail. To work with the dashboard:
+
+```shell
+# 1. Target and build docker image
+export DOCKERFILE_TARGET="hurumap-dashboard"
+make build
+
+# 2. Start web server:
+make web
+
+# 3. In a new terminal window, create your first user:
+make createsuperuser
+```
+
+Visit http://localhost:8000/dashboard to log into the dashboard.
+
+To remove dashboard workings, stop all services and run;
+```shell
+unset DOCKERFILE_TARGET
+make build
+make web
+``` 
+*NOTE: Unless you remove the database container, all the database tables and their data will remain intact.*
+
+### Frontend UI (Coming Soon)
+
+TODO
+
+
+### Adding Data
+
+TODO
+
+## Deployment
+
+### Django Apps
+
+TODO
+
+### Frontend UI (Coming Soon)
+
+TODO
 
 ---
 
