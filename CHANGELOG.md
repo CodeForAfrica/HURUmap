@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 - Improve Docker
 - Decouple `hurumap.dashboard`
 - Added new Wazimap logo for dark backgrounds
+- Multiple Chart Qualifiers Support
 
 ### Changed
 - Hide Empty sections on the profile page
