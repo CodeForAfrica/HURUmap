@@ -44,11 +44,54 @@ TODO: How to build HURUmap-powered apps using opinionated Docker.
     ```python
        python manage.py createsuperuser
     ```
- 
 
 6. Read the [full Wazimap](http://wazimap.readthedocs.org/en/latest/) documentation to get started.
 
 ---
+
+Datasets and Releases
+=====================
+
+This HURUmap release takes advantage of datasets and releases for versioning data.
+A **dataset** is a collection of related **data tables**,
+such as a national census. A dataset can be updated with new
+**releases** every few years. Not all data data tables will always be
+updated in every release, so HURUmap lets you link data tables to
+releases individually.
+
+Sometimes a release has a different name to the original dataset. For
+example, South Africa conducts a full census every decade, but releases
+a community survey in between each full census. A community survey is a
+statistical sampling and is not a full census, so it would be incorrect
+to call them both "census". The results of the community survey are very
+similar to the census and are directly comparable. We consider census
+and community surveys to be different **releases** of the same
+**dataset**.
+
+Important
+
+You must add at least one **dataset** and one **release** before you can
+add any data tables. See below for details on how to do this.
+
+Create a Dataset and Release
+----------------------------
+
+1.  Go to the Django admin section at <http://localhost:8000/admin> and
+    log in.
+2.  Under **Wazimap**, click the **Add** button alongside **Datasets**.
+3.  Give your dataset a name.
+4.  Under **Releases**, fill in the name and the year of your first
+    release. For example, you could use `Census` and `2019`.
+5.  Click **Save**.
+
+Configuring Tables
+==================
+
+Datasets, releases and data tables are configured through the Django
+admin interface, at <http://localhost:8000/admin>.
+
+Once you have told Wazimap about your tables, it'll ensure that they
+exist in the database. You can then import the raw data from CSV.
 
 ## Contributing
 
