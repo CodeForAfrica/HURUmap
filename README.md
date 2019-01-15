@@ -48,8 +48,9 @@ TODO: How to build HURUmap-powered apps using opinionated Docker.
 6. Read the [full Wazimap](http://wazimap.readthedocs.org/en/latest/) documentation to get started.
 
 ---
+## New in v0.1
 
-## Datasets and Releases
+### Datasets and Releases
 
 This HURUmap release takes advantage of datasets and releases for versioning data.
 A **dataset** is a collection of related **data tables**,
@@ -72,7 +73,7 @@ Important
 You must add at least one **dataset** and one **release** before you can
 add any data tables. See below for details on how to do this.
 
-### Create a Dataset and Release
+#### Create a Dataset and Release
 
 1.  Go to the Django admin section at <http://localhost:8000/admin> and
     log in.
@@ -82,13 +83,20 @@ add any data tables. See below for details on how to do this.
     release. For example, you could use `Census` and `2019`.
 5.  Click **Save**.
 
-### Configuring Tables
+#### Configuring Tables
 
 Datasets, releases and data tables are configured through the Django
 admin interface, at <http://localhost:8000/admin>.
 
 Once you have told HURUmap about your tables, it'll ensure that they
 exist in the database. You can then import the raw data from CSV.
+
+### Multiple Chart Qualifiers Support
+
+
+
+### Hide Empty sections on the profile page
+
 
 ## Contributing
 
