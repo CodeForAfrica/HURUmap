@@ -1,8 +1,8 @@
 # HURUmap
 
-HURUmap is an interactive web platform that allows citizens and journalists to explore, visualise, and download census data. This gives them the power to give context to stories that was otherwise hard to spot. Accessible at https://hurumap.org
+HURUmap is an interactive web platform that allows citizens and journalists to explore, visualise, and download census data. This gives them the power to give context to stories that was otherwise hard to spot. Accessible at <https://hurumap.org>
 
-### Goals
+## Goals
 
 Instead of re-inventing the wheel, HURUmap relies on the excellent [Wazimap](https://github.com/OpenUpSA/wazimap) and Census Reporter projects and aims to do the following:
 
@@ -14,40 +14,46 @@ Instead of re-inventing the wheel, HURUmap relies on the excellent [Wazimap](htt
 
 TODO: How to build HURUmap-powered apps using opinionated Docker.
 
-### Install HURUmap Django App / package 
+### Install HURUmap Django App / package
 
 1. Install the package
 
-    ```
-    pip install -e git+https://github.com/CodeForAfrica/HURUmap.git@master#egg=hurumap
+   ```shell
+   pip install -e git+https://github.com/CodeForAfrica/HURUmap.git@master#egg=hurumap
 
-    ```
+   ```
 
 2. Add the app to installed apps
 
-    ```
-        INSTALLED_APPS = [
-            ...,
-            'hurumap'
-        ]
-    ```
-3. Add these to your `settings.py`
-    ```
+   ```python
+       INSTALLED_APPS = [
+           ...,
+           'hurumap'
+       ]
+   ```
 
-    ```
+3. Add these to your `settings.py`
+
+   ```python
+
+   ```
 
 4. Run migrations
-    ```
-        python manage.py migrate
-    ```
+
+   ```shell
+       python manage.py migrate
+   ```
+
 5. Create an admin user to access the CMS
-    ```python
-       python manage.py createsuperuser
-    ```
+
+   ```shell
+      python manage.py createsuperuser
+   ```
 
 6. Read the [full Wazimap](http://wazimap.readthedocs.org/en/latest/) documentation to get started.
 
 ---
+
 ## New in v0.1
 
 ### Datasets and Releases
@@ -73,13 +79,13 @@ add any data tables. See below for details on how to do this.
 
 #### Create a Dataset and Release
 
-1.  Go to the Django admin section at <http://localhost:8000/admin> and
-    log in.
-2.  Under **Wazimap**, click the **Add** button alongside **Datasets**.
-3.  Give your dataset a name.
-4.  Under **Releases**, fill in the name and the year of your first
-    release. For example, you could use `Census` and `2019`.
-5.  Click **Save**.
+1. Go to the Django admin section at <http://localhost:8000/admin> and
+   log in.
+2. Under **Wazimap**, click the **Add** button alongside **Datasets**.
+3. Give your dataset a name.
+4. Under **Releases**, fill in the name and the year of your first
+   release. For example, you could use `Census` and `2019`.
+5. Click **Save**.
 
 #### Configuring Tables
 
@@ -96,15 +102,12 @@ single `data-qualifier` attribute, the value of this attribute would need to be
 delimited to support multiple values. `\n` is used as delimiter.
 
 ```html
-
 ... data-qualifier="GF: Global Fund\nADF: African Development Fund" data-...
-
 ```
 
 By adding multiple qualifiers support, one can use qualifiers to add a legend to those charts,
 like histogram, that do not have a legend by default. This means shorter names can be used on
 the charts themselves leading to clean and easy to read charts.
-
 
 ### Hide Empty sections on the profile page
 
@@ -112,6 +115,7 @@ Use `LOCATION_NOT_FOUND_DIST` in HURUmap profile templates to either hide or cal
 there's a missing data.
 
 If our data distribution is called `budget`, then our code that hides the viz whenever data is missing:
+
 ```python
   {% if not budget.is_missing %}
     <article class="clearfix">
@@ -133,13 +137,12 @@ If our data distribution is called `budget`, then our code that hides the viz wh
   {% endif %}
 ```
 
-
-
 ## Contributing
 
-To ease contribution, our key principles are borrowed from (contrib)[https://github.com/contrib/contrib] where multiple programming languages and approaches can live together in harmony.
+To ease contribution, our key principles are borrowed from [contrib](https://github.com/contrib/contrib) where multiple programming languages and approaches can live together in harmony.
 
 To this end, we've created a [contrib](./contrib) folder that contains the following:
+
 1. [**Docker**](https://docs.docker.com/) scripts for the Django apps powering majority of the backend
 2. [**Yarn**](https://yarnpkg.com/en/) implementation for the frontend pieces (coming soon?)
 3. [**Makefile**](./Makefile) in the root directory to tie it all together with easy tasks
@@ -163,7 +166,7 @@ make web
 make loaddata
 ```
 
-Visit http://localhost:8000 to view website.
+Visit <http://localhost:8000> to view website.
 
 #### HURUmap Dashboard
 
@@ -181,20 +184,21 @@ make web
 make createsuperuser
 ```
 
-Visit http://localhost:8000/dashboard to log into the dashboard.
+Visit <http://localhost:8000/dashboard> to log into the dashboard.
 
 To remove dashboard workings, stop all services and run;
+
 ```shell
 unset DOCKERFILE_TARGET
 make build
 make web
-``` 
-*NOTE: Unless you remove the database container, all the database tables and their data will remain intact.*
+```
+
+_NOTE: Unless you remove the database container, all the database tables and their data will remain intact._
 
 ### Frontend UI (Coming Soon)
 
 TODO
-
 
 ### Adding Data
 
@@ -216,7 +220,7 @@ TODO
 
 GNU GPLv3
 
-Copyright (C) 2018  Code for Africa
+Copyright (C) 2018 Code for Africa
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -225,8 +229,8 @@ the Free Software Foundation, either version 3 of the License, or
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
+along with this program. If not, see <https://www.gnu.org/licenses/>.
