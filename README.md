@@ -68,8 +68,6 @@ similar to the census and are directly comparable. We consider census
 and community surveys to be different **releases** of the same
 **dataset**.
 
-Important
-
 You must add at least one **dataset** and one **release** before you can
 add any data tables. See below for details on how to do this.
 
