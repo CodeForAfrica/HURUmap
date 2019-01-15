@@ -54,88 +54,6 @@ TODO: How to build HURUmap-powered apps using opinionated Docker.
 
 ---
 
-## New in v0.1
-
-### Datasets and Releases
-
-This HURUmap release takes advantage of datasets and releases for versioning data.
-A **dataset** is a collection of related **data tables**,
-such as a national census. A dataset can be updated with new
-**releases** every few years. Not all data data tables will always be
-updated in every release, so HURUmap lets you link data tables to
-releases individually.
-
-Sometimes a release has a different name to the original dataset. For
-example, South Africa conducts a full census every decade, but releases
-a community survey in between each full census. A community survey is a
-statistical sampling and is not a full census, so it would be incorrect
-to call them both "census". The results of the community survey are very
-similar to the census and are directly comparable. We consider census
-and community surveys to be different **releases** of the same
-**dataset**.
-
-You must add at least one **dataset** and one **release** before you can
-add any data tables. See below for details on how to do this.
-
-#### Create a Dataset and Release
-
-1. Go to the Django admin section at <http://localhost:8000/admin> and
-   log in.
-2. Under **Wazimap**, click the **Add** button alongside **Datasets**.
-3. Give your dataset a name.
-4. Under **Releases**, fill in the name and the year of your first
-   release. For example, you could use `Census` and `2019`.
-5. Click **Save**.
-
-#### Configuring Tables
-
-Datasets, releases and data tables are configured through the Django
-admin interface, at <http://localhost:8000/admin>.
-
-Once you have told HURUmap about your tables, it'll ensure that they
-exist in the database. You can then import the raw data from CSV.
-
-### Multiple Chart Qualifiers Support
-
-This version adds the ability to have more than one qualifier. Due to the HTML limitation of
-single `data-qualifier` attribute, the value of this attribute would need to be
-delimited to support multiple values. `\n` is used as delimiter.
-
-```html
-... data-qualifier="GF: Global Fund\nADF: African Development Fund" data-...
-```
-
-By adding multiple qualifiers support, one can use qualifiers to add a legend to those charts,
-like histogram, that do not have a legend by default. This means shorter names can be used on
-the charts themselves leading to clean and easy to read charts.
-
-### Hide Empty sections on the profile page
-
-Use `LOCATION_NOT_FOUND_DIST` in HURUmap profile templates to either hide or call to action whenever
-there's a missing data.
-
-If our data distribution is called `budget`, then our code that hides the viz whenever data is missing:
-
-```python
-  {% if not budget.is_missing %}
-    <article class="clearfix">
-      <header class="section-contents">
-        <h1>Budget</h1>
-      </header>
-      <div class="section-container">
-        {% if not budget.government_expenditure_dist.is_missing %}
-          <section class="clearfix stat-row">
-            <h2 class="header-for-columns">Government Spending</h2>
-            <div class="column-full"
-                 id="chart-grouped_column-budget-government_expenditure_dist"
-                 data-stat-type="scaled-percentage">
-            </div>
-          </section>
-        {% endif %}
-      </div>
-    </article>
-  {% endif %}
-```
 
 ## Contributing
 
@@ -196,13 +114,90 @@ make web
 
 _NOTE: Unless you remove the database container, all the database tables and their data will remain intact._
 
-### Frontend UI (Coming Soon)
+### Frontend UI
 
-TODO
+#### Hide Empty sections on the profile page
+
+Use `LOCATION_NOT_FOUND_DIST` in HURUmap profile templates to either hide or call to action whenever
+there's a missing data.
+
+If our data distribution is called `budget`, then our code that hides the viz whenever data is missing:
+
+```python
+  {% if not budget.is_missing %}
+    <article class="clearfix">
+      <header class="section-contents">
+        <h1>Budget</h1>
+      </header>
+      <div class="section-container">
+        {% if not budget.government_expenditure_dist.is_missing %}
+          <section class="clearfix stat-row">
+            <h2 class="header-for-columns">Government Spending</h2>
+            <div class="column-full"
+                 id="chart-grouped_column-budget-government_expenditure_dist"
+                 data-stat-type="scaled-percentage">
+            </div>
+          </section>
+        {% endif %}
+      </div>
+    </article>
+  {% endif %}
+```
+
+#### Multiple Chart Qualifiers Support
+
+This version adds the ability to have more than one qualifier. Due to the HTML limitation of
+single `data-qualifier` attribute, the value of this attribute would need to be
+delimited to support multiple values. `\n` is used as delimiter.
+
+```html
+... data-qualifier="GF: Global Fund\nADF: African Development Fund" data-...
+```
+
+By adding multiple qualifiers support, one can use qualifiers to add a legend to those charts,
+like histogram, that do not have a legend by default. This means shorter names can be used on
+the charts themselves leading to clean and easy to read charts.
 
 ### Adding Data
 
-TODO
+#### Datasets and Releases
+
+This HURUmap release takes advantage of datasets and releases for versioning data.
+A **dataset** is a collection of related **data tables**,
+such as a national census. A dataset can be updated with new
+**releases** every few years. Not all data data tables will always be
+updated in every release, so HURUmap lets you link data tables to
+releases individually.
+
+Sometimes a release has a different name to the original dataset. For
+example, South Africa conducts a full census every decade, but releases
+a community survey in between each full census. A community survey is a
+statistical sampling and is not a full census, so it would be incorrect
+to call them both "census". The results of the community survey are very
+similar to the census and are directly comparable. We consider census
+and community surveys to be different **releases** of the same
+**dataset**.
+
+You must add at least one **dataset** and one **release** before you can
+add any data tables. See below for details on how to do this.
+
+##### Create a Dataset and Release
+
+1. Go to the Django admin section at <http://localhost:8000/admin> and
+   log in.
+2. Under **Wazimap**, click the **Add** button alongside **Datasets**.
+3. Give your dataset a name.
+4. Under **Releases**, fill in the name and the year of your first
+   release. For example, you could use `Census` and `2019`.
+5. Click **Save**.
+
+##### Configuring Tables
+
+Datasets, releases and data tables are configured through the Django
+admin interface, at <http://localhost:8000/admin>.
+
+Once you have told HURUmap about your tables, it'll ensure that they
+exist in the database. You can then import the raw data from CSV.
 
 ## Deployment
 
@@ -211,8 +206,6 @@ TODO
 TODO
 
 ### Frontend UI (Coming Soon)
-
-TODO
 
 ---
 
