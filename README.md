@@ -93,9 +93,48 @@ exist in the database. You can then import the raw data from CSV.
 
 ### Multiple Chart Qualifiers Support
 
+This version adds the ability to have more than one qualifier. Due to the HTML limitation of
+single `data-qualifier` attribute, the value of this attribute would need to be
+delimited to support multiple values. `\n` is used as delimiter.
+
+```html
+
+... data-qualifier="GF: Global Fund\nADF: African Development Fund" data-...
+
+```
+
+By adding multiple qualifiers support, one can use qualifiers to add a legend to those charts,
+like histogram, that do not have a legend by default. This means shorter names can be used on
+the charts themselves leading to clean and easy to read charts.
 
 
 ### Hide Empty sections on the profile page
+
+Use `LOCATION_NOT_FOUND_DIST` in HURUmap profile templates to either hide or call to action whenever
+there's a missing data.
+
+If our data distribution is called `budget`, then our code that hides the viz whenever data is missing:
+```python
+  {% if not budget.is_missing %}
+    <article class="clearfix">
+      <header class="section-contents">
+        <h1>Budget</h1>
+      </header>
+      <div class="section-container">
+        {% if not budget.government_expenditure_dist.is_missing %}
+          <section class="clearfix stat-row">
+            <h2 class="header-for-columns">Government Spending</h2>
+            <div class="column-full"
+                 id="chart-grouped_column-budget-government_expenditure_dist"
+                 data-stat-type="scaled-percentage">
+            </div>
+          </section>
+        {% endif %}
+      </div>
+    </article>
+  {% endif %}
+```
+
 
 
 ## Contributing
