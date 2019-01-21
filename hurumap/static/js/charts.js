@@ -1507,9 +1507,7 @@ function Chart(options) {
       container
         .append("span")
         .classed("chart-qualifier", true)
-        .append("a")
-        .attr("href", "#citations")
-        .text("Source: " + chart.chartRelease);
+        .text("* " + chart.chartRelease + " Release");
 
       chart.updateSettings({
         height: parseInt(chart.settings.height) + 20

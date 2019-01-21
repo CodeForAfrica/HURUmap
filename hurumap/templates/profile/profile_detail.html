@@ -928,6 +928,7 @@ var makeCharts = function() {
             thisQualifier = $(this).data('qualifier') || null,
             thisSourceLink = $(this).data('source-link') || null,
             thisSourceTitle = $(this).data('source-title') || null,
+            thisRelease = $(this).data('release') || null,
             geographyData = profileData['geography'],
             comparisonLevels = {{ WAZIMAP.comparative_levels|safe }};
         // allow arbitrary nesting in API data structure
@@ -938,7 +939,12 @@ var makeCharts = function() {
             }
         }
 
-        // Display the source specified in data-qualifier attribute,
+        // TODO(kilemensi): Some ,anually created chart data do not contain
+        // metadata information. This should be checked and fixed in python
+        // in future releases but for now, lets "bandage" it here.
+        chartData['metadata'] = chartData['metadata'] || {}
+
+        // Display the qualifier specified in data-qualifier attribute,
         // else display the metadata qualifier
         var chartQualifier = thisQualifier || chartData['metadata']['qualifier'] || null;
 
@@ -948,14 +954,10 @@ var makeCharts = function() {
         var chartSourceLink = thisSourceLink || metadataSource.link;
         var chartSourceTitle = thisSourceTitle || metadataSource.title;
 
-        // determine whether data point is from anything other
-        // than the primary ACS release for this page
-        for (var key in chartData) if (chartData.hasOwnProperty(key)) break;
-        var thisRelease = chartData[key]['acs_release'],
-            noteRelease = (thisRelease != defaultDataRelease) ? thisRelease + ' data' : null;
-
-        /*chartQualifier = (chartQualifier && noteRelease) ? Array(chartQualifier, noteRelease)
-            .filter(function(n) { return n }).join('; ') : null;*/
+        // Display the release specified in data-release, else display the metadata release
+        var dataRelease = chartData['metadata']['release'];
+        var chartRelease = thisRelease ? thisRelease : dataRelease;
+        var chartReleaseYear = chartData['metadata']['year'];
 
         var chartstuff = {
             chartContainer: chartID,
@@ -964,6 +966,8 @@ var makeCharts = function() {
             chartHeight: 160,
             chartData: chartData,
             chartQualifier: chartQualifier,
+            chartRelease: chartRelease,
+            chartReleaseYear: chartReleaseYear,
             chartSourceLink: chartSourceLink,
             chartSourceTitle: chartSourceTitle,
             chartChartTitle: chartChartTitle,
@@ -977,9 +981,6 @@ var makeCharts = function() {
         try {
             Charts[i] = Chart(chartstuff);
         } catch(e) {
-            console.log("Error making chart " + chartID)
-            console.log(e)
-            console.log(chartstuff);
         }
     });
 }
