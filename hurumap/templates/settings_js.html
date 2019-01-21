@@ -1,0 +1,8 @@
+{% extends 'settings_js.html' %}
+
+{% block settings_javascript %}
+{{block.super}}
+
+var SITE_TAGLINE = '{{ WAZIMAP.title_tagline }}';
+var SITE_DESCRIPTION = '{{ WAZIMAP.description }}';
+{% endblock settings_javascript %}
