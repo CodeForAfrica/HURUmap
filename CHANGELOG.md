@@ -8,9 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.1] - 2019-01-22
 
 ### Changed
-- Update charts.js and embed.chart.frame.js to use Wazimap releases features.
-- Update settings_js.html to include SITE_TAGLINE & SITE-DESCRIPTION
-- Bandage those dists without metadata not to through: Uncaught TypeError: Cannot read property 'qualifier' of undefined
+- Ensure dist metadata are initialized in JS before being accessed to avoid TypeError on reading undefined objects
 
 ## [0.1.0] - 2019-01-14
 
