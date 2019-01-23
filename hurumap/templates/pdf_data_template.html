@@ -28,11 +28,32 @@
 <div class="container">
   <h2>Geo - {{ geo }}</h2>
   <hr>
+
   <ul>
     {% for data in raw_data %}
       <li>
         <p>{{ data.description }}</p>
-      <code>{{ data.raw_data }}</code>
+        <table style="width:100%" class="table table-bordered">
+          <thead>
+          <tr>
+            {% for column in data.columns %}
+              <th scope="col">{{ column }}</th>
+            {% endfor %}
+          </tr>
+          </thead>
+
+          <tbody>
+          {% for data_item in data.raw_data %}
+            <tr scope="row">
+              {% for data_col in data_item %}
+                <td>{{ data_col }}</td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+          </tbody>
+
+
+        </table>
       </li>
     {% endfor %}
   </ul>

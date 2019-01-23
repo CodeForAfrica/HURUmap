@@ -3,7 +3,6 @@ from wazimap.views import GeographyDetailView
 from .utils import raw_data_for_geography
 
 
-
 class PDFView(GeographyDetailView):
     adjust_slugs = True
     default_geo_version = None

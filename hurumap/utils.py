@@ -12,10 +12,8 @@ def get_table_data(table_name, session, geo_code, geo_level):
         return {
             'description': description,
             'raw_data': data,
-            'table_name': table_name
+            'columns': Base.metadata.tables[table_name].columns.keys()
         }
-
-
 
 def raw_data_for_geography(geo_code, geo_level):
     Base.metadata.reflect()
