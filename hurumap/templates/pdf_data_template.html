@@ -26,7 +26,17 @@
 
 <body>
 <div class="container">
-  <h2>Geo - {{ geography.this.short_name }}</h2>
+  <h2>Geo - {{ geo }}</h2>
+  <hr>
+  <ul>
+    {% for data in raw_data %}
+      <li>
+        <p>{{ data.description }}</p>
+      <code>{{ data.raw_data }}</code>
+      </li>
+    {% endfor %}
+  </ul>
+
 
   <p>{{ profile_data_json }}</p>
 </div>
