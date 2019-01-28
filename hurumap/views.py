@@ -8,31 +8,13 @@ from weasyprint import HTML, CSS
 from .utils import raw_data_for_geography
 
 
-class PDFView(GeographyDetailView):
-    adjust_slugs = True
-    default_geo_version = None
-    template_name = 'pdf_data_template.html'
-
-    def get_context_data(self, *args, **kwargs):
-        page_context = {}
-
-        raw_data = raw_data_for_geography(self.geo.geo_code, self.geo.geo_level)
-        page_context['raw_data'] = raw_data
-        page_context['geo'] = self.geo
-        return page_context
-
-    def get_template_names(self):
-        return ['pdf_data_template.html']
-
-
 def pdf_view(request, **kwargs):
     version = request.GET.get('geo_version', None)
     geo_id = kwargs.get('geography_id', None)
 
     try:
         geo_level, geo_code = geo_id.split('-', 1)
-        geo = geo_data.get_geography(geo_code, geo_level,
-                                          version)
+        geo = geo_data.get_geography(geo_code, geo_level, version)
         page_context = {'geo': geo}
         raw_data = raw_data_for_geography(geo_code, geo_level)
         page_context['raw_data'] = raw_data

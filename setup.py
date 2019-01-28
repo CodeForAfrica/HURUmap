@@ -16,6 +16,7 @@ install_requires = [
     'wazimap>=2.0',
     'libsass==0.13.3',
     'whitenoise==3.3.1',
+    'WeasyPrint==0.42.3',
 ]
 
 setup(

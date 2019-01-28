@@ -33,3 +33,4 @@ release:
 
 release-build:
 	./contrib/docker/release-build.sh
+

@@ -5,6 +5,8 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get upgrade -y
 # Install Postgresql Client
 RUN apt-get install postgresql-client -y
+#Install os dependencies for weasyprint to generate pdf
+RUN apt-get install libcairo2 libpango-1.0-0 gir1.2-pango-1.0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 libffi-dev -y
 
 # Upgrade pip + setuptools
 RUN pip install -q -U pip setuptools
