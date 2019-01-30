@@ -938,6 +938,11 @@ var makeCharts = function() {
             }
         }
 
+        // Some, manually created chart data do not contain
+        // metadata information. This should be checked and fixed in python
+        // in future releases but for now, lets "bandage" it here.
+        chartData['metadata'] = chartData['metadata'] || {}
+
         // Display the source specified in data-qualifier attribute,
         // else display the metadata qualifier
         var chartQualifier = thisQualifier || chartData['metadata']['qualifier'] || null;
