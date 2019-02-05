@@ -47,15 +47,15 @@ HURUMAP['twitter'] = os.environ.get('HURUMAP_TWITTER', '@Code4Africa')
 HURUMAP['email'] = os.environ.get('HURUMAP_EMAIL', 'hello@hurumap.org')
 HURUMAP['blog_url'] = os.environ.get('HURUMAP_BLOG_URL', 'https://medium.com/code-for-africa')
 
-HURUMAP['github_url'] = os.environ.get('HURUMAP_GITHUB_URL', 'https://github.com/CodeForAfrica/HURUmap') 
-HURUMAP['openafrica_url'] = os.environ.get('HURUMAP_OPENAFRICA_URL', 'https://openafrica.net/') 
+HURUMAP['github_url'] = os.environ.get('HURUMAP_GITHUB_URL', 'https://github.com/CodeForAfrica/HURUmap')
+HURUMAP['openafrica_url'] = os.environ.get('HURUMAP_OPENAFRICA_URL', 'https://openafrica.net/')
 
 # -------------------------------------------------------------------------------------
 # Google Analytics
 
 # Default tracker. Blank means no default tracking will be set (see
 # `ga_tracking_ids` for multiple, named trackers support.
-HURUMAP['ga_tracking_id'] = os.environ.get('HURUMAP_GA_TRACKING_ID', 'UA-44795600-8') 
+HURUMAP['ga_tracking_id'] = os.environ.get('HURUMAP_GA_TRACKING_ID', 'UA-44795600-8')
 
 # Multiple trackers.
 # Supports sending data to multiple properties from a single page. All these
@@ -81,12 +81,7 @@ HURUMAP['default_geo_version'] = os.environ.get('HURUMAP_DEFAULT_GEO_VERSION', '
 HURUMAP['legacy_embed_geo_version'] = '2009'
 
 HURUMAP['geodata'] = 'hurumap.geo.GeoData'
-HURUMAP['geometry_data'] = {
-    '2009': {
-        'country': 'geo/country.topojson',
-        'county': 'geo/county.topojson'
-    }
-}
+HURUMAP['geometry_data'] = {}
 HURUMAP['levels'] = {
     'country': {
         'plural': 'countries',
@@ -101,6 +96,25 @@ HURUMAP['comparative_levels'] = ['country']
 # Map config
 HURUMAP['map_centre'] = [0.3051933453207569, 37.908818734483155]
 HURUMAP['map_zoom'] = 6
+
+#Mapit Config
+HURUMAP['mapit'] = {
+    'url': 'https://mapit.hurumap.org',
+    'country_code': 'KE',
+    'generations': {
+        '2009': '1',
+        None: '1',  #  this should be based on the default_geo_version wazimap setting
+    },
+    'code_type': 'KEN',
+    'level_simplify': {
+        'country': 0,
+        'county': 0
+    },
+    'map_country': {
+        'centre': [0.3051933453207569, 37.908818734483155],
+        'zoom': 6
+    }
+}
 
 
 # -------------------------------------------------------------------------------------
