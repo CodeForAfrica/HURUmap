@@ -98,6 +98,7 @@ HURUMAP['comparative_levels'] = ['country']
 HURUMAP['map_centre'] = [0.3051933453207569, 37.908818734483155]
 HURUMAP['map_zoom'] = 6
 
+
 # HURUMAP['geodata'] = 'hurumap.geo.GeoData'
 # HURUMAP['mapit'] = {}
 # HURUMAP['geometry_data'] = {
