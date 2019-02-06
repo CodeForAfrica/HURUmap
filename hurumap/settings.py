@@ -23,7 +23,6 @@ INSTALLED_APPS = ['hurumap'] + INSTALLED_APPS
 
 ROOT_URLCONF = 'hurumap.urls'
 
-
 # -------------------------------------------------------------------------------------
 # HURUmap Config
 # -------------------------------------------------------------------------------------
@@ -45,23 +44,26 @@ HURUMAP['title_tagline'] = 'Making Census Data Easy to Use'
 HURUMAP['facebook'] = os.environ.get('HURUMAP_FACEBOOK', 'CodeForAfrica')
 HURUMAP['twitter'] = os.environ.get('HURUMAP_TWITTER', '@Code4Africa')
 HURUMAP['email'] = os.environ.get('HURUMAP_EMAIL', 'hello@hurumap.org')
-HURUMAP['blog_url'] = os.environ.get('HURUMAP_BLOG_URL', 'https://medium.com/code-for-africa')
+HURUMAP['blog_url'] = os.environ.get('HURUMAP_BLOG_URL',
+                                     'https://medium.com/code-for-africa')
 
-HURUMAP['github_url'] = os.environ.get('HURUMAP_GITHUB_URL', 'https://github.com/CodeForAfrica/HURUmap')
-HURUMAP['openafrica_url'] = os.environ.get('HURUMAP_OPENAFRICA_URL', 'https://openafrica.net/')
+HURUMAP['github_url'] = os.environ.get('HURUMAP_GITHUB_URL',
+                                       'https://github.com/CodeForAfrica/HURUmap')
+HURUMAP['openafrica_url'] = os.environ.get('HURUMAP_OPENAFRICA_URL',
+                                           'https://openafrica.net/')
 
 # -------------------------------------------------------------------------------------
 # Google Analytics
 
 # Default tracker. Blank means no default tracking will be set (see
 # `ga_tracking_ids` for multiple, named trackers support.
-HURUMAP['ga_tracking_id'] = os.environ.get('HURUMAP_GA_TRACKING_ID', 'UA-44795600-8')
+HURUMAP['ga_tracking_id'] = os.environ.get('HURUMAP_GA_TRACKING_ID',
+                                           'UA-44795600-8')
 
 # Multiple trackers.
 # Supports sending data to multiple properties from a single page. All these
 # will be named trackers (t1, t2, ..., tn).
 HURUMAP['ga_tracking_ids'] = []
-
 
 # -------------------------------------------------------------------------------------
 # Geography Details
@@ -77,7 +79,8 @@ HURUMAP['default_profile'] = 'census'
 HURUMAP['profile_builder'] = 'hurumap.profiles.{}.get_profile'.format(
     hurumap_profile)
 
-HURUMAP['default_geo_version'] = os.environ.get('HURUMAP_DEFAULT_GEO_VERSION', '2009')
+HURUMAP['default_geo_version'] = os.environ.get('HURUMAP_DEFAULT_GEO_VERSION',
+                                                '2009')
 HURUMAP['legacy_embed_geo_version'] = '2009'
 
 HURUMAP['levels'] = {
@@ -95,65 +98,65 @@ HURUMAP['comparative_levels'] = ['country']
 HURUMAP['map_centre'] = [0.3051933453207569, 37.908818734483155]
 HURUMAP['map_zoom'] = 6
 
-HURUMAP['use_mapit'] = os.get('USE_MAPIT', False)
-if use_mapit:
-  # use mapit settings
-  HURUMAP['geodata'] = 'hurumap.mapit_geo.GeoData'
-  HURUMAP['geometry_data'] = {}
-  HURUMAP['mapit'] = {
-      'url': 'https://mapit.hurumap.org',
-      'country_code': 'KE',
-      'generations': {
-          '2009': '1',
-          None: '1',  #  this should be based on the default_geo_version wazimap setting
-      },
-      'code_type': 'KEN',
-      'level_simplify': {
-          'country': 0,
-          'county': 0
-      },
-      'map_country': {
-          'centre': [0.3051933453207569, 37.908818734483155],
-          'zoom': 6
-      }
-  }
-else:
-  # use normal geojson
-  HURUMAP['geodata'] = 'hurumap.geo.GeoData'
-  HURUMAP['mapit'] = {}
-  HURUMAP['geometry_data'] = {
-    '2009': {
-        'country': 'geo/country.topojson',
-        'county': 'geo/county.topojson'
+# HURUMAP['geodata'] = 'hurumap.geo.GeoData'
+# HURUMAP['mapit'] = {}
+# HURUMAP['geometry_data'] = {
+#     '2009': {
+#         'country': 'geo/country.topojson',
+#         'county': 'geo/county.topojson'
+#
+#     }
+# }
+
+HURUMAP['USE_MAPIT'] = os.environ.get('USE_MAPIT', False)
+
+if HURUMAP['USE_MAPIT']:
+    # use mapit settings
+    HURUMAP['geodata'] = 'hurumap.mapit_geo.GeoData'
+    HURUMAP['geometry_data'] = {}
+    HURUMAP['mapit'] = {
+        'url': 'https://mapit.hurumap.org',
+        'country_code': 'KE',
+        'generations': {
+            '2009': '1',
+            None: '1',
+            # this should be based on the default_geo_version wazimap setting
+        },
+        'code_type': 'KEN',
+        'level_simplify': {
+            'country': 0,
+            'county': 0
+        },
+        'map_country': {
+            'centre': [0.3051933453207569, 37.908818734483155],
+            'zoom': 6
+        }
     }
-
-
-
 
 # -------------------------------------------------------------------------------------
 # Showcase Stories
 
 HURUMAP['showcase_stories'] = [
     {
-        'title':  'Marakwet locals intercept lorry ferrying 30 donkeys as demand for meat rises',
+        'title': 'Marakwet locals intercept lorry ferrying 30 donkeys as demand for meat rises',
         'author': 'Stephen Rutto',
-        'brief':  'Marakwet East locals intercepted a lorry transporting 30 donkeys in Chesoi, on suspicion that the animals had been stolen from from other areas.',
-        'link':   'http://www.the-star.co.ke/news/2016/11/04/marakwet-locals-intercept-lorry-ferrying-30-donkeys-as-demand-for-meat_c1449795',
-        'img':    STATIC_URL + 'img/showcase/donkeys.jpg'
+        'brief': 'Marakwet East locals intercepted a lorry transporting 30 donkeys in Chesoi, on suspicion that the animals had been stolen from from other areas.',
+        'link': 'http://www.the-star.co.ke/news/2016/11/04/marakwet-locals-intercept-lorry-ferrying-30-donkeys-as-demand-for-meat_c1449795',
+        'img': STATIC_URL + 'img/showcase/donkeys.jpg'
     },
     {
-        'title':  'Two suspected thugs shot dead in Nairobi as crime rate soars',
+        'title': 'Two suspected thugs shot dead in Nairobi as crime rate soars',
         'author': 'Nancy Agutu',
-        'brief':  'Two suspected thugs were shot dead in two separate incidents on Tuesday evening, and three guns with more than 30 bullets recovered.',
-        'link':   'http://www.the-star.co.ke/news/2016/10/19/two-suspected-thugs-shot-dead-in-nairobi-as-crime-rate-soars_c1440749',
-        'img':    STATIC_URL + 'img/showcase/crime.jpg'
+        'brief': 'Two suspected thugs were shot dead in two separate incidents on Tuesday evening, and three guns with more than 30 bullets recovered.',
+        'link': 'http://www.the-star.co.ke/news/2016/10/19/two-suspected-thugs-shot-dead-in-nairobi-as-crime-rate-soars_c1440749',
+        'img': STATIC_URL + 'img/showcase/crime.jpg'
     },
     {
-        'title':  'Narok, Homa Bay and West Pokot top in early pregnancy',
+        'title': 'Narok, Homa Bay and West Pokot top in early pregnancy',
         'author': 'Monicah Mwangi',
-        'brief':  'About one in every five teenage girls between 15-19 years have either had a live birth or are pregnant with their first child, according to a report by the United Nations Population Fund.',
-        'link':   'http://www.the-star.co.ke/news/2016/11/02/narok-homa-bay-and-west-pokot-top-in-early-pregnancy_c1447958',
-        'img':    STATIC_URL + 'img/showcase/early-pregnancy.jpg'
+        'brief': 'About one in every five teenage girls between 15-19 years have either had a live birth or are pregnant with their first child, according to a report by the United Nations Population Fund.',
+        'link': 'http://www.the-star.co.ke/news/2016/11/02/narok-homa-bay-and-west-pokot-top-in-early-pregnancy_c1447958',
+        'img': STATIC_URL + 'img/showcase/early-pregnancy.jpg'
     }
 ]
 
@@ -225,7 +228,6 @@ HURUMAP['topics']['development'] = {
     ],
 }
 
-
 # -------------------------------------------------------------------------------------
 # Releases
 
@@ -241,9 +243,7 @@ HURUMAP['available_release_years'] = {
     'county': [2015, 2017]
 }
 
-
 WAZIMAP = HURUMAP
-
 
 # -------------------------------------------------------------------------------------
 # Database Configs
@@ -257,7 +257,6 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 DATABASES['default']['TEST'] = {
     'NAME': 'hurumap_test',
 }
-
 
 # -------------------------------------------------------------------------------------
 # Logging Configs
