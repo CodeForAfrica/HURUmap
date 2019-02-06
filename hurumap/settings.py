@@ -80,8 +80,6 @@ HURUMAP['profile_builder'] = 'hurumap.profiles.{}.get_profile'.format(
 HURUMAP['default_geo_version'] = os.environ.get('HURUMAP_DEFAULT_GEO_VERSION', '2009')
 HURUMAP['legacy_embed_geo_version'] = '2009'
 
-HURUMAP['geodata'] = 'hurumap.geo.GeoData'
-HURUMAP['geometry_data'] = {}
 HURUMAP['levels'] = {
     'country': {
         'plural': 'countries',
@@ -97,24 +95,39 @@ HURUMAP['comparative_levels'] = ['country']
 HURUMAP['map_centre'] = [0.3051933453207569, 37.908818734483155]
 HURUMAP['map_zoom'] = 6
 
-#Mapit Config
-HURUMAP['mapit'] = {
-    'url': 'https://mapit.hurumap.org',
-    'country_code': 'KE',
-    'generations': {
-        '2009': '1',
-        None: '1',  #  this should be based on the default_geo_version wazimap setting
-    },
-    'code_type': 'KEN',
-    'level_simplify': {
-        'country': 0,
-        'county': 0
-    },
-    'map_country': {
-        'centre': [0.3051933453207569, 37.908818734483155],
-        'zoom': 6
+HURUMAP['use_mapit'] = os.get('USE_MAPIT', False)
+if use_mapit:
+  # use mapit settings
+  HURUMAP['geodata'] = 'hurumap.mapit_geo.GeoData'
+  HURUMAP['geometry_data'] = {}
+  HURUMAP['mapit'] = {
+      'url': 'https://mapit.hurumap.org',
+      'country_code': 'KE',
+      'generations': {
+          '2009': '1',
+          None: '1',  #  this should be based on the default_geo_version wazimap setting
+      },
+      'code_type': 'KEN',
+      'level_simplify': {
+          'country': 0,
+          'county': 0
+      },
+      'map_country': {
+          'centre': [0.3051933453207569, 37.908818734483155],
+          'zoom': 6
+      }
+  }
+else:
+  # use normal geojson
+  HURUMAP['geodata'] = 'hurumap.geo.GeoData'
+  HURUMAP['mapit'] = {}
+  HURUMAP['geometry_data'] = {
+    '2009': {
+        'country': 'geo/country.topojson',
+        'county': 'geo/county.topojson'
     }
-}
+
+
 
 
 # -------------------------------------------------------------------------------------
