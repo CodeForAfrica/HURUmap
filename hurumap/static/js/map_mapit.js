@@ -149,5 +149,6 @@ function MapItGeometryLoader() {
           });
         });
     };
+  }
 
 GeometryLoader = new MapItGeometryLoader();
