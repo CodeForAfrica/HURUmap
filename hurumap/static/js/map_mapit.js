@@ -82,7 +82,7 @@ function MapItGeometryLoader() {
         d3.json(this.mapit_url + url_, function(error, data) {
           var areas = Object.keys(data);
           areas = areas.join();
-          var url = '/areas/' + areas + '.geojson';
+          var url = '/areas/' + areas + '.geojson?simplify_tolerance='+ simplify;
 
           d3.json(self.mapit_url + url, function(error, geojson) {
               var features = _.values(geojson.features);
@@ -112,7 +112,7 @@ function MapItGeometryLoader() {
           d3.json(self.mapit_url + url, function(error, json) {
             let children_Ids = Object.keys(json);
             children_Ids = children_Ids.join();
-            let children_url = '/areas/' + children_Ids + '.geojson';
+            let children_url = '/areas/' + children_Ids + '.geojson?simplify_tolerance='+ simplify;
 
             d3.json(self.mapit_url + children_url, function(error, geojson) {
                 let features = _.values(geojson.features);
@@ -149,27 +149,5 @@ function MapItGeometryLoader() {
           });
         });
     };
-
-    this.loadGeometrySet = function(levelset, level, geo_version, success) {
-        var generation = MAPIT.generations[geo_version];
-        var url_ = '/areas/' + level.toUpperCase();
-        url_ = url_ + '?generation=' + generation + '&country=' + MAPIT.country_code;
-
-        d3.json(this.mapit_url + url_, function(error, data) {
-          var areas = Object.keys(data);
-          areas = areas.join();
-          var url = '/areas/' + areas + '.geojson';
-
-          d3.json(self.mapit_url + url, function(error, geojson) {
-              var features = _.values(geojson.features);
-              _.each(features, function(feature) {
-                self.decorateFeature(feature, level, MAPIT.country_code);
-              });
-              success({features: features});
-          });
-
-        });
-    };
-}
 
 GeometryLoader = new MapItGeometryLoader();
