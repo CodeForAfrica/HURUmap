@@ -159,7 +159,7 @@ var ProfileMaps = function() {
                     layer.setStyle(self.layerStyle);
                 });
                 layer.on('click', function() {
-                  var uri = '/areas/'+ feature.properties.name+'?generation=1' + '&type=';
+                  var uri = '/areas/'+ feature.properties.name.toLowerCase()+'?generation=1' + '&type=';
                   uri = uri + feature.properties.level.toUpperCase() + '&country='+ feature.properties.country_code;
                   d3.json(url + uri,  function(error, data) {
                     if (error) return console.warn(error);
