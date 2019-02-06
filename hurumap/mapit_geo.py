@@ -1,10 +1,17 @@
+import logging
+
+import requests
 from django.conf import settings
-from wazimap.geo import GeoData as WazimapGeoData
+from shapely.geometry import asShape
+from wazimap.geo import GeoData as WazimapGeoData, LocationNotFound
 import settings
 
-MAPIT_SETTINGS = settings.HURUMAP['mapit'];
+log = logging.getLogger(__name__)
 
-class GeoData (WazimapGeoData):
+MAPIT_SETTINGS = settings.HURUMAP['mapit']
+
+
+class GeoData(WazimapGeoData):
     def get_geometry(self, geo):
         """ Get the geometry description for a geography. This is a dict
         with two keys, 'properties' which is a dict of properties,
