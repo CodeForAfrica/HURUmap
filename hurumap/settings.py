@@ -95,7 +95,9 @@ HURUMAP['comparative_levels'] = ['country']
 HURUMAP['map_centre'] = [0.3051933453207569, 37.908818734483155]
 HURUMAP['map_zoom'] = 6
 
-HURUMAP['use_mapit'] = os.get('USE_MAPIT', False)
+use_mapit = os.get('USE_MAPIT', False)
+HURUMAP['use_mapit'] = use_mapit
+
 if use_mapit:
   # use mapit settings
   HURUMAP['geodata'] = 'hurumap.mapit_geo.GeoData'
