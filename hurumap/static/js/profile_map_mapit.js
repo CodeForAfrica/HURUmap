@@ -106,7 +106,7 @@ var ProfileMaps = function() {
                 self.drawFocusFeature(this_geo);
             }
             // draw the others at this level
-            self.drawFeatures(features);
+            self.drawFeatures(features.features);
         });
 
         // load shapes at the child level, if any
