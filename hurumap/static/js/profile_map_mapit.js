@@ -44,7 +44,9 @@ var ProfileMaps = function() {
             self.map.setView(centre, zoom);
         }
         GeometryLoader.loadGeometryForLevel(geo_level, geo_version, function(features) {
-            var layer = self.drawFeatures(features);
+            console.log("drawing homepage");
+            console.log(features);
+            var layer = self.drawFeatures(features.features);
             if (!centre) {
                 self.map.fitBounds(layer.getBounds());
             }
@@ -92,21 +94,15 @@ var ProfileMaps = function() {
         //demarcation boundaries
         if (geo_level == 'country') {
             this.map.setView( this.mapit_country.centre, this.mapit_country.zoom);
+        } else {
+            // draw the current geo
+            GeometryLoader.loadGeometryForGeo(geo_level, geo_code, geo_version, function(feature) {
+              self.drawFocusFeature(feature);
+            });
         }
 
+        // draw the others at this level
         GeometryLoader.loadGeometryForLevel(geo_level, geo_version, function(features) {
-            // split into this geo, and everything else
-            var groups = _.partition(features.features, function(f) {
-                return f.properties.name.toLowerCase() == geo_name.toLowerCase();
-            });
-            console.log(groups);
-            var this_geo = groups[0] ? groups[0][0] : null;
-            features = groups[1];
-            // draw the current geo
-            if (this_geo) {
-                self.drawFocusFeature(this_geo);
-            }
-            // draw the others at this level
             self.drawFeatures(features.features);
         });
 

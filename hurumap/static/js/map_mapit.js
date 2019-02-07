@@ -145,7 +145,7 @@ function MapItGeometryLoader() {
               if (error) return console.warn(error);
               feature.properties = {}
               feature.properties['area_id'] = area.id;
-              success({feature: feature});
+              success(feature);
           });
         });
     };
