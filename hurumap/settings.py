@@ -111,7 +111,7 @@ HURUMAP['geometry_data'] = {
 
 HURUMAP['USE_MAPIT'] = os.environ.get('USE_MAPIT', False)
 
-if HURUMAP['USE_MAPIT']:
+if HURUMAP['USE_MAPIT'] == "True":
     # use mapit settings
     HURUMAP['geodata'] = 'hurumap.mapit_geo.GeoData'
     HURUMAP['geometry_data'] = {}
