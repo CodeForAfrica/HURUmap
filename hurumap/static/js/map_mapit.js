@@ -71,7 +71,7 @@ function MapItGeometryLoader() {
         feature.properties.country_code = country;
     };
 
-    this.loadGeometryForLevel = function(level, geo_version, success) {
+    this.loadGeometryForLevel = function(level, geo_version, geo_name, success) {
         var generation = MAPIT.generations[geo_version];
         var simplify = MAPIT.level_simplify[level];
         var mapit_codetype = this.mapit_codetype;
