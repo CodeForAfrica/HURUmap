@@ -94,10 +94,10 @@ var ProfileMaps = function() {
             this.map.setView( this.mapit_country.centre, this.mapit_country.zoom);
         }
 
-        GeometryLoader.loadGeometryForLevel(geo_level, geo_version, function(features) {
+        GeometryLoader.loadGeometryForLevel(geo_level, geo_version, geo_name,function(features) {
             // split into this geo, and everything else
             var groups = _.partition(features.features, function(f) {
-                return f.properties.name == geo_name;
+                return f.properties.name.toLowerCase() === geo_name.toLowerCase();
             });
             var this_geo = groups[0] ? groups[0][0] : null;
             features = groups[1];
@@ -160,13 +160,13 @@ var ProfileMaps = function() {
                 });
                 layer.on('click', function() {
                   var uri = '/areas/'+ feature.properties.name.toLowerCase()+'?generation=1' + '&type=';
-                  uri = uri + feature.properties.level.toUpperCase() + '&country='+ feature.properties.country_code;
+                  uri = uri + feature.properties.level.toUpperCase() + '&COUNTRY='+ feature.properties.country_code;
+                  console.log(url+uri);
                   d3.json(url + uri,  function(error, data) {
                     if (error) return console.warn(error);
                     var featureInfo = Object.values(data);
 
                     var geo_id = featureInfo[0]['codes'][mapit_codetype];
-                    console.log(geo_id);
                     //var geo_level = featureInfo[0]['type'];
                     window.location = '/profiles/' + geo_id + '/';
                   });
