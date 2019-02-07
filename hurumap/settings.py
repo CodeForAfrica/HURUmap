@@ -1,5 +1,6 @@
 from collections import OrderedDict
 from wazimap.settings import *  # noqa
+from distutils.util import strtobool
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -109,9 +110,10 @@ HURUMAP['geometry_data'] = {
     }
 }
 
-HURUMAP['USE_MAPIT'] = os.environ.get('USE_MAPIT', False)
+use_mapit = os.environ.get('USE_MAPIT', False)
+HURUMAP['USE_MAPIT'] = strtobool(use_mapit)
 
-if HURUMAP['USE_MAPIT'] == "True":
+if HURUMAP['USE_MAPIT']:
     # use mapit settings
     HURUMAP['geodata'] = 'hurumap.mapit_geo.GeoData'
     HURUMAP['geometry_data'] = {}
