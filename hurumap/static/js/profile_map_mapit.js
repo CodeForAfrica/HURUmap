@@ -94,11 +94,12 @@ var ProfileMaps = function() {
             this.map.setView( this.mapit_country.centre, this.mapit_country.zoom);
         }
 
-        GeometryLoader.loadGeometryForLevel(geo_level, geo_version, geo_name,function(features) {
+        GeometryLoader.loadGeometryForLevel(geo_level, geo_version, function(features) {
             // split into this geo, and everything else
             var groups = _.partition(features.features, function(f) {
-                return f.properties.name.toLowerCase() === geo_name.toLowerCase();
+                return f.properties.name.toLowerCase() == geo_name.toLowerCase();
             });
+            console.log(groups);
             var this_geo = groups[0] ? groups[0][0] : null;
             features = groups[1];
             // draw the current geo
@@ -159,9 +160,8 @@ var ProfileMaps = function() {
                     layer.setStyle(self.layerStyle);
                 });
                 layer.on('click', function() {
-                  var uri = '/areas/'+ feature.properties.name.toLowerCase()+'?generation=1' + '&type=';
-                  uri = uri + feature.properties.level.toUpperCase() + '&COUNTRY='+ feature.properties.country_code;
-                  console.log(url+uri);
+                  var uri = '/areas/'+ feature.properties.name.toLowerCase() + '?generation=1' + '&type=';
+                  uri = uri + feature.properties.level.toUpperCase() + '&country='+ feature.properties.country_code;
                   d3.json(url + uri,  function(error, data) {
                     if (error) return console.warn(error);
                     var featureInfo = Object.values(data);
