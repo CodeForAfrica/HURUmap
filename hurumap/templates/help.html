@@ -1,12 +1,13 @@
 {% extends 'help.html' %}{% load partition staticfiles %}
 {% block content %}
   <article id="help">
-      <header>
-        <h1 class="article-header">Using {{ HURUMAP.name }}</h1>
-      </header>
-      {% if HURUMAP.video_links %}
+    <header>
+      <h1 class="article-header">Using {{ HURUMAP.name }}</h1>
+    </header>
+    {% if HURUMAP.video_links %}
       <section class="clearfix">
-        <p>Check out the videos below for tips on how to use {{ HURUMAP.name }}.</p>
+        <p>{{ HURUMAP.name }} is built on
+          <a href="http://wazimap.readthedocs.org/">Wazimap</a> and provides all its functionality. Check out the videos below for tips on how to it /p>
         <span class="column-half">
           <h2 class="subhead">A quick introduction to {{ HURUMAP.name }}</h2>
           <div class="video-wrapper">
@@ -38,39 +39,6 @@
           </div>
         </span>
       </section>
-      {% endif %}
-
-      {% if HURUMAP.default_profile == 'census' %}
-      <section>
-        <h2 class="subhead" id="faq">Frequently Asked Questions</h2>
-
-        <ul>
-          <li>
-            <h3 id="faq-average-hh-income">How can I use the "Average annual household income" and "Monthly income" figures?</h3>
-            <p>The "Average annual household income" and "Monthly income" figures are only an estimate and should be used with care. You can compare
-            them between two places to get a general idea of how income differs, but don't rely on it as an accurate
-            indicator of disposable income.</p>
-
-            <p>We calculate the figure by finding the median income band, and then using the middle of that band's income. For example, if the median income band is "R153 801 - R307 600", then we use R230 700 as the average household income. The median income band is the band at which the incomes of half of households are at or below.</p>
-          </li>
-
-          <li>
-            <h3 id="faq-2011">Why is the data from 2011?</h3>
-            <p>Most of the {{ HURUMAP.name }} data is from the 2011 Census conducted by <a href="http://www.statssa.gov.za/">Stats SA</a>. A full census is only conducted every 10 years. The <a href="http://cs2016.statssa.gov.za/">Community Survey 2016</a> has additional data and we're looking at how to make it available in {{ HURUMAP.name }}. The Community Survey data is not available at ward level and is not as comprehensive as the 2011 Census.</p>
-          </li>
-
-          <li>
-            <h3 id="faq-municipal-elections">What does the Municipal Election data show?</h3>
-            <p>The municipal election "voter turnout" is based on the sum of the larger of the Ward and Proportional Representation ballots in each voting district. "Voters by party" shows the sum of the Ward and Proportional Representation ballots.</p>
-            <p>Elections in local municipalities that fall in district municipalities actually have a third ballot (DC40), because the district council is elected partly by the councils of the costituent local municipalities, and partly by this third ballot. However, we only use the Ward and PR ballots so that comparison between ward, municipality and provincial regions are valid. You can find all the data, as well as a more detailed explanation of how municipal elections work, from the <a href="http://www.elections.org.za/">Independent Electoral Commission</a>. LocalGovernmentAction.org provides <a href="http://www.localgovernmentaction.org/activists-guide/key-processes/elections">another explanation of how local government elections work</a>.</p>
-          </li>
-
-          <li>
-            <h3 id="faq-newsletter">How can I stay up to date?</h3>
-            <p>Follow <a href="https://twitter.com/@Wazimap">@Wazimap on Twitter</a> or <a href="http://eepurl.com/cOswIj">sign up to our newsletter</a>.</p>
-          </li>
-        </ul>
-      </section>
-      {% endif %}
+    {% endif %}
   </article>
 {% endblock %}
