@@ -1,0 +1,53 @@
+{% extends 'help.html' %}{% load partition staticfiles %}
+{% block content %}
+  <article id="help">
+    <header>
+      <h1 class="article-header">Using {{ HURUMAP.name }}</h1>
+    </header>
+    {% if HURUMAP.video_links %}
+      <section class="clearfix">
+        <h3>{{ HURUMAP.name }} is built on
+          <a href="http://wazimap.readthedocs.org/">Wazimap</a> and provides all
+          its functionality. Check out the videos below for tips on how to it
+        </h3>
+        <br>
+        <div class="row">
+          <span class="column-half">
+            <h2 class="subhead">A quick introduction to {{ HURUMAP.name }}</h2>
+            <div class="video-wrapper">
+              <iframe width="500" height="315" src="{{ HURUMAP.video_links.intro }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </span>
+          <span class="column-half">
+            <h2 class="subhead">Viewing data in tables</h2>
+            <div class="video-wrapper">
+              <iframe width="500" height="315" src="{{ HURUMAP.video_links.table_view }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </span>
+        </div>
+        <div class="row">
+          <span class="column-half">
+            <h2 class="subhead">Exploring data on a map</h2>
+            <div class="video-wrapper">
+              <iframe width="500" height="315" src="{{ HURUMAP.video_links.map_view }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </span>
+          <span class="column-half">
+            <h2 class="subhead">Comparing the distribution of data between places</h2>
+            <div class="video-wrapper">
+              <iframe width="500" height="315" src="{{ HURUMAP.video_links.distribution_view }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </span>
+        </div>
+        <div class="row">
+          <span class="column-half">
+            <h2 class="subhead">Comparing places side-by-side</h2>
+            <div class="video-wrapper">
+              <iframe width="500" height="315" src="{{ HURUMAP.video_links.comparing_places }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </span>
+        </div>
+      </section>
+    {% endif %}
+  </article>
+{% endblock %}
