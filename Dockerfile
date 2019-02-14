@@ -38,7 +38,7 @@ WORKDIR $APP_SRVPROJ
 
 # Workaround for dependency links
 # Comment out when changes / updates / PR accepted
-RUN pip install git+https://github.com/CodeForAfricaLabs/wazimap.git@openup/releases#egg=wazimap[gdal]
+RUN pip install git+https://github.com/OpenUpSA/wazimap.git@releases#egg=wazimap[gdal]
 
 # Install hurumap + wazimap
 RUN pip install -q -e .

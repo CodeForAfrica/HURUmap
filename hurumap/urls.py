@@ -5,4 +5,4 @@ from wazimap.urls import urlpatterns as wazimap_urlpatterns
 from hurumap import settings
 
 urlpatterns = static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + \
-              wazimap_urlpatterns
+              list(wazimap_urlpatterns)
