@@ -8,8 +8,6 @@ from wazimap.data.utils import (calculate_median, get_session, get_stat_data,
                                 current_context, dataset_context)
 from wazimap.geo import geo_data
 
-# ensure tables are loaded
-import hurumap.tables    # noqa
 
 log = logging.getLogger(__name__)
 
