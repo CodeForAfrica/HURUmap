@@ -16,9 +16,9 @@ MANAGERS = ADMINS
 TIME_ZONE = 'Africa/Nairobi'
 LANGUAGE_CODE = 'en-ke'
 
-TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
-    'hurumap.context_processors.hurumap_settings',
-)
+TEMPLATES[0]['OPTIONS']['context_processors'] = TEMPLATES[0]['OPTIONS'][
+                                                 'context_processors'] + [
+                                                 'hurumap.context_processors.hurumap_settings']
 
 INSTALLED_APPS = ['hurumap'] + INSTALLED_APPS
 
@@ -98,7 +98,6 @@ HURUMAP['comparative_levels'] = ['country']
 # Map config
 HURUMAP['map_centre'] = [0.3051933453207569, 37.908818734483155]
 HURUMAP['map_zoom'] = 6
-
 
 HURUMAP['geodata'] = 'hurumap.geo.GeoData'
 HURUMAP['mapit'] = {}
@@ -261,17 +260,19 @@ DATABASES['default']['TEST'] = {
     'NAME': 'hurumap_test',
 }
 
-
 # WAZIMAP TUTORIAL VIDEOS
 HURUMAP['video_links'] = OrderedDict([
-        ('intro', 'https://www.youtube.com/embed/lXKDBoRSqxo?list=PL7MJ_sFHs952CYcKHPQp786HVVy83nBwH'),
-        ('table_view', 'https://www.youtube.com/embed/KQ8jM51S1Ik?list=PL7MJ_sFHs952CYcKHPQp786HVVy83nBwH'),
-        ('map_view', 'https://www.youtube.com/embed/SFsTnYkTKx0?list=PL7MJ_sFHs952CYcKHPQp786HVVy83nBwH'),
-        ('distribution_view', 'https://www.youtube.com/embed/WCftaPfULSg?list=PL7MJ_sFHs952CYcKHPQp786HVVy83nBwH'),
-        ("comparing_places", 'https://www.youtube.com/embed/7mSZnXFHFxo?list=PL7MJ_sFHs952CYcKHPQp786HVVy83nBwH')
-    ])
-
-
+    ('intro',
+     'https://www.youtube.com/embed/lXKDBoRSqxo?list=PL7MJ_sFHs952CYcKHPQp786HVVy83nBwH'),
+    ('table_view',
+     'https://www.youtube.com/embed/KQ8jM51S1Ik?list=PL7MJ_sFHs952CYcKHPQp786HVVy83nBwH'),
+    ('map_view',
+     'https://www.youtube.com/embed/SFsTnYkTKx0?list=PL7MJ_sFHs952CYcKHPQp786HVVy83nBwH'),
+    ('distribution_view',
+     'https://www.youtube.com/embed/WCftaPfULSg?list=PL7MJ_sFHs952CYcKHPQp786HVVy83nBwH'),
+    ("comparing_places",
+     'https://www.youtube.com/embed/7mSZnXFHFxo?list=PL7MJ_sFHs952CYcKHPQp786HVVy83nBwH')
+])
 
 # -------------------------------------------------------------------------------------
 # Logging Configs
