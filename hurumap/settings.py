@@ -111,6 +111,7 @@ HURUMAP['geometry_data'] = {
 
 use_mapit = os.environ.get('USE_MAPIT', False)
 HURUMAP['USE_MAPIT'] = strtobool(str(use_mapit))
+HURUMAP['USE_MAPIT'] = True
 
 if HURUMAP['USE_MAPIT']:
     # use mapit settings
@@ -252,7 +253,7 @@ WAZIMAP = HURUMAP
 # -------------------------------------------------------------------------------------
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
-                              'postgresql://hurumap:hurumap@localhost/hurumap')
+                              'postgresql://hurumap:hurumap@localhost/hurumap_ke')
 
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True

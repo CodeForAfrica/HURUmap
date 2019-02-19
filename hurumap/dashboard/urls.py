@@ -12,7 +12,7 @@ from hurumap.dashboard.views import UserProfileView
 
 urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + \
               static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + \
-              hurumap_urlpatterns + [
+              [
                   url(r'^accounts/', include('allauth.urls')),
                   url(r'^accounts/profile/$',
                       UserProfileView.as_view(), name='user_profile'),
@@ -20,4 +20,4 @@ urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + \
                   url(r'^dashboard/', include(wagtailadmin_urls)),
                   url(r'^documents/', include(wagtaildocs_urls)),
                   url(r'^', include(wagtail_urls)),
-              ]
+              ] + hurumap_urlpatterns
