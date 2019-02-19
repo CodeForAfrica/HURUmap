@@ -253,7 +253,7 @@ WAZIMAP = HURUMAP
 # -------------------------------------------------------------------------------------
 
 DATABASE_URL = os.environ.get('DATABASE_URL',
-                              'postgresql://hurumap:hurumap@localhost/hurumap_ke')
+                              'postgresql://hurumap:hurumap@localhost/hurumap')
 
 DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 DATABASES['default']['ATOMIC_REQUESTS'] = True
