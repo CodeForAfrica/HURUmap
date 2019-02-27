@@ -65,11 +65,14 @@ WAGTAILADMIN_NOTIFICATION_USE_HTML = True
 
 WAGTAIL_ENABLE_UPDATE_CHECK = False  # Because Wazimap doesn't work with Python3 yet.
 
+TEMPLATES[0]['OPTIONS']['context_processors'] = TEMPLATES[0]['OPTIONS'][
+                                                 'context_processors'] + [
+                                                 'wagtail.contrib.settings.context_processors.settings']
+
 
 # -------------------------------------------------------------------------------------
 # Media Folder Setting
 # -------------------------------------------------------------------------------------
-
 MEDIA_ROOT = os.environ.get('DJANGO_MEDIA_ROOT', os.path.join(BASE_DIR, "media"))
 MEDIA_URL = '/media/'
 
