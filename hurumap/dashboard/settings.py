@@ -18,6 +18,7 @@ INSTALLED_APPS =  INSTALLED_APPS + [
         'wagtail.wagtailadmin',
         'wagtail.wagtailcore',
         'wagtail.contrib.wagtailstyleguide',
+        'wagtail.contrib.settings',
 
         'modelcluster',
         'taggit',
