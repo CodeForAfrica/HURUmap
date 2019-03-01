@@ -27,7 +27,9 @@ INSTALLED_APPS =  INSTALLED_APPS + [
         'allauth',
         'allauth.account',
         'allauth.socialaccount',
-        'allauth.socialaccount.providers.google'
+        'allauth.socialaccount.providers.google',
+
+        'hurumap.dashboard',
     ]
 
 MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
