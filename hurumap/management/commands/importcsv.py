@@ -1,3 +1,4 @@
+from __future__ import print_function
 import csv
 import logging
 
@@ -132,7 +133,7 @@ class Command(BaseCommand):
                         float(
                             row['total'])))
             # self.stdout.write("%s-%s" % (row['geo_level'], row['geo_code'])
-            print model_row
+            print(model_row)
             entry = self.table.model(**model_row)
 
             if not self.dryrun:
