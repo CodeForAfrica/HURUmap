@@ -48,7 +48,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='dataindicator',
             name='country',
-            field=django.contrib.postgres.fields.jsonb.JSONField(default=b''),
+            field=django.contrib.postgres.fields.jsonb.JSONField(default=b''.decode('utf-8')),
         ),
         migrations.AddField(
             model_name='dataindicator',
