@@ -6,6 +6,9 @@ class StaticStorage(S3Boto3Storage):
     location = 'static'
     default_acl = 'public-read'
 
+    def path(self, name):
+        return name
+
 
 class PublicMediaStorage(S3Boto3Storage):
     location = 'media'
