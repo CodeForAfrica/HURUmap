@@ -201,12 +201,23 @@ exist in the database. You can then import the raw data from CSV.
 
 ## Deployment
 
-### Django Apps
+### HURUmap Basic
 
 TODO
 
-### Frontend UI (Coming Soon)
+### HURUmap Dashboard
 
+TODO 
+
+**Static and Media Files deployment**
+
+Set these environment variables:
+```
+USE_S3 = True
+AWS_ACCESS_KEY_ID = ...
+AWS_SECRET_ACCESS_KEY = ...
+AWS_STORAGE_BUCKET_NAME = ...
+```
 ---
 
 ## License
