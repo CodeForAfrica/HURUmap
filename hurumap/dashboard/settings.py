@@ -30,6 +30,7 @@ INSTALLED_APPS =  INSTALLED_APPS + [
         'allauth.socialaccount.providers.google',
 
         'hurumap.dashboard',
+        'storages',
     ]
 
 MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
@@ -73,10 +74,30 @@ TEMPLATES[0]['OPTIONS']['context_processors'] = TEMPLATES[0]['OPTIONS'][
 
 
 # -------------------------------------------------------------------------------------
-# Media Folder Setting
+# Media and Static Files Settings
 # -------------------------------------------------------------------------------------
+
 MEDIA_ROOT = os.environ.get('DJANGO_MEDIA_ROOT', os.path.join(BASE_DIR, "media"))
 MEDIA_URL = '/media/'
+
+USE_S3 = strtobool(str(os.getenv('USE_S3', False)))
+
+if USE_S3:
+    # aws settings
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
+    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_DEFAULT_ACL = 'public-read'
+    AWS_S3_CUSTOM_DOMAIN = '{}.s3.{}.amazonaws.com'.format(AWS_STORAGE_BUCKET_NAME, AWS_S3_REGION_NAME)
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+    # s3 static settings
+    AWS_LOCATION = 'static'
+    STATIC_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+    STATICFILES_STORAGE = 'hurumap.dashboard.storage_backends.StaticStorage'
+    PUBLIC_MEDIA_LOCATION = 'media'
+    MEDIA_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, PUBLIC_MEDIA_LOCATION)
+    DEFAULT_FILE_STORAGE = 'hurumap.dashboard.storage_backends.PublicMediaStorage'
 
 
 # -------------------------------------------------------------------------------------
@@ -117,3 +138,4 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
