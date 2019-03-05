@@ -83,7 +83,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.environ.get('DJANGO_MEDIA_ROOT', os.path.join(BASE_DIR, "media"))
 MEDIA_URL = '/media/'
 
-USE_S3 = os.getenv('USE_S3') == 'TRUE'
+USE_S3 = strtobool(str(os.getenv('USE_S3', False)))
 
 if USE_S3:
     # aws settings
