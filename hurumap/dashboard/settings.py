@@ -77,9 +77,6 @@ TEMPLATES[0]['OPTIONS']['context_processors'] = TEMPLATES[0]['OPTIONS'][
 # Media and Static Files Settings
 # -------------------------------------------------------------------------------------
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
 MEDIA_ROOT = os.environ.get('DJANGO_MEDIA_ROOT', os.path.join(BASE_DIR, "media"))
 MEDIA_URL = '/media/'
 
