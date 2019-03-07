@@ -1,4 +1,3 @@
-from __future__ import print_function
 from django.core.urlresolvers import resolve
 from django.test import TestCase
 
