@@ -1,15 +1,5 @@
-FROM python:3.7-stretch as hurumap-base
+FROM python:3.7-stretch as hurumap
 ENV DEBIAN_FRONTEND noninteractive
-
-# Upgrade OS Dependencies + Install Postgresql Client
-RUN apt-get -qq update && apt-get -qq install postgresql-client -y --no-install-recommends && \
-    rm -rf /var/lib/apt/lists/*
-
-# Install and upgrade pip + setuptools + gunicorn with gevent
-RUN pip install -q -U pip setuptools gunicorn[gevent] shapely
-
-
-FROM hurumap-base as hurumap
 
 # Set env variables used in this Dockerfile
 # Local directory with project source
@@ -28,12 +18,13 @@ VOLUME ["$APP_SRVHOME/media/", "$APP_SRVHOME/logs/"]
 ADD $APP_SRC $APP_SRVPROJ
 WORKDIR $APP_SRVPROJ
 
-# Workaround for latest wazimap (releases branch)
-# Comment out when wazimpa package becomes regularly updated with latest features
-RUN pip install -q git+https://github.com/CodeForAfricaLabs/wazimap.git@feature/python3#egg=wazimap
-
-# Install hurumap + wazimap
-RUN pip install -q -e .
+# Install requirements
+RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends apt-utils \
+    && apt-get -qq install -y --no-install-recommends apt-utils postgresql-client \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && pip install -q -U pip setuptools gunicorn[gevent] shapely \
+        http://github.com/CodeForAfricaLabs/wazimap/archive/feature/python3.zip \
+    && pip install -q -e .[dashboard]
 
 # Expose port server
 EXPOSE 8000
@@ -43,22 +34,12 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD [ "--name", "hurumap", "--reload", "hurumap.wsgi:application" ]
 
 
-# HURUmap Dashboard
-# -----------------
-FROM hurumap as hurumap-dashboard
-
-ENV DJANGO_SETTINGS_MODULE="hurumap.dashboard.settings"
-
-RUN pip install -q -e .[dashboard]
-CMD [ "--name", "hurumap_dashboard", "--reload", "hurumap.wsgi:application" ]
-
-
 # HURUmap Kenya (for development purposes)
 # ----------------------------------------
 FROM hurumap as hurumap-kenya
 
 WORKDIR $APP_SRVHOME
-RUN git clone --single-branch --branch feature/python3 https://github.com/CodeForAfrica/HURUmap-apps.git hurumap_apps
+RUN wget -qO- https://github.com/CodeForAfrica/HURUmap-apps/archive/feature/python3.tar.gz | tar xvz - -C hurumap_apps
 
 WORKDIR $APP_SRVHOME/hurumap_apps
 
