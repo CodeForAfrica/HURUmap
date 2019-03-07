@@ -23,7 +23,7 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends apt-uti
     && apt-get -qq install -y --no-install-recommends apt-utils postgresql-client \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && pip install -q -U pip setuptools gunicorn[gevent] shapely \
-        http://github.com/CodeForAfricaLabs/wazimap/archive/feature/python3.zip \
+    git+https://github.com/CodeForAfricaLabs/wazimap.git@feature/python3#egg=wazimap \
     && pip install -q -e .[dashboard]
 
 # Expose port server
@@ -39,8 +39,10 @@ CMD [ "--name", "hurumap", "--reload", "hurumap.wsgi:application" ]
 FROM hurumap as hurumap-kenya
 
 WORKDIR $APP_SRVHOME
-RUN wget -qO- https://github.com/CodeForAfrica/HURUmap-apps/archive/feature/python3.tar.gz | tar xvz - -C hurumap_apps
+RUN mkdir hurumap_apps \
+    && wget -qO- https://github.com/CodeForAfrica/HURUmap-apps/archive/feature/python3.tar.gz | tar -xz --strip=1 -C hurumap_apps
 
 WORKDIR $APP_SRVHOME/hurumap_apps
 
+ENV HURUMAP_APP="hurumap_ke"
 ENV DJANGO_SETTINGS_MODULE="hurumap_ke.settings"
