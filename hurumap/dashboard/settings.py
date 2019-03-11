@@ -2,22 +2,22 @@ import os
 
 from hurumap.settings import *  #noqa
 
-INSTALLED_APPS =  INSTALLED_APPS + [
-        'django.contrib.sites',
-
+INSTALLED_APPS = INSTALLED_APPS + [
+        'django.contrib.auth',
+        'django.contrib.sessions',
         # Wagtail apps
-        'wagtail.wagtailforms',
-        'wagtail.wagtailredirects',
-        'wagtail.wagtailembeds',
-        'wagtail.wagtailsites',
-        'wagtail.wagtailusers',
-        'wagtail.wagtailsnippets',
-        'wagtail.wagtaildocs',
-        'wagtail.wagtailimages',
-        'wagtail.wagtailsearch',
-        'wagtail.wagtailadmin',
-        'wagtail.wagtailcore',
-        'wagtail.contrib.wagtailstyleguide',
+        'wagtail.contrib.forms',
+        'wagtail.contrib.redirects',
+        'wagtail.embeds',
+        'wagtail.sites',
+        'wagtail.users',
+        'wagtail.snippets',
+        'wagtail.documents',
+        'wagtail.images',
+        'wagtail.search',
+        'wagtail.admin',
+        'wagtail.core',
+        'wagtail.contrib.styleguide',
         'wagtail.contrib.settings',
 
         'modelcluster',
@@ -35,8 +35,8 @@ INSTALLED_APPS =  INSTALLED_APPS + [
 
 MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
     'django.contrib.messages.middleware.MessageMiddleware',
-    'wagtail.wagtailcore.middleware.SiteMiddleware',
-    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 )
 
 ROOT_URLCONF = 'hurumap.dashboard.urls'
