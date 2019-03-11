@@ -15,12 +15,22 @@ services:
   web:
     build:
       context: .
-      target: ${DOCKERFILE_TARGET:-hurumap}
+      target: ${DOCKERFILE_TARGET:-hurumap-kenya}
     ports:
       - "8000:8000"
     depends_on:
       - db
     volumes:
       - ./:/src/hurumap
-    env_file:
-      - .env.example
+    environment:
+      - DATABASE_URL=postgresql://hurumap:hurumap@db:5432/hurumap
+      - DJANGO_SECRET_KEY=somethingsecret
+      - HURUMAP_URL='http://localhost:8000'
+      - HURUMAP_APP=hurumap_ke
+      - PGHOST=db
+      - PGDATABASE=hurumap
+      - PGUSER=hurumap
+      - PGPASSWORD=hurumap
+      - PYTHONDONTWRITEBYTECODE="True"
+      - USE_MAPIT=True
+      - DJANGO_DEBUG=${DJANGO_DEBUG:-True} # For testing deploys

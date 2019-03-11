@@ -20,4 +20,5 @@ urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + \
                   url(r'^dashboard/', include(wagtailadmin_urls)),
                   url(r'^documents/', include(wagtaildocs_urls)),
                   url(r'^', include(wagtail_urls)),
-              ] + hurumap_urlpatterns
+              ] + \
+              hurumap_urlpatterns
