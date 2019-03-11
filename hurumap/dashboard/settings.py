@@ -3,8 +3,7 @@ import os
 from hurumap.settings import *  #noqa
 
 INSTALLED_APPS = INSTALLED_APPS + [
-        'django.contrib.auth',
-        'django.contrib.sessions',
+        'django.contrib.sites',
         # Wagtail apps
         'wagtail.contrib.forms',
         'wagtail.contrib.redirects',
