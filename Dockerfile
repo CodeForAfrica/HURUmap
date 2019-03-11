@@ -23,7 +23,7 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends apt-uti
     && apt-get -qq install -y --no-install-recommends apt-utils postgresql-client \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && pip install -q -U pip setuptools gunicorn[gevent] shapely \
-    git+https://github.com/CodeForAfricaLabs/wazimap.git@feature/python3#egg=wazimap \
+    git+https://github.com/CodeForAfricaLabs/wazimap.git#egg=wazimap \
     && pip install -q -e .[dashboard]
 
 # Expose port server
