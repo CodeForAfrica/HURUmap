@@ -86,6 +86,6 @@ setup(
         'dev': ['nose', 'flake8', 'pylint', 'autopep8'],
         'test': ['nose', 'flake8', 'pylint', 'autopep8'],
         'gdal': ['GDAL', 'Shapely>=1.5.13'],
-        'dashboard': ['wagtail>=1.13.1,<1.14', 'django-allauth==0.34.0'],
+        'dashboard': ['wagtail==2.3', 'django-allauth==0.34.0'],
     },
 )
