@@ -274,6 +274,13 @@ HURUMAP['video_links'] = OrderedDict([
      'https://www.youtube.com/embed/7mSZnXFHFxo?list=PL7MJ_sFHs952CYcKHPQp786HVVy83nBwH')
 ])
 
+# color scheme
+HURUMAP['theme'] = {
+    'colorbrewer': {'OrRd': ['#fff7ec', '#fee8c8', '#fdd49e', '#fdbb84', '#fc8d59', '#ef6548', '#d7301f', '#b30000', '#7f0000'],
+                    'BuPu': ['#f7fcfd', '#e0ecf4', '#bfd3e6', '#9ebcda', '#8c96c6', '#8c6bb1', '#88419d', '#810f7c', '#4d004b'],},
+    'colorscale': 'Set2S'
+}
+
 # -------------------------------------------------------------------------------------
 # Logging Configs
 # -------------------------------------------------------------------------------------
