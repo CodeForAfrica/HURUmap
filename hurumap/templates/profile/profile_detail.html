@@ -963,7 +963,7 @@ var makeCharts = function() {
         var chartRelease = thisRelease ? thisRelease : dataRelease;
         var chartReleaseYear = chartData['metadata']['year'];
 
-        var colorbrewer = {{ WAZIMAP.theme.colorbrewer | safe }};
+        var colorbrewer = {{ WAZIMAP.theme.color_schemes | safe }};
 
         var chartstuff = {
             chartContainer: chartID,
