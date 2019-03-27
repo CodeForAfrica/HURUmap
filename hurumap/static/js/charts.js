@@ -12,9 +12,9 @@ Chart({
 */
 
 function Chart(options) {
-  var chart = {};
-
-    defaultColorbrewer = {
+  // Colorbrewer color specifications and designs
+  // by Cynthia Brewer (http://colorbrewer.org/)
+  var defaultColorbrewer = {
       Set2: [
         "#66c2a5",
         "#fc8d62",
@@ -38,6 +38,8 @@ function Chart(options) {
         "#aaaaaa"
       ]
   };
+
+  var chart = {};
 
   chart.init = function(options) {
     // establish our base vars
