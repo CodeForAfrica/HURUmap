@@ -62,7 +62,7 @@ function Chart(options) {
     chart.chartNullLabel = options.chartNullLabel || "N/A";
     chart.decimalPlaces = parseInt(options.chartDecimalPlaces) || 0;
     chart.tableDecimalPlaces = parseInt(options.chartDecimalPlaces) || 1;
-    chart.colorbrewer = $.extend(defaultColorbrewer, options.colorbrewer);
+    chart.colorbrewer = $.extend({}, defaultColorbrewer, options.colorbrewer);
     chart.chartChartShowYAxis =
       options.chartChartShowYAxis ||
       (chart.chartStatType == "percentage" ? true : false);
