@@ -14,4 +14,4 @@ class Migration(migrations.Migration):
             name='dataindicator',
             options={'ordering': ['publisher_code']},
         ),
-]
+    ]
