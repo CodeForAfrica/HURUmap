@@ -963,7 +963,7 @@ var makeCharts = function() {
         var chartRelease = thisRelease ? thisRelease : dataRelease;
         var chartReleaseYear = chartData['metadata']['year'];
 
-        var colorbrewer = {{ HURUMAP.theme.charts.color_schemes | safe }};
+        var colorbrewer = {{ HURUMAP.theme.charts.colorbrewer | safe }};
 
         var chartstuff = {
             chartContainer: chartID,

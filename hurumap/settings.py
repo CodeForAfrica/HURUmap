@@ -17,8 +17,8 @@ TIME_ZONE = 'Africa/Nairobi'
 LANGUAGE_CODE = 'en-ke'
 
 TEMPLATES[0]['OPTIONS']['context_processors'] = TEMPLATES[0]['OPTIONS'][
-                                                 'context_processors'] + [
-                                                 'hurumap.context_processors.hurumap_settings']
+                                                    'context_processors'] + [
+                                                    'hurumap.context_processors.hurumap_settings']
 
 INSTALLED_APPS = ['hurumap'] + INSTALLED_APPS
 
@@ -275,11 +275,17 @@ HURUMAP['video_links'] = OrderedDict([
 ])
 
 # color scheme
-HURUMAP['theme']['charts'] = {
-    'colorbrewer': {'OrRd': ['#fff7ec', '#fee8c8', '#fdd49e', '#fdbb84', '#fc8d59', '#ef6548', '#d7301f', '#b30000', '#7f0000'],
-                    'BuPu': ['#f7fcfd', '#e0ecf4', '#bfd3e6', '#9ebcda', '#8c96c6', '#8c6bb1', '#88419d', '#810f7c', '#4d004b'],},
-    'colorscale': 'Set2S',
-    'chart_height': 160
+
+HURUMAP['theme'] = {
+    'charts': {
+        'colorbrewer': {
+            'OrRd': ['#fff7ec', '#fee8c8', '#fdd49e', '#fdbb84', '#fc8d59',
+                     '#ef6548', '#d7301f', '#b30000', '#7f0000'],
+            'BuPu': ['#f7fcfd', '#e0ecf4', '#bfd3e6', '#9ebcda', '#8c96c6',
+                     '#8c6bb1', '#88419d', '#810f7c', '#4d004b'], },
+        'colorscale': 'OrRd',
+        'chart_height': 160
+    }
 }
 
 # -------------------------------------------------------------------------------------
