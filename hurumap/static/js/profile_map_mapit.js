@@ -74,12 +74,11 @@ var ProfileMaps = function() {
     };
 
     this.addImagery = function() {
+        // settings_js.html sets MAPIT variable
+        var tileLayer = window.MAPIT.tile_layer;
+
         // add imagery
-        L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-          subdomains: 'abc',
-          maxZoom: 17
-        }).addTo(this.map);
+        L.tileLayer(tileLayer.url_template, tileLayer.options).addTo(this.map);
     };
 
     this.drawAllFeatures = function() {

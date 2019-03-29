@@ -132,6 +132,16 @@ if HURUMAP['USE_MAPIT']:
         'map_country': {
             'centre': [0.3051933453207569, 37.908818734483155],
             'zoom': 6
+        },
+
+        # leaflet JS tile layer settings: https://leafletjs.com/reference.html#tilelayer
+        'tile_layer': {
+            'url_template': '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            'options': {
+                'attribution': 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+                'subdomains': 'abc',
+                'maxZoom': 17
+            }
         }
     }
 
