@@ -278,12 +278,20 @@ HURUMAP['video_links'] = OrderedDict([
 
 HURUMAP['theme'] = {
     'charts': {
+        # http://colorbrewer2.org/
         'colorbrewer': {
-            'OrRd': ['#fff7ec', '#fee8c8', '#fdd49e', '#fdbb84', '#fc8d59',
-                     '#ef6548', '#d7301f', '#b30000', '#7f0000'],
-            'BuPu': ['#f7fcfd', '#e0ecf4', '#bfd3e6', '#9ebcda', '#8c96c6',
-                     '#8c6bb1', '#88419d', '#810f7c', '#4d004b'], },
-        'colorscale': 'Set2S',
+            'Set2': [
+                "#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3",
+                "#a6d854", "#ffd92f", "#e5c494", "#b3b3b3"
+            ],
+            # saturated version of Colorbrewer 'Set2' scheme, so the unhovered
+            # state, at 80% opacity, looks like the original colorbrewer color
+            'Set2S': [
+                "#33b5b5", "#ed8b69", "#6295cc", "#dd85c0",
+                "#8ecc23", "#fccd06", "#dbba97", "#aaaaaa"
+            ],
+        },
+        'color_scale': 'Set2S',
         'chart_height': 160
     }
 }
