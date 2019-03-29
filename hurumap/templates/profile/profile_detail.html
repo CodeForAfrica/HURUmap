@@ -69,7 +69,7 @@
       <section class="clearfix stat-row">
         <h2 class="header-for-columns"><a class="permalink"
                                           href="#pop_count"
-                                          id="pop_count">Population <i
+                                          id="pop_count">Population<i
             class="fa fa-link"></i></a></h2>
         <div class="column-quarter">
           {% include 'profile/_blocks/_stat_list.html' with stat=demographics.total_population stat_type='number' %}
@@ -962,11 +962,13 @@ var makeCharts = function() {
         var chartRelease = thisRelease ? thisRelease : dataRelease;
         var chartReleaseYear = chartData['metadata']['year'];
 
+        var colorbrewer = {{ HURUMAP.theme.charts.colorbrewer | safe }};
+
         var chartstuff = {
             chartContainer: chartID,
             chartDataKey: chartDataKey,
             chartType: chartType,
-            chartHeight: 160,
+            chartHeight: {{ HURUMAP.theme.charts.chart_height }},
             chartData: chartData,
             chartQualifier: chartQualifier,
             chartRelease: chartRelease,
@@ -979,7 +981,10 @@ var makeCharts = function() {
             chartStatType: chartStatType,
             chartDecimalPlaces: chartDecimalPlaces,
             geographyData: geographyData,
-            comparisonLevels: comparisonLevels
+            comparisonLevels: comparisonLevels,
+            colorbrewer: colorbrewer,
+            chartColorScale: '{{ HURUMAP.theme.charts.colorscale }}'
+
         }
         try {
             Charts[i] = Chart(chartstuff);
