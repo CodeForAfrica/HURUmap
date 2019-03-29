@@ -109,6 +109,17 @@ HURUMAP['geometry_data'] = {
     }
 }
 
+# leaflet JS tile layer (https://leafletjs.com/reference.html#tilelayer)
+HURUMAP['tile_layer'] = {
+    'url_template': '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    'options': {
+        'attribution': 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+        'subdomains': 'abc',
+        'maxZoom': 17
+    }
+}
+
+# Mapit (http://mapit.poplus.org)
 use_mapit = os.environ.get('USE_MAPIT', False)
 HURUMAP['USE_MAPIT'] = strtobool(str(use_mapit))
 

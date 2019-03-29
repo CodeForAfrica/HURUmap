@@ -1,6 +1,6 @@
 /***
  * A class that loads geography boundary information from
- * mapit.code4sa.org.
+ * mapit server e.g. mapit.hurumap.org.
  */
 function MapItGeometryLoader() {
     var self = this;
