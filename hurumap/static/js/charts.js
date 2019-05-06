@@ -37,7 +37,7 @@ function Chart(options) {
     chart.chartNullLabel = options.chartNullLabel || "N/A";
     chart.decimalPlaces = parseInt(options.chartDecimalPlaces) || 0;
     chart.tableDecimalPlaces = parseInt(options.chartDecimalPlaces) || 1;
-    chart.colorbrewer = options.colorbrewer;
+    chart.colorbrewer = options.colorbrewer || (window.HURUMAP_THEME && window.HURUMAP_THEME.charts.colorbrewer);
     chart.chartChartShowYAxis =
       options.chartChartShowYAxis ||
       (chart.chartStatType == "percentage" ? true : false);
