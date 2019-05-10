@@ -69,6 +69,8 @@ function makeEmbedFrame() {
     });
   };
 
+  $('#census-chart').css('background-color', 'red');
+
   embedFrame.makeChart = function() {
     embedFrame.resetContainer();
     embedFrame.makeChartPlace();
@@ -240,3 +242,4 @@ function makeEmbedFrame() {
   embedFrame.addChartListeners();
 }
 makeEmbedFrame();
+
