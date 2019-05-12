@@ -69,7 +69,7 @@ function makeEmbedFrame() {
     });
   };
 
-  $('#census-chart').css('background-color', 'red');
+  // $('#census-chart').css('background-color', 'red');
 
   embedFrame.makeChart = function() {
     embedFrame.resetContainer();

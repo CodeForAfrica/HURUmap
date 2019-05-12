@@ -10,6 +10,7 @@ from wazimap.urls import urlpatterns as wazimap_urlpatterns, \
 from wazimap.views import HomepageView, AboutView, HelpView, \
     GeographyDetailView, GeographyJsonView, GeographyCompareView, DataAPIView, \
     TableAPIView, GeoAPIView, TableDetailView, LocateView, PlaceSearchJson
+from .views import EmbedView
 
 from hurumap import settings
 
@@ -49,8 +50,7 @@ urlpatterns = static(settings.STATIC_URL,
                   #          so that settings can be injected
                   url(
                       regex='^embed/iframe.html$',
-                      view=cache_page(EMBED_CACHE_TIME)(TemplateView.as_view(
-                          template_name="embed/iframe.html")),
+                      view=cache_page(EMBED_CACHE_TIME)(EmbedView.as_view()),
                       kwargs={},
                       name='embed_iframe',
                   ),

@@ -68,5 +68,12 @@
         <script src="{% static 'js/charts.js' %}"></script>
         <script src="{% static 'js/vendor/flippant.min.js' %}"></script>
         <script src="{% static 'js/embed.chart.frame.js' %}"></script>
+        {% if charts %}
+    <script type="text/javascript">
+        console.log({{ charts|safe }});
+        var HURUMAP_THEME = window.HURUMAP_THEME || {};
+        HURUMAP_THEME.charts = {{ charts|safe }};
+    </script>
+{% endif %}
     </body>
 </html>

@@ -44,7 +44,7 @@ function Chart(options) {
     chart.chartHeight =
       options.chartHeight ||
       (chart.parentHeight < 180 ? 180 : chart.parentHeight);
-    chart.chartColorScale = options.chartColorScale || "Set2S";
+    chart.chartColorScale = options.chartColorScale || (window.HURUMAP_THEME && window.HURUMAP_THEME.charts.color_scale) || "Set2S";
     chart.screenPosition = document
       .getElementById(options.chartContainer)
       .getBoundingClientRect();
