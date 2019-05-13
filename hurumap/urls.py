@@ -10,7 +10,6 @@ from wazimap.urls import urlpatterns as wazimap_urlpatterns, \
 from wazimap.views import HomepageView, AboutView, HelpView, \
     GeographyDetailView, GeographyJsonView, GeographyCompareView, DataAPIView, \
     TableAPIView, GeoAPIView, TableDetailView, LocateView, PlaceSearchJson
-from .views import EmbedView
 
 from hurumap import settings
 
@@ -45,12 +44,11 @@ urlpatterns = static(settings.STATIC_URL,
                       kwargs={},
                       name='geography_detail',
                   ),
-
-                  # embeds - handles the legacy static/iframe.html URL to generate the page on the fly
-                  #          so that settings can be injected
                   url(
                       regex='^embed/iframe.html$',
-                      view=cache_page(EMBED_CACHE_TIME)(EmbedView.as_view()),
+                      view=cache_page(EMBED_CACHE_TIME)(
+                          TemplateView.as_view(
+                              template_name="embed/iframe.html")),
                       kwargs={},
                       name='embed_iframe',
                   ),
@@ -75,7 +73,7 @@ urlpatterns = static(settings.STATIC_URL,
 
                   # Custom data api
                   url(
-                      regex='^api/wazimap/1.0/data/show/latest$',
+                      regex='^api/hurumap/1.0/data/show/latest$',
                       view=cache_page(STANDARD_CACHE_TIME)(
                           DataAPIView.as_view()),
                       kwargs={'action': 'show'},
@@ -84,7 +82,7 @@ urlpatterns = static(settings.STATIC_URL,
 
                   # download API
                   url(
-                      regex='^api/wazimap/1.0/data/download/latest$',
+                      regex='^api/hurumap/1.0/data/download/latest$',
                       view=DataAPIView.as_view(),
                       kwargs={'action': 'download'},
                       name='api_download_data',
@@ -92,7 +90,7 @@ urlpatterns = static(settings.STATIC_URL,
 
                   # table search API
                   url(
-                      regex='^api/1.0/table$',
+                      regex='^api/hurumap/1.0/table$',
                       view=cache_page(STANDARD_CACHE_TIME)(
                           TableAPIView.as_view()),
                       kwargs={},
@@ -101,7 +99,7 @@ urlpatterns = static(settings.STATIC_URL,
 
                   # geo API
                   url(
-                      regex='^api/wazimap/1.0/geo/(?P<geo_id>\w+-\w+)/parents$',
+                      regex='^api/hurumap/1.0/geo/(?P<geo_id>\w+-\w+)/parents$',
                       view=cache_page(STANDARD_CACHE_TIME)(
                           GeoAPIView.as_view()),
                       kwargs={},
