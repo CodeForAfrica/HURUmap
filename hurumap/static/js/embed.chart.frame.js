@@ -17,6 +17,18 @@ function makeEmbedFrame() {
       embedFrame.params[decode(match[1])] = decode(match[2]);
     }
 
+    var hideTitle = embedFrame.params.hideTitle;
+    var removeBackground = embedFrame.params.removeBackground;
+  
+    if (hideTitle === 'true') {
+      $('.chart-header').hide();
+    }
+    
+    if (removeBackground === 'true') {
+      $('#census-chart').css("background-color", "none");
+      $('h3.chart-header').hide();
+    }
+
     embedFrame.trackEvent("Embedded Charts", "GeoID", embedFrame.params.geoID);
     embedFrame.trackEvent(
       "Embedded Charts",
@@ -107,7 +119,7 @@ function makeEmbedFrame() {
   embedFrame.makeChartAbout = function() {
     var aboutData = embedFrame.data.chartData.metadata;
     embedFrame.elements.chartAbout = [
-      '<h3 class="chart-header">' +
+      '<h3 class="chart-header" id="chart-header">' +
         embedFrame.data.geographyData["this"].full_name +
         "</h3>",
       '<h3 class="chart-title">' + embedFrame.params.chartTitle + "</h3>",
@@ -159,6 +171,7 @@ function makeEmbedFrame() {
         '<img src="' + SITE_URL + '/static/img/wazi-logo.png"> ' + SITE_NAME
       );
   };
+
 
   embedFrame.addChartListeners = function() {
     // allow for older IE
@@ -239,5 +252,10 @@ function makeEmbedFrame() {
   embedFrame.getChartData();
   embedFrame.addChartListeners();
 }
+
 makeEmbedFrame();
+
+
+
+
 
