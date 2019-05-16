@@ -160,7 +160,6 @@ function makeEmbedFrame() {
       );
   };
 
-
   embedFrame.addChartListeners = function() {
     // allow for older IE
     var eventMethod = window.addEventListener
@@ -240,10 +239,4 @@ function makeEmbedFrame() {
   embedFrame.getChartData();
   embedFrame.addChartListeners();
 }
-
 makeEmbedFrame();
-
-
-
-
-
