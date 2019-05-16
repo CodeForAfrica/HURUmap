@@ -107,7 +107,7 @@ function makeEmbedFrame() {
   embedFrame.makeChartAbout = function() {
     var aboutData = embedFrame.data.chartData.metadata;
     embedFrame.elements.chartAbout = [
-      '<h3 class="chart-header" id="chart-header">' +
+      '<h3 class="chart-header">' +
         embedFrame.data.geographyData["this"].full_name +
         "</h3>",
       '<h3 class="chart-title">' + embedFrame.params.chartTitle + "</h3>",
