@@ -199,6 +199,14 @@ admin interface, at <http://localhost:8000/admin>.
 Once you have told HURUmap about your tables, it'll ensure that they
 exist in the database. You can then import the raw data from CSV.
 
+
+#### Adding custom styles to your embeds
+
+You can customize the styles of your iframe embed by creating a `.css` file in your static directory
+and you append it to the iframe link like this
+`<iframe ... src="... &stylesheet=/static/css/embed_test.css" ... ></iframe>
+`
+
 ## Deployment
 
 ### HURUmap Basic

@@ -17,18 +17,6 @@ function makeEmbedFrame() {
       embedFrame.params[decode(match[1])] = decode(match[2]);
     }
 
-    var hideTitle = embedFrame.params.hideTitle;
-    var removeBackground = embedFrame.params.removeBackground;
-  
-    if (hideTitle === 'true') {
-      $('.chart-header').hide();
-    }
-    
-    if (removeBackground === 'true') {
-      $('#census-chart').css("background-color", "none");
-      $('h3.chart-header').hide();
-    }
-
     embedFrame.trackEvent("Embedded Charts", "GeoID", embedFrame.params.geoID);
     embedFrame.trackEvent(
       "Embedded Charts",
