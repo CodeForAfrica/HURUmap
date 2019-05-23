@@ -984,7 +984,9 @@ var makeCharts = function() {
             comparisonLevels: comparisonLevels,
             colorbrewer: colorbrewer,
             chartColorScale: '{{ HURUMAP.theme.charts.color_scale }}',
-            chartChartShowYAxis: chartChartShowYAxis
+	    
+	    // Y-Axis can be enabled for the whole site or per chart
+            chartChartShowYAxis: ('{{ HURUMAP.theme.charts.show_y_axis }}' || chartChartShowYAxis)
 
         }
         try {

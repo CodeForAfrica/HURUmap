@@ -38,9 +38,9 @@ function Chart(options) {
     chart.decimalPlaces = parseInt(options.chartDecimalPlaces) || 0;
     chart.tableDecimalPlaces = parseInt(options.chartDecimalPlaces) || 1;
     chart.colorbrewer = options.colorbrewer;
-    chart.chartChartShowYAxis =
-      options.chartChartShowYAxis ||
-      (chart.chartStatType == "percentage" ? true : false);
+    chart.chartChartShowYAxis = options.chartChartShowYAxis ||
+        (window.HURUMAP_THEME && window.HURUMAP_THEME.charts.show_y_axis) ||
+	(chart.chartStatType === "percentage" ? true : false);
     chart.chartHeight =
       options.chartHeight ||
       (chart.parentHeight < 180 ? 180 : chart.parentHeight);
