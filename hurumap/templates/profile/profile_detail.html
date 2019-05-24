@@ -983,8 +983,10 @@ var makeCharts = function() {
             geographyData: geographyData,
             comparisonLevels: comparisonLevels,
             colorbrewer: colorbrewer,
-            chartColorScale: '{{ HURUMAP.theme.charts.color_scale }}'
-
+            chartColorScale: '{{ HURUMAP.theme.charts.color_scale }}',
+	    
+	    // Y-Axis can be enabled for the whole site or per chart
+            chartChartShowYAxis: ({{ HURUMAP.theme.charts.show_y_axis|yesno:"true,false" }} || chartChartShowYAxis)
         }
         try {
             Charts[i] = Chart(chartstuff);

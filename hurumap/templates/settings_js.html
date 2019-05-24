@@ -2,10 +2,11 @@
 {% load jsonify %}
 
 {% block settings_javascript %}
-{{block.super}}
+  {{ block.super }}
 
-var SITE_TAGLINE = '{{ WAZIMAP.title_tagline }}';
-var SITE_DESCRIPTION = '{{ WAZIMAP.description }}';
-var MAPIT = {{ HURUMAP.mapit|jsonify|safe }};
-var TILE_LAYER = {{ HURUMAP.tile_layer|jsonify|safe }};
+  var SITE_TAGLINE = '{{ WAZIMAP.title_tagline }}';
+  var SITE_DESCRIPTION = '{{ WAZIMAP.description }}';
+  var MAPIT = {{ HURUMAP.mapit|jsonify|safe }};
+  var TILE_LAYER = {{ HURUMAP.tile_layer|jsonify|safe }};
+  var HURUMAP_THEME = {{ HURUMAP.theme|jsonify|safe }};
 {% endblock settings_javascript %}

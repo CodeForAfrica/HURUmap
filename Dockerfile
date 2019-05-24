@@ -40,7 +40,7 @@ FROM hurumap as hurumap-kenya
 
 WORKDIR $APP_SRVHOME
 RUN mkdir hurumap_apps \
-    && wget -qO- https://github.com/CodeForAfrica/HURUmap-apps/archive/feature/python3.tar.gz | tar -xz --strip=1 -C hurumap_apps
+    && wget -qO- https://github.com/CodeForAfrica/HURUmap-apps/archive/master.tar.gz | tar -xz --strip=1 -C hurumap_apps
 
 WORKDIR $APP_SRVHOME/hurumap_apps
 
