@@ -16,6 +16,8 @@ install_requires = [
     'wazimap>=2.0',
     'libsass==0.13.3',
     'whitenoise==3.3.1',
+    'django-storages==1.7.1',
+    'boto3==1.9.107',
 ]
 
 setup(
@@ -56,8 +58,8 @@ setup(
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.7',
     ],
 
     # You can just specify the packages manually here if your project is
@@ -84,6 +86,6 @@ setup(
         'dev': ['nose', 'flake8', 'pylint', 'autopep8'],
         'test': ['nose', 'flake8', 'pylint', 'autopep8'],
         'gdal': ['GDAL', 'Shapely>=1.5.13'],
-        'dashboard': ['wagtail>=1.13.1,<1.14', 'django-allauth==0.34.0'],
+        'dashboard': ['wagtail==2.3', 'django-allauth==0.34.0'],
     },
 )

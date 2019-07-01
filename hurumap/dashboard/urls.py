@@ -1,9 +1,9 @@
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 
-from wagtail.wagtailadmin import urls as wagtailadmin_urls
-from wagtail.wagtailcore import urls as wagtail_urls
-from wagtail.wagtaildocs import urls as wagtaildocs_urls
+from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.core import urls as wagtail_urls
+from wagtail.documents import urls as wagtaildocs_urls
 
 from hurumap.dashboard import settings
 
@@ -20,4 +20,5 @@ urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + \
                   url(r'^dashboard/', include(wagtailadmin_urls)),
                   url(r'^documents/', include(wagtaildocs_urls)),
                   url(r'^', include(wagtail_urls)),
-              ] + hurumap_urlpatterns
+              ] + \
+              hurumap_urlpatterns

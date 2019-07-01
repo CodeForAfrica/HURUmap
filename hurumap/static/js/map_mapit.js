@@ -1,6 +1,6 @@
 /***
  * A class that loads geography boundary information from
- * mapit.hurumap.org.
+ * mapit server e.g. mapit.hurumap.org.
  */
 function MapItGeometryLoader() {
     var self = this;
@@ -22,7 +22,7 @@ function MapItGeometryLoader() {
              var parts, level, code, url_;
 
              if (geoid.indexOf('|') > -1 ) {
-                // compound level: level1|country-ZA , fomart for DataView /data/.. on charts
+                // compound level: level1|country-ZA , format for DataView /data/.. on charts
                 parts = geoid.split('|');
                 level = parts[0];
                 code = parts[1];
@@ -38,7 +38,7 @@ function MapItGeometryLoader() {
                if (error) return console.warn(error);
                var area = data;
                var url = '/area/' + area.id + '/children';
-               
+
                d3.json(self.mapit_url + url, function(error, json) {
                 if (error) return console.warn(error);
                 let children_Ids = Object.keys(json);
@@ -47,10 +47,10 @@ function MapItGeometryLoader() {
                 children.map(child => {
                     geoIdNameMap[child.name] =  child['codes'][self.mapit_codetype];
                 });
-    
+
                 children_Ids = children_Ids.join();
                 let children_url = '/areas/' + children_Ids + '.geojson';
-    
+
                 d3.json(self.mapit_url + children_url, function(error, geojson) {
                     --counter;
                     if (error) return console.warn(error);
@@ -66,7 +66,7 @@ function MapItGeometryLoader() {
                         feature.properties.geoid = featureGeoId;
                         featureMap[featureGeoId] = feature;
                     });
-                    
+
                     if (counter === 0) {
                         // collect those we're interested in
                         var usefulFeatures = {};

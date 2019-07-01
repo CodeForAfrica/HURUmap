@@ -17,8 +17,8 @@ TIME_ZONE = 'Africa/Nairobi'
 LANGUAGE_CODE = 'en-ke'
 
 TEMPLATES[0]['OPTIONS']['context_processors'] = TEMPLATES[0]['OPTIONS'][
-                                                 'context_processors'] + [
-                                                 'hurumap.context_processors.hurumap_settings']
+                                                    'context_processors'] + [
+                                                    'hurumap.context_processors.hurumap_settings']
 
 INSTALLED_APPS = ['hurumap'] + INSTALLED_APPS
 
@@ -109,6 +109,17 @@ HURUMAP['geometry_data'] = {
     }
 }
 
+# leaflet JS tile layer (https://leafletjs.com/reference.html#tilelayer)
+HURUMAP['tile_layer'] = {
+    'url_template': '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    'options': {
+        'attribution': 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+        'subdomains': 'abc',
+        'maxZoom': 17
+    }
+}
+
+# Mapit (http://mapit.poplus.org)
 use_mapit = os.environ.get('USE_MAPIT', False)
 HURUMAP['USE_MAPIT'] = strtobool(str(use_mapit))
 
@@ -273,6 +284,29 @@ HURUMAP['video_links'] = OrderedDict([
     ("comparing_places",
      'https://www.youtube.com/embed/7mSZnXFHFxo?list=PL7MJ_sFHs952CYcKHPQp786HVVy83nBwH')
 ])
+
+# color scheme
+
+HURUMAP['theme'] = {
+    'charts': {
+        # http://colorbrewer2.org/
+        'colorbrewer': {
+            'Set2': [
+                "#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3",
+                "#a6d854", "#ffd92f", "#e5c494", "#b3b3b3"
+            ],
+            # saturated version of Colorbrewer 'Set2' scheme, so the unhovered
+            # state, at 80% opacity, looks like the original colorbrewer color
+            'Set2S': [
+                "#33b5b5", "#ed8b69", "#6295cc", "#dd85c0",
+                "#8ecc23", "#fccd06", "#dbba97", "#aaaaaa"
+            ],
+        },
+        'show_y_axis': False,
+        'color_scale': 'Set2S',
+        'chart_height': 160
+    }
+}
 
 # -------------------------------------------------------------------------------------
 # Logging Configs

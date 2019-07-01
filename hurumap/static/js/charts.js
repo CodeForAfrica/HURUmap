@@ -37,9 +37,10 @@ function Chart(options) {
     chart.chartNullLabel = options.chartNullLabel || "N/A";
     chart.decimalPlaces = parseInt(options.chartDecimalPlaces) || 0;
     chart.tableDecimalPlaces = parseInt(options.chartDecimalPlaces) || 1;
-    chart.chartChartShowYAxis =
-      options.chartChartShowYAxis ||
-      (chart.chartStatType == "percentage" ? true : false);
+    chart.colorbrewer = options.colorbrewer;
+    chart.chartChartShowYAxis = options.chartChartShowYAxis ||
+        (window.HURUMAP_THEME && window.HURUMAP_THEME.charts.show_y_axis) ||
+	(chart.chartStatType === "percentage" ? true : false);
     chart.chartHeight =
       options.chartHeight ||
       (chart.parentHeight < 180 ? 180 : chart.parentHeight);
@@ -1636,34 +1637,6 @@ function Chart(options) {
     for (var setting in newSettings) {
       chart.settings[setting] = newSettings[setting];
     }
-  };
-
-  // Colorbrewer color specifications and designs
-  // by Cynthia Brewer (http://colorbrewer.org/)
-  // https://github.com/mbostock/d3/tree/master/lib/colorbrewer
-  chart.colorbrewer = {
-    Set2: [
-      "#66c2a5",
-      "#fc8d62",
-      "#8da0cb",
-      "#e78ac3",
-      "#a6d854",
-      "#ffd92f",
-      "#e5c494",
-      "#b3b3b3"
-    ],
-    // saturated version of Colorbrewer 'Set2' scheme, so the unhovered
-    // state, at 80% opacity, looks like the original colorbrewer color
-    Set2S: [
-      "#33b5b5",
-      "#ed8b69",
-      "#6295cc",
-      "#dd85c0",
-      "#8ecc23",
-      "#fccd06",
-      "#dbba97",
-      "#aaaaaa"
-    ]
   };
 
   chart.comparisonPhrases = {

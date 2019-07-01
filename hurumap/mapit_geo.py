@@ -4,7 +4,7 @@ import requests
 from django.conf import settings
 from shapely.geometry import asShape
 from wazimap.geo import GeoData as WazimapGeoData, LocationNotFound
-import settings
+import hurumap.settings
 
 log = logging.getLogger(__name__)
 

@@ -1,8 +1,5 @@
 var ProfileMaps = function() {
     var self = this;
-    this.mapit_url = GeometryLoader.mapit_url;
-    this.mapit_codetype = GeometryLoader.mapit_codetype;
-    this.mapit_country = GeometryLoader.mapit_country;
 
     this.featureGeoStyle = {
         "fillColor": "#66c2a5",
@@ -12,7 +9,7 @@ var ProfileMaps = function() {
         "fillOpacity": 0.5,
         "clickable": false
     };
-
+    
     this.layerStyle = {
         "clickable": true,
         "color": "#00d",
@@ -40,13 +37,13 @@ var ProfileMaps = function() {
 
         this.createMap();
         this.addImagery();
+
         if (centre) {
             self.map.setView(centre, zoom);
         }
+
         GeometryLoader.loadGeometryForLevel(geo_level, geo_version, function(features) {
-            console.log("drawing homepage");
-            console.log(features);
-            var layer = self.drawFeatures(features.features);
+            var layer = self.drawFeatures(features);
             if (!centre) {
                 self.map.fitBounds(layer.getBounds());
             }
@@ -84,28 +81,29 @@ var ProfileMaps = function() {
         var geo_version = this.geo.this.version;
         var osm_area_id = this.geo.this.osm_area_id;
         var child_level = this.geo.this.child_level;
-        var geo_name = this.geo.this.name;
 
         // load all map shapes for this level
-        //demarcation boundaries
-        if (geo_level == 'country') {
-            this.map.setView( this.mapit_country.centre, this.mapit_country.zoom);
-        } else {
-            // draw the current geo
-            GeometryLoader.loadGeometryForGeo(geo_level, geo_code, geo_version, function(feature) {
-              self.drawFocusFeature(feature);
-            });
-        }
-
-        // draw the others at this level
         GeometryLoader.loadGeometryForLevel(geo_level, geo_version, function(features) {
-            self.drawFeatures(features.features);
+            // split into this geo, and everything else
+            var groups = _.partition(features.features, function(f) {
+                return f.properties.code == geo_code;
+            });
+            var this_geo = groups[0] ? groups[0][0] : null;
+            features = groups[1];
+
+            // draw the current geo
+            if (this_geo) {
+                self.drawFocusFeature(this_geo);
+            }
+
+            // draw the others at this level
+            self.drawFeatures(features);
         });
 
         // load shapes at the child level, if any
         if (child_level) {
-            GeometryLoader.loadGeometryForChildLevel(child_level, geo_level, geo_code, geo_version, function(features) {
-                self.drawFeatures(features.features);
+            GeometryLoader.loadGeometryForLevel(child_level, geo_version, function(features) {
+                self.drawFeatures(features);
             });
         }
     };
@@ -128,6 +126,7 @@ var ProfileMaps = function() {
                     break;
                 }
             }
+
             this.map.setView(layer.getBounds().getCenter(), z);
             this.map.panBy([-270, 0], {animate: false});
         } else {
@@ -137,9 +136,6 @@ var ProfileMaps = function() {
 
     this.drawFeatures = function(features) {
         // draw all others
-        var url = this.mapit_url;
-        var mapit_codetype = this.mapit_codetype;
-
         return L.geoJson(features, {
             style: this.layerStyle,
             onEachFeature: function(feature, layer) {
@@ -152,17 +148,7 @@ var ProfileMaps = function() {
                     layer.setStyle(self.layerStyle);
                 });
                 layer.on('click', function() {
-                  var uri = '/areas/'+ feature.properties.name.toLowerCase() + '?generation=1' + '&type=';
-                  uri = uri + feature.properties.level.toUpperCase() + '&country='+ feature.properties.country_code;
-                  d3.json(url + uri,  function(error, data) {
-                    if (error) return console.warn(error);
-                    var featureInfo = Object.values(data);
-
-                    var geo_id = featureInfo[0]['codes'][mapit_codetype];
-                    //var geo_level = featureInfo[0]['type'];
-                    window.location = '/profiles/' + geo_id + '/';
-                  });
-
+                    window.location = '/profiles/' + feature.properties.level + '-' + feature.properties.code + '/';
                 });
             },
         }).addTo(this.map);
