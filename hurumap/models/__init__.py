@@ -1,1 +1,1 @@
-from .data import DataIndicatorPublisher, DataIndicator, DataTopic
+from .data import DbTableChart
