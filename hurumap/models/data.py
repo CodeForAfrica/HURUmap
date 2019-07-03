@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField, JSONField
+from django.core.exceptions import ValidationError
 
 from wazimap.models import Geography, DBTable, FieldTable, FieldTable
 
@@ -18,9 +19,17 @@ class DbTableChart(models.Model):
 
     def clean(self):
         num_field = len(self.fields)
-        if (num_field > 1 and self.chart != 'grouped_column') or \
-            num_field > 2 and (num_field < 2 and self.chart == 'grouped_column'):
+        if num_field > 1 and self.chart != 'grouped_column':
             raise ValidationError("Charts do not map to fields provided")
+        if num_field > 2:
+            raise ValidationError("Charts do not map to fields provided")
+        if num_field < 2 and self.chart == 'grouped_column':
+            raise ValidationError("Charts do not map to fields provided")
+
+        #check if provided chart field is among the table fields on wazimap
+        for field in self.fields:
+            if not field in str(self.field_table):
+                raise ValidationError("Field not in wazimap table field")
 
     def __str__(self):
         return 'chart-%s-%s-%s' % (self.chart, self.db_table, ('_'.join(self.fields)))
