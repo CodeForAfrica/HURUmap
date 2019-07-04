@@ -37,14 +37,14 @@ function Chart(options) {
     chart.chartNullLabel = options.chartNullLabel || "N/A";
     chart.decimalPlaces = parseInt(options.chartDecimalPlaces) || 0;
     chart.tableDecimalPlaces = parseInt(options.chartDecimalPlaces) || 1;
-    chart.colorbrewer = options.colorbrewer;
+    chart.colorbrewer = options.colorbrewer || (window.HURUMAP_THEME && window.HURUMAP_THEME.charts.colorbrewer);
     chart.chartChartShowYAxis = options.chartChartShowYAxis ||
         (window.HURUMAP_THEME && window.HURUMAP_THEME.charts.show_y_axis) ||
 	(chart.chartStatType === "percentage" ? true : false);
     chart.chartHeight =
       options.chartHeight ||
       (chart.parentHeight < 180 ? 180 : chart.parentHeight);
-    chart.chartColorScale = options.chartColorScale || "Set2S";
+    chart.chartColorScale = options.chartColorScale || (window.HURUMAP_THEME && window.HURUMAP_THEME.charts.color_scale) || "Set2S";
     chart.screenPosition = document
       .getElementById(options.chartContainer)
       .getBoundingClientRect();
