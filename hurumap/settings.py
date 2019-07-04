@@ -302,6 +302,7 @@ HURUMAP['theme'] = {
                 "#8ecc23", "#fccd06", "#dbba97", "#aaaaaa"
             ],
         },
+        'show_y_axis': False,
         'color_scale': 'Set2S',
         'chart_height': 160
     }
