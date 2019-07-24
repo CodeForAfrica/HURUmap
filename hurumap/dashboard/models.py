@@ -114,7 +114,7 @@ class CustomChartForm(WagtailAdminModelForm):
 
 @register_snippet
 class ChartSection(models.Model):
-    name = models.CharField(default="Default Section",unique=True, max_length=1024,
+    name = models.CharField(default="Default Section", null=False, blank=False, unique=True, max_length=1024,
         help_text="Provide a unique name for profile section")
 
     panels = [
@@ -126,7 +126,7 @@ class ChartSection(models.Model):
 
 @register_snippet
 class Chart(models.Model):
-    table = models.ForeignKey(DBTable, to_field='name', on_delete=models.CASCADE)
+    table = models.ForeignKey(DBTable, on_delete=models.CASCADE)
     chart_type = models.CharField(max_length=32, null=False)
     fields = ArrayField(models.CharField(max_length=150, null=False, unique=True))
     title = models.CharField(max_length=500, null=True, blank=True, help_text="Descriptive title of this chart")
@@ -134,7 +134,7 @@ class Chart(models.Model):
     source_link = models.URLField(max_length=500, null=True, blank=True, help_text="Link to data source")
     stat_type = models.CharField(max_length=32, null=True, blank=True, choices=STAT_TYPES, help_text="Default is Number")
     group_by = models.CharField(max_length=120, null=True, blank=True)
-    section = models.ForeignKey(ChartSection, to_field='name', on_delete=models.CASCADE, help_text="Select profile section where the chart belongs to")
+    section = models.ForeignKey(ChartSection, on_delete=models.CASCADE, help_text="Select profile section where the chart belongs to")
 
     panels = [
         FieldPanel('table'),
