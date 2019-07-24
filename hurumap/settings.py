@@ -79,6 +79,9 @@ hurumap_profile = os.environ.get('HURUMAP_PROFILE', 'census')
 HURUMAP['default_profile'] = 'census'
 HURUMAP['profile_builder'] = 'hurumap.profiles.{}.get_profile'.format(
     hurumap_profile)
+HURUMAP['compare_profile_builder'] = 'hurumap.profiles.{}.get_comparison_profile'.format(
+    hurumap_profile
+)
 
 HURUMAP['default_geo_version'] = os.environ.get('HURUMAP_DEFAULT_GEO_VERSION',
                                                 '2009')
