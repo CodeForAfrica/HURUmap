@@ -26,7 +26,8 @@ services:
       - DATABASE_URL=postgresql://hurumap:hurumap@db:5432/hurumap
       - DJANGO_SECRET_KEY=somethingsecret
       - HURUMAP_URL=http://localhost:8000
-      - HURUMAP_APP=hurumap_ke
+      - HURUMAP_APP=${HURUMAP_APP:-hurumap_ke}
+      - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE:-hurumap_ke.settings}
       - PGHOST=db
       - PGDATABASE=hurumap
       - PGUSER=hurumap
