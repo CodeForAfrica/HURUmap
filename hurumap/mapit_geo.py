@@ -30,7 +30,7 @@ class GeoData(WazimapGeoData):
         code_resp = code_resp.json()
         area_id = code_resp['id']
 
-        url_ = MAPIT_SETTINGS['url'] + '/area/%s.geojson?' + '&generation=%s' % ( area_id, MAPIT_SETTINGS['generations'][geo.version])
+        url_ = MAPIT_SETTINGS['url'] + '/area/%s.geojson?&generation=%s' % ( area_id, MAPIT_SETTINGS['generations'][geo.version])
         simplify = MAPIT_SETTINGS['level_simplify'].get(mapit_level)
         if simplify:
             url_ = url_ + '&simplification_level=%s' % simplify
