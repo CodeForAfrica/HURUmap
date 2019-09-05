@@ -28,7 +28,6 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends apt-uti
     git+https://github.com/CodeForAfricaLabs/wazimap.git@master#egg=wazimap \
     && pip install -q -e .[dashboard]
 
-
 # Expose port server
 EXPOSE 8000
 
