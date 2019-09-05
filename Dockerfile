@@ -23,8 +23,7 @@ RUN apt-get -qq update && apt-get -qq install -y --no-install-recommends apt-uti
     && apt-get -qq install -y --no-install-recommends apt-utils postgresql-client \
     && apt-get -qq install gdal-bin python-gdal libgdal-dev -y \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && pip install -q GDAL==2.1.3 --global-option=build_ext --global-option="-I/usr/include/gdal" \
-    && pip install -q -U pip setuptools gunicorn[gevent] shapely \
+    && pip install -q -U pip setuptools gunicorn[gevent] shapely GDAL==2.1.3 --global-option=build_ext --global-option="-I/usr/include/gdal"\
     git+https://github.com/CodeForAfricaLabs/wazimap.git@master#egg=wazimap \
     && pip install -q -e .[dashboard]
 
