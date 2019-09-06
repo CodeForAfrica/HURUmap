@@ -32,11 +32,11 @@ INSTALLED_APPS = INSTALLED_APPS + [
         'storages',
     ]
 
-MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
-    'django.contrib.messages.middleware.MessageMiddleware',
+MIDDLEWARE = MIDDLEWARE + [
+    # last-resort type of middlewares so we can put them last
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-)
+]
 
 ROOT_URLCONF = 'hurumap.dashboard.urls'
 
