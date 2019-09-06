@@ -30,7 +30,7 @@ class GeoData(WazimapGeoData):
         code_resp = code_resp.json()
         area_id = code_resp['id']
 
-        url_ = MAPIT_SETTINGS['url'] + '/area/%s.geojson?' + '&generation=%s' % ( area_id, MAPIT_SETTINGS['generations'][geo.version])
+        url_ = MAPIT_SETTINGS['url'] + '/area/%s.geojson?generation=%s' % ( area_id, MAPIT_SETTINGS['generations'][geo.version])
         simplify = MAPIT_SETTINGS['level_simplify'].get(mapit_level)
         if simplify:
             url_ = url_ + '&simplification_level=%s' % simplify
@@ -41,10 +41,17 @@ class GeoData(WazimapGeoData):
         resp.raise_for_status()
 
         feature = resp.json()
-        shape = asShape(feature['geometry'])
+        shape = asShape(feature) #the response json from mapit is a geometry object with no properties
+
+        #create properties 
+        properties = {
+            'name': code_resp['name'],
+            'geo_id': code_resp['codes'][MAPIT_SETTINGS['code_type']],
+            'area_type': code_resp['type']
+        }
 
         return {
-            'properties': feature['properties'],
+            'properties': properties,
             'shape': shape,
         }
 
