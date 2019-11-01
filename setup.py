@@ -16,7 +16,7 @@ install_requires = [
     'wazimap>=2.0',
     'libsass==0.13.3',
     'whitenoise==3.3.1',
-    'django-storages==1.7.1',
+    'django-storages==1.7.2',
     'boto3==1.9.107',
 ]
 
