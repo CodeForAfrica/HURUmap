@@ -7,8 +7,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ADMINS = (
     ('David Lemayian', 'david@codeforafrica.org'),
-    ('Phillip Ahereza', 'ahereza@codeforafrica.org'),
-    ('Support CfAfrica', 'support@codeforafrica.org')
+    ('Clemence Kyara', 'clemence@codeforafrica.org'),
+    ('Tech CfAfrica', 'tech@codeforafrica.org')
 )
 
 MANAGERS = ADMINS
